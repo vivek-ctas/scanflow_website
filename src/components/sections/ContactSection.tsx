@@ -227,7 +227,7 @@ export default function ContactSection() {
 
             {/* Bottom CTA strip */}
             <motion.div
-                className="mt-12 relative overflow-hidden rounded-4xl border border-accent/20 bg-linear-to-br from-accent/8 via-white/60 to-accent/5 p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+                className="mt-12 relative overflow-hidden rounded-4xl border border-accent/20 bg-gradient-to-br from-accent/8 via-white/60 to-accent/5 p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.65 }}

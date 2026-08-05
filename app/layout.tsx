@@ -1,5 +1,29 @@
 import type { Metadata } from "next";
+import { Inter, Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+// Fonts loaded via next/font to self-host, preload, and eliminate the
+// render-blocking Google Fonts request.
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500"],
+});
 
 export const metadata: Metadata = {
   title: "ScanPro — Fast Barcode Scanning for Web & Mobile",
@@ -29,8 +53,11 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`scroll-smooth ${inter.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

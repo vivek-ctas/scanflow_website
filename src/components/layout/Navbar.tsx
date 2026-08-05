@@ -35,7 +35,7 @@ export default function Navbar() {
     >
       <div className="container-wide flex items-center justify-between">
         {/* <Link href="#" className="flex items-center gap-2.5 group">
-          <div className="relative w-9 h-9 rounded-xl bg-linear-to-br from-ink to-accent p-0.5 shadow-sm">
+          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-ink to-accent p-0.5 shadow-sm">
             <div className="h-full w-full rounded-[10px] bg-surface flex items-center justify-center">
               <ScanLine className="w-4 h-4 text-accent" />
             </div>
