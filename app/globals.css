@@ -1,26 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #13355a;
+  --ink-soft: #1b4a75;
+  --surface: #fcfcfc;
+  --surface-2: #f5f7fa;
+  --accent: #3c9ac4;
+  --accent-2: #6bc1e0;
+  --muted: #334155;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-ink: #13355a;
+  --color-ink-soft: #1b4a75;
+  --color-ink-muted: #34547c;
+  --color-surface: #fcfcfc;
+  --color-surface-2: #f5f7fa;
+  --color-accent: #3c9ac4;
+  --color-accent-dim: #2e83ac;
+  --color-accent-2: #6bc1e0;
+  --color-muted: #334155;
+  --color-muted-light: #64748b;
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+  background: #f7f9fc;
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 10%, rgba(60, 154, 196, 0.08), transparent 34%),
+    radial-gradient(circle at 80% 80%, rgba(19, 53, 90, 0.08), transparent 36%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(10px, -14px, 0) scale(1.04);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes stripeMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 180px 0;
+  }
+}
+
+@keyframes scanBeam {
+  0% {
+    transform: translateY(-26px);
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(190px);
+    opacity: 0.2;
+  }
+}
+
+@keyframes float-up {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes float-down {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes float-gentle {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: translateY(-8px) translateX(4px);
+  }
+
+  50% {
+    transform: translateY(-4px) translateX(0px);
+  }
+
+  75% {
+    transform: translateY(-6px) translateX(-4px);
+  }
+}
+
+@keyframes float-gentle-reverse {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  25% {
+    transform: translateY(8px) translateX(-4px);
+  }
+
+  50% {
+    transform: translateY(4px) translateX(0px);
+  }
+
+  75% {
+    transform: translateY(6px) translateX(4px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-drift {
+  animation: drift 8s ease-in-out infinite;
+}
+
+.animate-float-up {
+  animation: float-up 4s ease-in-out infinite;
+}
+
+.animate-float-down {
+  animation: float-down 5s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-float-gentle-reverse {
+  animation: float-gentle-reverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-ring { animation: pulse-ring 2.4s cubic-bezier(.215,.61,.355,1) infinite; }
+
+.bg-grid-stripes {
+  background-image:
+    linear-gradient(rgba(19, 53, 90, 0.06) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(19, 53, 90, 0.06) 2px, transparent 2px);
+  /* repeating-linear-gradient(-45deg,
+      rgba(60, 154, 196, 0.08) 0,
+      rgba(60, 154, 196, 0.08) 12px,
+      transparent 12px,
+      transparent 28px); */
+  background-size: 34px 34px, 34px 34px, 180px 180px;
+  animation: stripeMove 24s linear infinite;
+}
+
+.animate-scan-beam {
+  animation: scanBeam 2.6s ease-in-out infinite;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(19, 53, 90, 0.1);
+  box-shadow: 0 12px 30px rgba(19, 53, 90, 0.08);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(19, 53, 90, 0.08);
+  box-shadow: 0 10px 22px rgba(19, 53, 90, 0.06);
+}
+
+.glow-accent {
+  box-shadow: 0 16px 34px rgba(60, 154, 196, 0.26);
+}
+
+.glow-sm {
+  box-shadow: 0 8px 20px rgba(60, 154, 196, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #13355a 0%, #3c9ac4 55%, #6bc1e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #3c9ac4;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9f2fb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(60, 154, 196, 0.5);
+  border-radius: 2px;
+}
+
+
+
+
+/* body::before -soft lighting */
+/* .bg-grid-stripes- the small boxes + animated stripes system */
+
+
+@keyframes scan-line {
+  0% {
+    top: 10%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 90%;
+    opacity: 0;
+  }
+}
+
+.animate-scan-premium {
+  animation: scan-line 3s linear infinite;
+}
+
+/* Wide full-width content container (mirrors the reference site's gutters) */
+.container-wide {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-wide {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    padding-inline: 4.375rem;
+  }
 }
