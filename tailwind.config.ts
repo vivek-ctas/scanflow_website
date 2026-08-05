@@ -8,20 +8,12 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				/* CTAS Brand: Navy #13355A */
-				ink: "hsl(var(--ink))",
-				"ink-soft": "hsl(var(--ink-soft))",
-				"ink-muted": "hsl(var(--ink-muted))",
-				/* CTAS Brand: Accent Blue #3C9AC4 */
+				/* CTAS Brand Guidelines — semantic tokens */
 				accent: "hsl(var(--accent))",
-				"accent-dim": "hsl(var(--accent-dim))",
 				"accent-2": "hsl(var(--accent-2))",
-				surface: "hsl(var(--surface))",
-				"surface-2": "hsl(var(--surface-2))",
 				muted: {
 					DEFAULT: "hsl(var(--muted))",
 					foreground: "hsl(var(--muted-foreground))",
-					light: "hsl(var(--muted-light))",
 				},
 				/* CTAS Brand Guidelines — semantic tokens */
 				background: "hsl(var(--background))",

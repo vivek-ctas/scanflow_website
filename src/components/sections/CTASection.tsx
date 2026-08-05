@@ -4,7 +4,7 @@ import { ArrowRight, Zap } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section id="cta" className="py-28 relative overflow-hidden bg-gradient-to-br from-ink to-[#1a4a7a]">
+    <section id="cta" className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]">
       {/* Big glow */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-[700px] h-[400px] bg-accent-2/20 blur-[120px] rounded-full" />
@@ -53,7 +53,7 @@ export default function CTASection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
             <a
               href="#contact"
-              className="group flex items-center gap-2 bg-white text-ink font-bold px-9 py-4 rounded-full hover:bg-accent transition-all duration-200 shadow-lg text-base"
+              className="group flex items-center gap-2 bg-white text-primary font-bold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
             >
               Start Free 14-Day Trial
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

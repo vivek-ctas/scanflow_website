@@ -67,11 +67,11 @@ function HeroScanVisual() {
           <div className="relative z-10 h-full flex flex-col items-center justify-center">
             <div className="flex items-end gap-[3px] opacity-90 mb-4">
               {[6, 3, 10, 2, 7, 3, 5, 2, 12, 3, 8, 4, 10, 7, 9, 1, 5, 7, 3, 7, 6, 3, 2, 5, 5, 6, 7, 2, 9, 1].map((w, i) => (
-                <div key={i} className="bg-ink rounded-sm" style={{ width: `${w}px`, height: 90 }} />
+                <div key={i} className="bg-primary rounded-sm" style={{ width: `${w}px`, height: 90 }} />
               ))}
             </div>
 
-            <div className="absolute w-[78%] h-[58%] border border-ink/30 rounded-2xl">
+            <div className="absolute w-[78%] h-[58%] border border-primary/30 rounded-2xl">
               <div className="absolute inset-x-2 h-[2px] bg-accent-2 shadow-[0_0_22px_#3C9AC4,0_0_8px_#3C9AC4] animate-scan-premium" />
               <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-accent-2 rounded-tl-2xl" />
               <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-accent-2 rounded-tr-2xl" />
@@ -93,8 +93,8 @@ function HeroScanVisual() {
         transition={{ delay: 0.6 }}
         className="hidden sm:block absolute left-[2%] top-[18%] z-30 bg-white/95 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(19,53,90,0.12)] w-48 -rotate-2 animate-float-gentle"
       >
-        <div className="text-[9px] text-ink/50 font-bold mb-1 uppercase tracking-widest">Detected</div>
-        <div className="text-ink font-semibold text-sm">Code 128</div>
+        <div className="text-[9px] text-primary/50 font-bold mb-1 uppercase tracking-widest">Detected</div>
+        <div className="text-primary font-semibold text-sm">Code 128</div>
         <div className="text-emerald-600 text-[10px] font-mono mt-1">99.02% confidence</div>
       </motion.div>
 
@@ -104,9 +104,9 @@ function HeroScanVisual() {
         transition={{ delay: 0.8 }}
         className="hidden sm:block absolute right-[2%] top-[24%] z-30 bg-white/95 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(19,53,90,0.12)] w-44 rotate-2 animate-float-down"
       >
-        <div className="text-[9px] text-ink/50 font-bold mb-1 uppercase tracking-widest">Decode time</div>
-        <div className="text-ink text-2xl font-light">
-          18.0<span className="text-ink/60 text-xs ml-1 font-normal">ms</span>
+        <div className="text-[9px] text-primary/50 font-bold mb-1 uppercase tracking-widest">Decode time</div>
+        <div className="text-primary text-2xl font-light">
+          18.0<span className="text-primary/60 text-xs ml-1 font-normal">ms</span>
         </div>
       </motion.div>
 
@@ -116,8 +116,8 @@ function HeroScanVisual() {
         transition={{ delay: 1 }}
         className="hidden md:block absolute left-[6%] bottom-[6%] z-30 bg-white/95 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(19,53,90,0.12)] w-56 -rotate-1 animate-float-up"
       >
-        <div className="text-[10px] text-ink/60 font-bold mb-1 uppercase tracking-widest">Blur Recovery</div>
-        <div className="text-ink font-semibold text-sm leading-snug">AI-enhanced detection engine</div>
+        <div className="text-[10px] text-primary/60 font-bold mb-1 uppercase tracking-widest">Blur Recovery</div>
+        <div className="text-primary font-semibold text-sm leading-snug">AI-enhanced detection engine</div>
       </motion.div>
     </div>
   );
@@ -143,10 +143,10 @@ export default function HeroSection() {
               <motion.p variants={item} className="section-label mb-5">
                 Enterprise Barcode Intelligence
               </motion.p>
-              <motion.h1 variants={item} className="font-display text-4xl md:text-6xl leading-tight text-ink max-w-3xl">
+              <motion.h1 variants={item} className="font-display text-4xl md:text-6xl leading-tight text-primary max-w-3xl">
                 Scan any barcode in <span className="text-gradient">real-world conditions</span> with CTAS ScanPro.
               </motion.h1>
-              <motion.p variants={item} className="mt-6 text-lg text-muted max-w-2xl leading-relaxed">
+              <motion.p variants={item} className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
                 Purpose-built for logistics, warehouse, and retail workflows where speed, readability, and reliability drive business outcomes.
               </motion.p>
               <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
@@ -154,30 +154,30 @@ export default function HeroSection() {
                   whileHover={{ y: -2, scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-ink to-accent px-7 py-3.5 text-white font-semibold transition-all glow-accent"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 text-white font-semibold transition-all glow-accent"
                 >
                   Start Free Trial <ArrowRight className="w-4 h-4" />
                 </motion.a>
                 <motion.a
                   whileHover={{ y: -2 }}
                   href="#reliability"
-                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white px-7 py-3.5 text-ink font-semibold hover:border-accent/40 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-7 py-3.5 text-primary font-semibold hover:border-secondary/40 transition-colors"
                 >
                   Watch Live Demo
                 </motion.a>
               </motion.div>
               <motion.div variants={item} className="mt-10 grid grid-cols-3 gap-3">
-                <div className="rounded-xl border border-ink/10 bg-white/90 p-3 text-sm">
-                  <p className="font-display text-xl text-ink"><AnimatedCounter target={99.02} suffix="%" decimals={2} /></p>
-                  <p className="text-muted text-xs">Decode accuracy</p>
+                <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
+                  <p className="font-display text-xl text-primary"><AnimatedCounter target={99.02} suffix="%" decimals={2} /></p>
+                  <p className="text-muted-foreground text-xs">Decode accuracy</p>
                 </div>
-                <div className="rounded-xl border border-ink/10 bg-white/90 p-3 text-sm">
-                  <p className="font-display text-xl text-ink"><AnimatedCounter target={18} suffix="ms" decimals={1} /></p>
-                  <p className="text-muted text-xs">Response time</p>
+                <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
+                  <p className="font-display text-xl text-primary"><AnimatedCounter target={18} suffix="ms" decimals={1} /></p>
+                  <p className="text-muted-foreground text-xs">Response time</p>
                 </div>
-                <div className="rounded-xl border border-ink/10 bg-white/90 p-3 text-sm">
-                  <p className="font-display text-xl text-ink"><AnimatedCounter target={10000} suffix="+" /></p>
-                  <p className="text-muted text-xs">Scans processed</p>
+                <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
+                  <p className="font-display text-xl text-primary"><AnimatedCounter target={10000} suffix="+" /></p>
+                  <p className="text-muted-foreground text-xs">Scans processed</p>
                 </div>
               </motion.div>
             </motion.div>

@@ -16,21 +16,21 @@ export default function HowItWorksSection() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-20 left-10 w-32 h-32 border border-accent/20 rounded-full"
+          className="absolute top-20 left-10 w-32 h-32 border border-secondary/20 rounded-full"
         />
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-20 right-10 w-24 h-24 border border-accent/15 rounded-full"
+          className="absolute bottom-20 right-10 w-24 h-24 border border-secondary/15 rounded-full"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 4, repeat: Infinity }}
-          className="absolute top-1/2 left-1/4 w-2 h-2 bg-accent/30 rounded-full"
+          className="absolute top-1/2 left-1/4 w-2 h-2 bg-secondary/30 rounded-full"
         />
       </div>
 
-      <div className="rounded-3xl bg-surface-2 relative overflow-hidden">
+      <div className="rounded-3xl bg-muted relative overflow-hidden">
         <div className="rounded-3xl bg-white/95 p-8 md:p-12 relative overflow-hidden shadow-2xl shadow-slate-200/40">
           {/* Floating particles */}
           {/* <div className="absolute inset-0 pointer-events-none">
@@ -47,7 +47,7 @@ export default function HowItWorksSection() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute w-1 h-1 bg-accent/40 rounded-full"
+                className="absolute w-1 h-1 bg-secondary/40 rounded-full"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -79,7 +79,7 @@ export default function HowItWorksSection() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute w-1 h-1 bg-accent/40 rounded-full"
+                className="absolute w-1 h-1 bg-secondary/40 rounded-full"
                 style={{
                   left: particle.left,
                   top: particle.top,
@@ -94,12 +94,12 @@ export default function HowItWorksSection() {
             className="text-center mb-16"
           >
             <p className="section-label mb-4">How It Works</p>
-            <h2 className="font-display text-3xl md:text-5xl text-ink mb-6">
+            <h2 className="font-display text-3xl md:text-5xl text-primary mb-6">
               Integrate in{" "}
               <span className="text-gradient">minutes</span>
               . Scale with confidence.
             </h2>
-            <p className="text-muted-light text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground-foreground text-lg max-w-2xl mx-auto">
               Four simple steps to transform your barcode scanning workflow
             </p>
           </motion.div>
@@ -107,7 +107,7 @@ export default function HowItWorksSection() {
           {/* Timeline Layout */}
           <div className="relative">
             {/* Central connecting line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/0 via-accent/50 to-accent/0 transform -translate-x-1/2" />
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-secondary/0 via-secondary/50 to-secondary/0 transform -translate-x-1/2" />
 
             {/* Animated progress line */}
             <motion.div
@@ -115,7 +115,7 @@ export default function HowItWorksSection() {
               whileInView={{ height: "100%" }}
               viewport={{ once: true }}
               transition={{ duration: 2, ease: "easeOut" }}
-              className="hidden md:block absolute left-1/2 top-0 w-0.5 bg-gradient-to-b from-accent to-accent-2 transform -translate-x-1/2"
+              className="hidden md:block absolute left-1/2 top-0 w-0.5 bg-gradient-to-b from-secondary to-accent-2 transform -translate-x-1/2"
               style={{
                 boxShadow: "0 0 20px rgba(32, 152, 200, 0.6)",
               }}
@@ -146,15 +146,15 @@ export default function HowItWorksSection() {
                       <motion.div
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 3, repeat: Infinity }}
-                        className="absolute inset-0 bg-accent/20 rounded-2xl blur-xl"
+                        className="absolute inset-0 bg-secondary/20 rounded-2xl blur-xl"
                       />
 
-                      <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-accent to-accent-2 flex items-center justify-center shadow-2xl border border-white/20">
+                      <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-secondary to-accent-2 flex items-center justify-center shadow-2xl border border-white/20">
                         {/* Animated border */}
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                          className="absolute inset-0 rounded-2xl border-2 border-accent/30"
+                          className="absolute inset-0 rounded-2xl border-2 border-secondary/30"
                         />
 
                         <div className="text-center">
@@ -169,7 +169,7 @@ export default function HowItWorksSection() {
                       <motion.div
                         animate={{ scale: [0.8, 1.2, 0.8] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute -top-2 -right-2 w-4 h-4 bg-accent rounded-full border-2 border-white"
+                        className="absolute -top-2 -right-2 w-4 h-4 bg-secondary rounded-full border-2 border-white"
                       />
                     </motion.div>
 
@@ -184,7 +184,7 @@ export default function HowItWorksSection() {
                         <motion.div
                           initial={{ opacity: 0 }}
                           whileHover={{ opacity: 1 }}
-                          className="absolute inset-0 bg-gradient-to-br from-accent/5 to-accent-2/5 rounded-2xl"
+                          className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-accent-2/5 rounded-2xl"
                         />
 
                         <motion.h3
@@ -192,7 +192,7 @@ export default function HowItWorksSection() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.2 + 0.3 }}
-                          className="font-display text-xl md:text-2xl font-bold text-ink mb-3"
+                          className="font-display text-xl md:text-2xl font-bold text-primary mb-3"
                         >
                           {step.title}
                         </motion.h3>
@@ -202,7 +202,7 @@ export default function HowItWorksSection() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.2 + 0.4 }}
-                          className="text-muted leading-relaxed text-sm md:text-base"
+                          className="text-muted-foreground leading-relaxed text-sm md:text-base"
                         >
                           {step.description}
                         </motion.p>
@@ -213,7 +213,7 @@ export default function HowItWorksSection() {
                           whileInView={{ width: "100%" }}
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.2 + 0.6, duration: 0.8 }}
-                          className="mt-4 h-1 bg-gradient-to-r from-accent to-accent-2 rounded-full"
+                          className="mt-4 h-1 bg-gradient-to-r from-secondary to-accent-2 rounded-full"
                         />
                       </div>
                     </motion.div>
@@ -234,7 +234,7 @@ export default function HowItWorksSection() {
             <motion.div
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent/10 rounded-full border border-accent/20 text-accent font-medium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-secondary/10 rounded-full border border-secondary/20 text-secondary font-medium"
             >
               <span>Ready to get started?</span>
               <motion.span

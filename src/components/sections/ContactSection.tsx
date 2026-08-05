@@ -100,7 +100,7 @@ function ContactCard({ item, index, isInView }: { item: ContactItem; index: numb
                         setHovered(false);
                     }}
                     onMouseEnter={() => setHovered(true)}
-                    className="group relative overflow-hidden rounded-4xl border border-ink/10 bg-white/95 shadow-[0_20px_60px_rgba(19,53,90,0.09)] transition-shadow duration-300 hover:shadow-[0_32px_80px_rgba(19,53,90,0.15)]"
+                    className="group relative overflow-hidden rounded-4xl border border-primary/10 bg-white/95 shadow-[0_20px_60px_rgba(19,53,90,0.09)] transition-shadow duration-300 hover:shadow-[0_32px_80px_rgba(19,53,90,0.15)]"
                 >
                     {/* Color wash on hover */}
                     <motion.div
@@ -161,10 +161,10 @@ function ContactCard({ item, index, isInView }: { item: ContactItem; index: numb
                             >
                                 {item.tag}
                             </p>
-                            <p className="font-display text-xl font-semibold text-ink leading-tight mb-2 truncate">
+                            <p className="font-display text-xl font-semibold text-primary leading-tight mb-2 truncate">
                                 {item.heading}
                             </p>
-                            <p className="text-sm text-muted leading-relaxed">{item.sub}</p>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{item.sub}</p>
                         </div>
 
                         {/* Arrow for linked cards */}
@@ -214,9 +214,9 @@ export default function ContactSection() {
             className="relative isolate container-wide py-20 overflow-hidden"
         >
             {/* Background blobs */}
-            <div className="pointer-events-none absolute -left-10 top-8 -z-10 h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
-            <div className="pointer-events-none absolute right-0 bottom-10 -z-10 h-72 w-72 rounded-full bg-ink/10 blur-3xl" />
-            <div className="pointer-events-none absolute left-1/3 top-1/2 -z-10 h-40 w-40 rounded-full bg-accent/5 blur-2xl" />
+            <div className="pointer-events-none absolute -left-10 top-8 -z-10 h-56 w-56 rounded-full bg-secondary/10 blur-3xl" />
+            <div className="pointer-events-none absolute right-0 bottom-10 -z-10 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+            <div className="pointer-events-none absolute left-1/3 top-1/2 -z-10 h-40 w-40 rounded-full bg-secondary/5 blur-2xl" />
 
             {/* Cards grid */}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -227,21 +227,21 @@ export default function ContactSection() {
 
             {/* Bottom CTA strip */}
             <motion.div
-                className="mt-12 relative overflow-hidden rounded-4xl border border-accent/20 bg-gradient-to-br from-accent/8 via-white/60 to-accent/5 p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+                className="mt-12 relative overflow-hidden rounded-4xl border border-secondary/20 bg-gradient-to-br from-secondary/8 via-white/60 to-secondary/5 p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
                 initial={{ opacity: 0, y: 24 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.65 }}
             >
-                <div className="pointer-events-none absolute -right-12 top-0 h-40 w-40 rounded-full bg-accent/10 blur-3xl" />
+                <div className="pointer-events-none absolute -right-12 top-0 h-40 w-40 rounded-full bg-secondary/10 blur-3xl" />
                 <div>
-                    <p className="font-display text-xl text-ink font-semibold">
+                    <p className="font-display text-xl text-primary font-semibold">
                         Prefer a quick email?
                     </p>
-                    <p className="mt-1 text-muted text-sm leading-relaxed">
+                    <p className="mt-1 text-muted-foreground text-sm leading-relaxed">
                         Drop us a line at {" "}
                         <a
                             href="mailto:info@ctasis.com"
-                            className="text-accent font-medium underline underline-offset-2 hover:opacity-75 transition"
+                            className="text-secondary font-medium underline underline-offset-2 hover:opacity-75 transition"
                         >
                             info@ctasis.com
                         </a>{" "}
@@ -252,7 +252,7 @@ export default function ContactSection() {
                     href="mailto:info@ctasis.com"
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.97 }}
-                    className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(59,158,204,0.35)] hover:opacity-90 transition"
+                    className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-secondary px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(59,158,204,0.35)] hover:opacity-90 transition"
                 >
                     <Mail className="h-4 w-4" />
                     Email us now

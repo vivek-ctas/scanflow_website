@@ -294,7 +294,7 @@ export default function BarcodeConditions() {
                 className="mb-12 max-w-2xl"
             >
                 <p className="section-label mb-4">Real-world resilience</p>
-                <h2 className="font-display text-3xl md:text-5xl text-ink leading-tight">
+                <h2 className="font-display text-3xl md:text-5xl text-primary leading-tight">
                     Decodes barcodes that <span className="text-gradient">others give up on</span>.
                 </h2>
             </motion.div>
@@ -310,29 +310,29 @@ export default function BarcodeConditions() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.12, duration: 0.5 }}
                             whileHover={{ y: -6 }}
-                            className="group rounded-3xl border border-ink/10 bg-white/95 backdrop-blur-sm p-6 shadow-[0_16px_44px_rgba(19,53,90,0.08)] overflow-hidden"
+                            className="group rounded-3xl border border-primary/10 bg-white/95 backdrop-blur-sm p-6 shadow-[0_16px_44px_rgba(19,53,90,0.08)] overflow-hidden"
                         >
                             <div className="flex items-center justify-between mb-5">
                                 <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-xl bg-accent/12 text-accent flex items-center justify-center">
+                                    <div className="h-10 w-10 rounded-xl bg-secondary/12 text-secondary flex items-center justify-center">
                                         <Icon className="w-5 h-5" />
                                     </div>
-                                    <h3 className="font-display text-xl text-ink">{c.title}</h3>
+                                    <h3 className="font-display text-xl text-primary">{c.title}</h3>
                                 </div>
-                                <span className="text-[10px] font-mono text-accent border border-accent/25 rounded-full px-2 py-0.5">DECODED</span>
+                                <span className="text-[10px] font-mono text-secondary border border-secondary/25 rounded-full px-2 py-0.5">DECODED</span>
                             </div>
 
-                            <div className="rounded-2xl bg-surface-2 p-5 relative overflow-hidden">
+                            <div className="rounded-2xl bg-muted p-5 relative overflow-hidden">
                                 {c.render()}
                                 {/* scanning beam overlay */}
                                 <div className="absolute inset-x-4 h-[2px] bg-accent-2 shadow-[0_0_18px_#3C9AC4] animate-scan-premium" />
                             </div>
 
-                            <p className="mt-4 text-sm text-muted leading-relaxed">{c.desc}</p>
+                            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
 
-                            <div className="mt-4 flex items-center gap-2 text-xs font-mono text-muted">
-                                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                                Confidence <span className="text-ink font-semibold">99.02%</span>
+                            <div className="mt-4 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                                Confidence <span className="text-primary font-semibold">99.02%</span>
                             </div>
                         </motion.article>
                     );

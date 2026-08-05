@@ -25,7 +25,7 @@ export default function PerformanceSection() {
             return (
               <div
                 key={i}
-                className="flex-1 bg-accent rounded-sm"
+                className="flex-1 bg-secondary rounded-sm"
                 style={{ height: `${h * 18 + 10}%` }}
               />
             );
@@ -33,7 +33,7 @@ export default function PerformanceSection() {
         </div>
       </div>
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent/5 blur-[120px] rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-secondary/5 blur-[120px] rounded-full" />
 
       <div className="relative container-wide">
         <motion.div
@@ -47,7 +47,7 @@ export default function PerformanceSection() {
             Numbers that{" "}
             <span className="text-gradient">speak for themselves</span>
           </h2>
-          <p className="text-muted-light text-lg max-w-lg mx-auto">
+          <p className="text-muted-foreground-foreground text-lg max-w-lg mx-auto">
             Optimized through extensive real-world barcode and image scanning tests.
           </p>
         </motion.div>
@@ -61,7 +61,7 @@ export default function PerformanceSection() {
             className="glass rounded-3xl p-8 flex flex-col items-center justify-center"
           >
             <AccuracyDonut value={99.02} />
-            <p className="mt-4 text-sm text-muted text-center max-w-xs">
+            <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
               Tested across 10,000+ real-world barcode samples in production environments.
             </p>
           </motion.div>
@@ -73,13 +73,13 @@ export default function PerformanceSection() {
             className="glass rounded-3xl p-8 flex flex-col justify-center"
           >
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-mono text-muted uppercase tracking-widest">Decode latency</span>
-              <span className="text-xs font-mono text-accent">live</span>
+              <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Decode latency</span>
+              <span className="text-xs font-mono text-secondary">live</span>
             </div>
-            <div className="font-display text-5xl text-ink mb-1">
-              18<span className="text-2xl text-muted ml-1">ms</span>
+            <div className="font-display text-5xl text-primary mb-1">
+              18<span className="text-2xl text-muted-foreground ml-1">ms</span>
             </div>
-            <p className="text-sm text-muted mb-4">Median end-to-end response time per scan.</p>
+            <p className="text-sm text-muted-foreground mb-4">Median end-to-end response time per scan.</p>
             <SpeedChart />
           </motion.div>
         </div>
@@ -93,7 +93,7 @@ export default function PerformanceSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="glass rounded-2xl p-7 text-center group hover:border-accent/20 transition-all duration-300"
+              className="glass rounded-2xl p-7 text-center group hover:border-secondary/20 transition-all duration-300"
             >
               <div className="font-display text-5xl font-bold text-gradient mb-2">
                 <AnimatedCounter
@@ -103,7 +103,7 @@ export default function PerformanceSection() {
                   duration={2200}
                 />
               </div>
-              <div className="text-sm text-muted">{stat.label}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -117,14 +117,14 @@ export default function PerformanceSection() {
         >
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="font-display text-lg font-bold text-surface mb-1">
+              <h3 className="font-display text-lg font-bold text-white mb-1">
                 Scanning Performance
               </h3>
-              <p className="text-sm text-muted">Performance across different barcode conditions</p>
+              <p className="text-sm text-muted-foreground">Performance across different barcode conditions</p>
             </div>
             <div className="flex items-center gap-4 text-xs font-mono">
               <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-sm bg-accent inline-block" />
+                <span className="w-3 h-3 rounded-sm bg-secondary inline-block" />
                 ScanPro
               </span>
             </div>
@@ -145,8 +145,8 @@ export default function PerformanceSection() {
               className="mb-5 last:mb-0"
             >
               <div className="flex items-center justify-between mb-2 text-sm">
-                <span className="text-muted-light">{row.label}</span>
-                <span className="font-mono text-xs text-accent">{row.scanpro}ms avg</span>
+                <span className="text-muted-foreground-foreground">{row.label}</span>
+                <span className="font-mono text-xs text-secondary">{row.scanpro}ms avg</span>
               </div>
               <div className="relative h-2 bg-white/5 rounded-full overflow-hidden">
                 <motion.div
@@ -154,7 +154,7 @@ export default function PerformanceSection() {
                   whileInView={{ width: `${row.scanpro}%` }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + i * 0.1, duration: 0.8 }}
-                  className="absolute inset-y-0 left-0 bg-accent rounded-full"
+                  className="absolute inset-y-0 left-0 bg-secondary rounded-full"
                   style={{ boxShadow: "0 0 8px rgba(0,229,160,0.6)" }}
                 />
               </div>

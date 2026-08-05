@@ -60,7 +60,7 @@ export default function AccuracyDonut({
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="font-display text-4xl text-gradient font-bold">{count.toFixed(2)}%</span>
-        <span className="text-[11px] font-mono text-muted uppercase tracking-widest mt-1">Read accuracy</span>
+        <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest mt-1">Read accuracy</span>
       </div>
     </div>
   );

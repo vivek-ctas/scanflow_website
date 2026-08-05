@@ -142,7 +142,7 @@ export default function LiveBarcodeAnimation() {
 
   return (
     <section className="py-24 relative overflow-hidden bg-grid-stripes">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/2 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/2 to-transparent" />
 
       <div className="relative container-wide">
         <motion.div
@@ -156,7 +156,7 @@ export default function LiveBarcodeAnimation() {
             Watch it scan{" "}
             <span className="text-gradient">in real time</span>
           </h2>
-          <p className="text-muted-light text-lg max-w-lg mx-auto">
+          <p className="text-muted-foreground-foreground text-lg max-w-lg mx-auto">
             ScanPro&apos;s engine processes every frame continuously — detecting and decoding barcodes as fast as they appear.
           </p>
         </motion.div>
@@ -174,12 +174,12 @@ export default function LiveBarcodeAnimation() {
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-accent/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-secondary/60" />
               </div>
-              <span className="font-mono text-[11px] text-muted">Live Scanner Session</span>
+              <span className="font-mono text-[11px] text-muted-foreground">Live Scanner Session</span>
               <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="font-mono text-[11px] text-accent">LIVE</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                <span className="font-mono text-[11px] text-secondary">LIVE</span>
               </div>
             </div>
 
@@ -202,7 +202,7 @@ export default function LiveBarcodeAnimation() {
               ].map((cls, i) => (
                 <div
                   key={i}
-                  className={`absolute w-6 h-6 border-accent/70 ${cls}`}
+                  className={`absolute w-6 h-6 border-secondary/70 ${cls}`}
                 />
               ))}
 
@@ -218,7 +218,7 @@ export default function LiveBarcodeAnimation() {
                     className="absolute pointer-events-none"
                     style={{ left: `${r.x}%`, top: `${r.y}%`, transform: "translate(-50%, -110%)" }}
                   >
-                    <div className="bg-accent text-ink font-mono text-[10px] font-bold px-2.5 py-1 rounded-lg whitespace-nowrap shadow-lg">
+                    <div className="bg-secondary text-primary font-mono text-[10px] font-bold px-2.5 py-1 rounded-lg whitespace-nowrap shadow-lg">
                       ✓ {r.type}
                     </div>
                   </motion.div>
@@ -236,10 +236,10 @@ export default function LiveBarcodeAnimation() {
           >
             {/* Header */}
             <div className="px-5 py-4 border-b border-white/5 flex items-center justify-between">
-              <span className="font-display font-bold text-sm text-surface">Decode Feed</span>
+              <span className="font-display font-bold text-sm text-white">Decode Feed</span>
               <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="font-mono text-[10px] text-accent">LIVE</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                <span className="font-mono text-[10px] text-secondary">LIVE</span>
               </div>
             </div>
 
@@ -256,20 +256,20 @@ export default function LiveBarcodeAnimation() {
                     className="glass-light rounded-xl px-3 py-2.5"
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-mono text-[10px] text-accent">{r.type}</span>
-                      <span className="font-mono text-[9px] text-muted">{r.time}ms</span>
+                      <span className="font-mono text-[10px] text-secondary">{r.type}</span>
+                      <span className="font-mono text-[9px] text-muted-foreground">{r.time}ms</span>
                     </div>
-                    <div className="font-mono text-xs text-surface/80 truncate">{r.value}</div>
+                    <div className="font-mono text-xs text-white/80 truncate">{r.value}</div>
                   </motion.div>
                 ))}
               </AnimatePresence>
 
               {results.length === 0 && (
                 <div className="flex-1 flex flex-col items-center justify-center text-center py-8">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mb-3">
-                    <div className="w-4 h-4 border-2 border-accent/40 border-t-accent rounded-full animate-spin" />
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center mb-3">
+                    <div className="w-4 h-4 border-2 border-secondary/40 border-t-accent rounded-full animate-spin" />
                   </div>
-                  <p className="text-xs text-muted">Waiting for barcodes...</p>
+                  <p className="text-xs text-muted-foreground">Waiting for barcodes...</p>
                 </div>
               )}
             </div>
@@ -280,11 +280,11 @@ export default function LiveBarcodeAnimation() {
                 <div className="font-display text-lg font-bold text-blue-400">
                   {results.length > 0 ? `${results[results.length - 1].time}ms` : "—"}
                 </div>
-                <div className="text-[10px] text-muted font-mono">Last scan</div>
+                <div className="text-[10px] text-muted-foreground font-mono">Last scan</div>
               </div>
               <div>
-                <div className="font-display text-lg font-bold text-accent">99.02%</div>
-                <div className="text-[10px] text-muted font-mono">Read rate</div>
+                <div className="font-display text-lg font-bold text-secondary">99.02%</div>
+                <div className="text-[10px] text-muted-foreground font-mono">Read rate</div>
               </div>
             </div>
           </motion.div>
@@ -300,7 +300,7 @@ export default function LiveBarcodeAnimation() {
           {BARCODE_TYPES.map((t) => (
             <span
               key={t}
-              className="font-mono text-[11px] text-muted border border-white/6 rounded-full px-3 py-1"
+              className="font-mono text-[11px] text-muted-foreground border border-white/6 rounded-full px-3 py-1"
             >
               {t}
             </span>

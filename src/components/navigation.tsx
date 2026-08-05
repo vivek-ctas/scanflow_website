@@ -30,18 +30,18 @@ export default function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass border-b border-ink/10 py-3" : "py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass border-b border-primary/10 py-3" : "py-5"
         }`}
     >
       <div className="container-wide flex items-center justify-between">
         {/* <Link href="#" className="flex items-center gap-2.5 group">
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-ink to-accent p-0.5 shadow-sm">
-            <div className="h-full w-full rounded-[10px] bg-surface flex items-center justify-center">
-              <ScanLine className="w-4 h-4 text-accent" />
+          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary p-0.5 shadow-sm">
+            <div className="h-full w-full rounded-[10px] bg-background flex items-center justify-center">
+              <ScanLine className="w-4 h-4 text-secondary" />
             </div>
           </div>
-          <span className="font-display text-lg font-bold text-ink tracking-tight">
-            CTAS <span className="text-accent">ScanPro</span>
+          <span className="font-display text-lg font-bold text-primary tracking-tight">
+            CTAS <span className="text-secondary">ScanPro</span>
           </span>
         </Link> */}
         {/* Logo */}
@@ -63,12 +63,12 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-sm transition-colors duration-200 relative group ${
-                isActive(link.href) ? "text-ink font-semibold" : "text-muted hover:text-ink"
+                isActive(link.href) ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
               }`}
             >
               {link.label}
               <span
-                className={`absolute -bottom-0.5 left-0 h-px bg-accent transition-all duration-300 ${
+                className={`absolute -bottom-0.5 left-0 h-px bg-secondary transition-all duration-300 ${
                   isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
@@ -79,7 +79,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/contact"
-            className="text-sm font-semibold bg-gradient-to-r from-ink to-accent text-white px-5 py-2.5 rounded-full hover:opacity-95 transition-all duration-200 hover:-translate-y-0.5 glow-sm"
+            className="text-sm font-semibold bg-gradient-to-r from-primary to-secondary text-white px-5 py-2.5 rounded-full hover:opacity-95 transition-all duration-200 hover:-translate-y-0.5 glow-sm"
           >
             Start Free Trial
           </Link>
@@ -87,7 +87,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-ink"
+          className="md:hidden text-primary"
           aria-label="Toggle menu"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
@@ -100,7 +100,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-ink/10 px-6 py-6"
+            className="md:hidden glass border-t border-primary/10 px-6 py-6"
           >
             <nav className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -109,7 +109,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={`text-sm transition-colors ${
-                    isActive(link.href) ? "text-ink font-semibold" : "text-muted hover:text-ink"
+                    isActive(link.href) ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
                   }`}
                 >
                   {link.label}
@@ -117,7 +117,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
-                className="mt-2 text-center font-semibold bg-gradient-to-r from-ink to-accent text-white px-5 py-3 rounded-full"
+                className="mt-2 text-center font-semibold bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full"
                 onClick={() => setOpen(false)}
               >
                 Start Free Trial

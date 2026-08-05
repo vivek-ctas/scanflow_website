@@ -76,9 +76,9 @@ export default function SpeedChart() {
           <animate attributeName="opacity" values="0.4;0;0.4" dur="1.8s" repeatCount="indefinite" />
         </circle>
       </svg>
-      <div className="flex items-center justify-between mt-3 text-[10px] font-mono text-muted uppercase tracking-widest">
+      <div className="flex items-center justify-between mt-3 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
         <span>t-200ms</span>
-        <span className="text-accent font-semibold">18ms response</span>
+        <span className="text-secondary font-semibold">18ms response</span>
       </div>
     </div>
   );
