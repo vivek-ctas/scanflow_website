@@ -141,10 +141,10 @@ export default function LiveBarcodeAnimation() {
   }, [scanning, scanLine]);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-grid-stripes">
+    <section className="py-24 relative overflow-hidden bg-[#F7F9FC] bg-grid-stripes border-t border-[#EAECF3]">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/2 to-transparent" />
 
-      <div className="relative container-wide">
+      <div className="relative px-5 sm:px-8 lg:px-[70px]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -156,7 +156,7 @@ export default function LiveBarcodeAnimation() {
             Watch it scan{" "}
             <span className="text-gradient">in real time</span>
           </h2>
-          <p className="text-muted-foreground-foreground text-lg max-w-lg mx-auto">
+          <p className="text-slate-700 text-lg max-w-lg mx-auto">
             ScanPro&apos;s engine processes every frame continuously — detecting and decoding barcodes as fast as they appear.
           </p>
         </motion.div>

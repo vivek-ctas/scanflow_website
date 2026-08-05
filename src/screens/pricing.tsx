@@ -15,12 +15,12 @@ export default function Pricing() {
           title={<>Simple, transparent <span className="text-gradient">pricing</span></>}
           subtitle="Start free, scale as you grow. No hidden fees. Cancel anytime."
         />
-        <section id="pricing" className="py-20 relative overflow-hidden">
+        <section id="pricing" className="py-20 relative overflow-hidden bg-white border-t border-[#EAECF3]">
           <div className="absolute inset-0">
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-secondary/4 blur-[150px] rounded-full" />
           </div>
 
-          <div className="relative container-wide">
+          <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {plans.map((plan, i) => (
                 <motion.div
@@ -79,7 +79,7 @@ export default function Pricing() {
                   <a
                     href="#cta"
                     className={`text-center font-semibold text-sm py-3 rounded-full transition-all duration-200 ${plan.highlight
-                      ? "bg-secondary text-primary hover:bg-secondary glow-sm"
+                      ? "bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] text-white glow-sm"
                       : "bg-primary text-white hover:bg-primary/90"
                       }`}
                   >

@@ -30,38 +30,29 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-primary/10 pt-16 pb-10 bg-white/70">
-      <div className="container-wide">
+    <footer className="relative bg-slate-900 text-white pt-16 pb-10 overflow-hidden">
+      <div className="px-5 sm:px-8 lg:px-[70px]">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           <div className="col-span-2 md:col-span-1">
 
-            {/* <Link href="#" className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary p-0.5">
-                <div className="h-full w-full rounded-[10px] bg-background flex items-center justify-center">
-                  <ScanLine className="w-4 h-4 text-secondary" />
-                </div>
-              </div>
-              <span className="font-display text-lg font-bold text-primary">
-                CTAS <span className="text-secondary">ScanPro</span>
-              </span>
-            </Link> */}
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 group"
-            >
+            <Link href="/" className="flex items-center gap-2.5 w-fit">
               <img
-                src="/scanpro.png" // public folder ma tamaro logo
-                alt="CTAS ScanPro Logo"
-                className="w-auto h-12 object-contain transition-all duration-300 group-hover:scale-105"
+                src="/ctasis-logo_white.svg"
+                alt="scanflow"
+                className="h-14 w-auto object-contain"
               />
-
+              <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-white via-[#8FE7FF] to-[#3C9AC4] bg-clip-text text-transparent">
+                scanflow
+              </span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-[220px]">
+
+
+            <p className="text-sm text-slate-400 leading-relaxed max-w-[220px]">
               The world&apos;s fastest and most accurate barcode scanning engine.
             </p>
             <div className="mt-5 flex items-center gap-1">
-              <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              <span className="text-xs text-secondary font-mono">
+              <div className="w-2 h-2 rounded-full bg-[#3C9AC4] animate-pulse" />
+              <span className="text-xs text-[#3C9AC4] font-mono">
                 99.9% uptime SLA
               </span>
             </div>
@@ -69,20 +60,11 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs font-semibold text-primary/55 uppercase tracking-widest mb-4 font-mono">
+              <h4 className="font-semibold text-white text-base">
                 {category}
+                <span className="mt-2 block h-0.5 w-6 rounded-full bg-gradient-to-r from-[#3C9AC4] to-[#6BC1E0]" />
               </h4>
-              <ul className="space-y-2.5">
-                {/* {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))} */}
+              <ul className="space-y-3 mt-4">
                 {links.map((link) => {
                   const isExternal = link.href.startsWith("http");
 
@@ -93,15 +75,17 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                          className="group flex items-center text-slate-400 hover:text-[#3C9AC4] transition-colors text-sm"
                         >
+                          <span className="text-[#3C9AC4] mr-1.5 transition-transform group-hover:translate-x-0.5">›</span>
                           {link.label}
                         </a>
                       ) : (
                         <Link
                           href={link.href}
-                          className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                          className="group flex items-center text-slate-400 hover:text-[#3C9AC4] transition-colors text-sm"
                         >
+                          <span className="text-[#3C9AC4] mr-1.5 transition-transform group-hover:translate-x-0.5">›</span>
                           {link.label}
                         </Link>
                       )}
@@ -113,19 +97,19 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
+        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-400">
             © 2025 ScanPro Technologies, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-xs text-muted-foreground">Made for warehouse-scale reliability</span>
+            <span className="text-xs text-slate-400">Made for warehouse-scale reliability</span>
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              <span className="text-xs text-muted-foreground">SOC 2 Certified</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3C9AC4]" />
+              <span className="text-xs text-slate-400">SOC 2 Certified</span>
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }

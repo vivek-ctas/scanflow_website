@@ -222,7 +222,7 @@ export default function Contact() {
         <section
           id="contact"
           ref={ref}
-          className="relative isolate container-wide py-20 overflow-hidden"
+          className="relative isolate bg-white border-t border-[#EAECF3] px-5 sm:px-8 lg:px-[70px] py-20 overflow-hidden"
         >
           {/* Background blobs */}
           <div className="pointer-events-none absolute -left-10 top-8 -z-10 h-56 w-56 rounded-full bg-secondary/10 blur-3xl" />

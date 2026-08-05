@@ -5,7 +5,7 @@ export default function HowItWorksSection() {
   return (
     <motion.section
       id="how-it-works"
-      className="container-wide pb-20 relative overflow-hidden "
+      className="px-5 sm:px-8 lg:px-[70px] pb-20 relative bg-white border-t border-[#EAECF3] overflow-hidden "
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -94,12 +94,12 @@ export default function HowItWorksSection() {
             className="text-center mb-16"
           >
             <p className="section-label mb-4">How It Works</p>
-            <h2 className="font-display text-3xl md:text-5xl text-primary mb-6">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary mb-6">
               Integrate in{" "}
               <span className="text-gradient">minutes</span>
               . Scale with confidence.
             </h2>
-            <p className="text-muted-foreground-foreground text-lg max-w-2xl mx-auto">
+            <p className="text-slate-700 text-lg max-w-2xl mx-auto">
               Four simple steps to transform your barcode scanning workflow
             </p>
           </motion.div>

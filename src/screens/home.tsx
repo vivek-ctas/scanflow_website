@@ -55,16 +55,16 @@ export default function Home() {
         {/* HeroSection */}
         <section className="relative overflow-hidden bg-grid-stripes" ref={heroRef}>
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(107,193,224,0.22),transparent_38%),radial-gradient(circle_at_80%_0%,rgba(19,53,90,0.14),transparent_44%)]" />
-          <div className="container-wide py-16 md:py-24">
+          <div className="px-5 sm:px-8 lg:px-[70px] py-16 md:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="lg:col-span-6">
                 <motion.p variants={item} className="section-label mb-5">
                   Enterprise Barcode Intelligence
                 </motion.p>
-                <motion.h1 variants={item} className="font-display text-4xl md:text-6xl leading-tight text-primary max-w-3xl">
+                <motion.h1 variants={item} className="font-display text-4xl md:text-6xl font-bold leading-tight text-primary max-w-3xl">
                   Scan any barcode in <span className="text-gradient">real-world conditions</span> with CTAS ScanPro.
                 </motion.h1>
-                <motion.p variants={item} className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+                <motion.p variants={item} className="mt-6 text-lg text-slate-700 max-w-2xl leading-relaxed">
                   Purpose-built for logistics, warehouse, and retail workflows where speed, readability, and reliability drive business outcomes.
                 </motion.p>
                 <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
@@ -72,7 +72,7 @@ export default function Home() {
                     whileHover={{ y: -2, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                     href="#contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 text-white font-semibold transition-all glow-accent"
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] px-7 py-3.5 text-white font-semibold transition-all glow-accent"
                   >
                     Start Free Trial <ArrowRight className="w-4 h-4" />
                   </motion.a>
@@ -109,11 +109,11 @@ export default function Home() {
         </section>
 
         {/* FeaturesSection  */}
-        <section id="features" ref={ref} className="relative isolate container-wide py-24 overflow-hidden">
-          < div className="pointer-events-none absolute -left-10 top-8 -z-10 h-56 w-56 rounded-full bg-secondary/10 blur-3xl" />
+        <section id="features" ref={ref} className="relative isolate bg-white border-t border-[#EAECF3] py-24 overflow-hidden">
+          <div className="pointer-events-none absolute -left-10 top-8 -z-10 h-56 w-56 rounded-full bg-secondary/10 blur-3xl" />
           <div className="pointer-events-none absolute right-0 top-1/2 -z-10 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
 
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
+          <div className="px-5 sm:px-8 lg:px-[70px] grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
             <motion.div
               className="relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-br from-white via-muted to-white/90 p-10 shadow-[0_28px_80px_rgba(19,53,90,0.08)] lg:sticky lg:top-24 h-fit"
               initial={{ opacity: 0, y: 24 }}
@@ -125,10 +125,10 @@ export default function Home() {
               <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-secondary ring-1 ring-secondary/20">
                 Feature spotlight
               </span>
-              <h2 className="mt-8 text-4xl font-display tracking-tight text-primary sm:text-5xl">
+              <h2 className="mt-8 text-4xl font-display font-bold tracking-tight text-primary sm:text-5xl">
                 A smarter way to present barcode scanning advantages.
               </h2>
-              <p className="mt-6 max-w-xl text-muted-foreground leading-relaxed text-lg">
+              <p className="mt-6 max-w-xl text-slate-700 leading-relaxed text-lg">
                 ScanPro combines speed, damage recovery, angle tolerance, and flexible input modes into a unified scanning experience built for real-world operations.
               </p>
               <div className="mt-10 grid gap-4">
@@ -177,14 +177,14 @@ export default function Home() {
         </section>
 
         {/* UseCasesSection  */}
-        <section id="use-cases" ref={ref} className="py-32 relative isolate overflow-hidden">
+        <section id="use-cases" ref={ref} className="py-32 relative isolate bg-[#F7F9FC] border-t border-[#EAECF3] overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-3xl animate-drift" />
             <div className="absolute bottom-0 right-0 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl animate-drift [animation-delay:2s]" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-accent-2/8 blur-3xl animate-float-gentle" />
           </div>
 
-          <div className="relative container-wide">
+          <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -197,7 +197,7 @@ export default function Home() {
               <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-6">
                 Works everywhere <span className="text-gradient">you do</span>
               </h2>
-              <p className="text-muted-foreground-foreground text-xl max-w-2xl mx-auto leading-relaxed">
+              <p className="text-slate-700 text-xl max-w-2xl mx-auto leading-relaxed">
                 From warehouse floors to retail checkouts — ScanPro is built for every environment where barcodes matter, delivering consistent performance across diverse operational contexts.
               </p>
             </motion.div>
@@ -252,7 +252,7 @@ export default function Home() {
         {/* BarcodeConditions */}
         <section
           id="reliability"
-          className="container-wide py-20">
+          className="py-20 px-5 sm:px-8 lg:px-[70px] bg-white border-t border-[#EAECF3]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -260,7 +260,7 @@ export default function Home() {
             className="mb-12 max-w-2xl"
           >
             <p className="section-label mb-4">Real-world resilience</p>
-            <h2 className="font-display text-3xl md:text-5xl text-primary leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-primary leading-tight">
               Decodes barcodes that <span className="text-gradient">others give up on</span>.
             </h2>
           </motion.div>
@@ -307,7 +307,7 @@ export default function Home() {
         </section>
 
         {/* PerformanceSection  */}
-        <section id="performance" className="py-28 relative overflow-hidden">
+        <section id="performance" className="py-28 relative bg-[#F1F3FC] border-t border-[#EAECF3] overflow-hidden">
           {/* Animated barcode BG */}
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.025] pointer-events-none select-none">
             <div className="flex items-end gap-[3px] h-64 w-full max-w-5xl">
@@ -326,7 +326,7 @@ export default function Home() {
 
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-secondary/5 blur-[120px] rounded-full" />
 
-          <div className="relative container-wide">
+          <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -338,7 +338,7 @@ export default function Home() {
                 Numbers that{" "}
                 <span className="text-gradient">speak for themselves</span>
               </h2>
-              <p className="text-muted-foreground-foreground text-lg max-w-lg mx-auto">
+              <p className="text-slate-700 text-lg max-w-lg mx-auto">
                 Optimized through extensive real-world barcode and image scanning tests.
               </p>
             </motion.div>
@@ -367,7 +367,7 @@ export default function Home() {
                   <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Decode latency</span>
                   <span className="text-xs font-mono text-secondary">live</span>
                 </div>
-                <div className="font-display text-5xl text-primary mb-1">
+                <div className="font-display text-5xl font-bold text-primary mb-1">
                   18<span className="text-2xl text-muted-foreground ml-1">ms</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">Median end-to-end response time per scan.</p>
@@ -386,7 +386,7 @@ export default function Home() {
                   transition={{ delay: i * 0.08, duration: 0.5 }}
                   className="glass rounded-2xl p-7 text-center group hover:border-secondary/20 transition-all duration-300"
                 >
-                  <div className="font-display text-5xl font-bold text-gradient mb-2">
+                  <div className="font-display text-5xl font-bold text-primary mb-2">
                     <AnimatedCounter
                       target={stat.value}
                       suffix={stat.suffix}
@@ -436,7 +436,7 @@ export default function Home() {
               className="mb-5 last:mb-0"
             >
               <div className="flex items-center justify-between mb-2 text-sm">
-                <span className="text-muted-foreground-foreground">{row.label}</span>
+                <span className="text-muted-foreground">{row.label}</span>
                 <span className="font-mono text-xs text-secondary">{row.scanpro}ms avg</span>
               </div>
               <div className="relative h-2 bg-white/5 rounded-full overflow-hidden">

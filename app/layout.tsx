@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, JetBrains_Mono } from "next/font/google";
+import { Inter, Montserrat, JetBrains_Mono, Outfit } from "next/font/google";
 import Providers from "./providers";
 import "./globals.css";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
@@ -25,6 +25,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
   variable: "--font-jetbrains-mono",
   weight: ["400", "500"],
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-outfit",
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -57,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${inter.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
+      className={`scroll-smooth ${inter.variable} ${montserrat.variable} ${jetbrainsMono.variable} ${outfit.variable}`}
     >
       <body className={inter.className}>
         <Providers>{children}</Providers>

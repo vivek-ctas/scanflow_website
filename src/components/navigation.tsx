@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -13,48 +13,33 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass border-b border-primary/10 py-3" : "py-5"
-        }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100 shadow-stripe"
     >
-      <div className="container-wide flex items-center justify-between">
-        {/* <Link href="#" className="flex items-center gap-2.5 group">
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-secondary p-0.5 shadow-sm">
-            <div className="h-full w-full rounded-[10px] bg-background flex items-center justify-center">
-              <ScanLine className="w-4 h-4 text-secondary" />
-            </div>
-          </div>
-          <span className="font-display text-lg font-bold text-primary tracking-tight">
-            CTAS <span className="text-secondary">ScanPro</span>
-          </span>
-        </Link> */}
+      <div className="px-[50px] lg:px-[70px] flex items-center justify-between py-3">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group"
+          className="flex items-center gap-1 group shrink-0"
         >
           <img
-            src="/scanpro.png" // public folder ma tamaro logo
-            alt="CTAS ScanPro Logo"
-            className="w-auto h-12 object-contain transition-all duration-300 group-hover:scale-105"
+            src="/ctasis-logo_blue.svg"
+            alt="scanflow"
+            className="h-10 w-auto object-contain"
           />
 
+          <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
+            scanflow
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-10">
@@ -62,15 +47,13 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors duration-200 relative group ${
-                isActive(link.href) ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
-              }`}
+              className={`text-sm transition-colors duration-200 relative group ${isActive(link.href) ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
+                }`}
             >
               {link.label}
               <span
-                className={`absolute -bottom-0.5 left-0 h-px bg-secondary transition-all duration-300 ${
-                  isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
-                }`}
+                className={`absolute -bottom-0.5 left-0 h-px bg-secondary transition-all duration-300 ${isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
               />
             </Link>
           ))}
@@ -108,9 +91,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`text-sm transition-colors ${
-                    isActive(link.href) ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
-                  }`}
+                  className={`text-sm transition-colors ${isActive(link.href) ? "text-primary font-semibold" : "text-muted-foreground hover:text-primary"
+                    }`}
                 >
                   {link.label}
                 </Link>

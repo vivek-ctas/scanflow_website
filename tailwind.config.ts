@@ -47,6 +47,7 @@ export default {
 				sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
 				display: ["var(--font-montserrat)", "var(--font-inter)", "system-ui", "sans-serif"],
 				mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+				outfit: ["var(--font-outfit)", "var(--font-inter)", "system-ui", "sans-serif"],
 			},
 			borderRadius: {
 				"4xl": "2rem",

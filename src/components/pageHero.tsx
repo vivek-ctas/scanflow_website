@@ -29,15 +29,15 @@ const PageHero = ({
       <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-accent-2/10 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
 
-      <div className={`container-wide pt-20 pb-24 sm:pt-28 sm:pb-32 ${centered ? "text-center" : ""}`}>
+      <div className={`px-5 sm:px-8 lg:px-[70px] pt-20 pb-24 sm:pt-28 sm:pb-32 ${centered ? "text-center" : ""}`}>
         <p className="section-label mb-5 inline-flex items-center gap-2">
           {BadgeIcon && <BadgeIcon className="w-3.5 h-3.5" />}
           {badgeText}
         </p>
-        <h1 className={`font-display text-4xl md:text-6xl leading-tight text-primary max-w-3xl tracking-tight ${centered ? "mx-auto" : ""}`}>
+        <h1 className={`font-display text-4xl md:text-6xl font-bold leading-tight text-primary max-w-3xl tracking-tight ${centered ? "mx-auto" : ""}`}>
           {title}
         </h1>
-        <p className={`mt-6 text-lg md:text-xl text-muted-foreground-foreground max-w-2xl leading-relaxed ${centered ? "mx-auto" : ""}`}>
+        <p className={`mt-6 text-lg md:text-xl text-slate-700 max-w-2xl leading-relaxed ${centered ? "mx-auto" : ""}`}>
           {subtitle}
         </p>
         {actions && <div className="mt-8 flex flex-wrap gap-4">{actions}</div>}
