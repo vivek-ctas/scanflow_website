@@ -1,28 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import {
-  ArrowRight,
-  ScanLine,
-} from "lucide-react";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import WaveDivider from "@/components/sections/WaveDivider";
+import { motion } from "framer-motion";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.08 },
-  },
-};
 
-const item = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
-};
-
-function HeroScanVisual() {
+export function HeroScanVisual() {
   return (
     <div className="relative h-[460px] md:h-[520px] w-full flex items-center justify-center">
       {/* Constellation SVG */}
@@ -123,72 +104,4 @@ function HeroScanVisual() {
   );
 
 
-}
-
-export default function HeroSection() {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -80]);
-
-  return (
-    <>
-      <section className="relative overflow-hidden bg-grid-stripes" ref={heroRef}>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(107,193,224,0.22),transparent_38%),radial-gradient(circle_at_80%_0%,rgba(19,53,90,0.14),transparent_44%)]" />
-        <div className="container-wide py-16 md:py-24">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="lg:col-span-6">
-              <motion.p variants={item} className="section-label mb-5">
-                Enterprise Barcode Intelligence
-              </motion.p>
-              <motion.h1 variants={item} className="font-display text-4xl md:text-6xl leading-tight text-primary max-w-3xl">
-                Scan any barcode in <span className="text-gradient">real-world conditions</span> with CTAS ScanPro.
-              </motion.h1>
-              <motion.p variants={item} className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-                Purpose-built for logistics, warehouse, and retail workflows where speed, readability, and reliability drive business outcomes.
-              </motion.p>
-              <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-                <motion.a
-                  whileHover={{ y: -2, scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3.5 text-white font-semibold transition-all glow-accent"
-                >
-                  Start Free Trial <ArrowRight className="w-4 h-4" />
-                </motion.a>
-                <motion.a
-                  whileHover={{ y: -2 }}
-                  href="#reliability"
-                  className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-7 py-3.5 text-primary font-semibold hover:border-secondary/40 transition-colors"
-                >
-                  Watch Live Demo
-                </motion.a>
-              </motion.div>
-              <motion.div variants={item} className="mt-10 grid grid-cols-3 gap-3">
-                <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                  <p className="font-display text-xl text-primary"><AnimatedCounter target={99.02} suffix="%" decimals={2} /></p>
-                  <p className="text-muted-foreground text-xs">Decode accuracy</p>
-                </div>
-                <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                  <p className="font-display text-xl text-primary"><AnimatedCounter target={18} suffix="ms" decimals={1} /></p>
-                  <p className="text-muted-foreground text-xs">Response time</p>
-                </div>
-                <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                  <p className="font-display text-xl text-primary"><AnimatedCounter target={10000} suffix="+" /></p>
-                  <p className="text-muted-foreground text-xs">Scans processed</p>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            <motion.div style={{ y: yParallax }} className="lg:col-span-6">
-              <HeroScanVisual />
-            </motion.div>
-          </div>
-        </div>
-        <WaveDivider />
-      </section>
-    </>
-  );
 }

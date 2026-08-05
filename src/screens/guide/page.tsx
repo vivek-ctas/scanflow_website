@@ -4,7 +4,7 @@ import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import LiveScanDemo from "@/components/sections/LiveScanDemo";
-import CTASection from "@/components/sections/CTASection";
+// import CTASection from "@/components/sections/CTASection";
 
 export default function Guide() {
   return (
@@ -17,7 +17,7 @@ export default function Guide() {
         />
         <HowItWorksSection />
         <LiveScanDemo />
-        <CTASection />
+        {/* <CTASection /> */}
       </div>
     </Layout>
   );
