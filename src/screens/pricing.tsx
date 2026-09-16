@@ -112,8 +112,8 @@ export default function Pricing() {
       <div className="pt-26">
         <PageHero
           badgeText="Pricing"
-          title={<>Simple, transparent <span className="text-gradient">pricing</span></>}
-          subtitle="Start free, scale as you grow. No hidden fees. Cancel anytime."
+          title={<>Simple pricing for simpler <span className="text-gradient">scanning.</span></>}
+          subtitle="Choose the plan that fits your scanning needs and scale as your team grows."
         />
         <section id="pricing" className="py-20 relative overflow-hidden bg-white border-t border-[#EAECF3]">
           <div className="absolute inset-0">

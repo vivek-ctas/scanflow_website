@@ -216,8 +216,8 @@ export default function Contact() {
       <div className="pt-26">
         <PageHero
           badgeText="Contact us"
-          title={<>Other ways to <span className="text-gradient">reach us</span></>}
-          subtitle="Choose the method that works best for you — we're here to help."
+          title={<>Let&apos;s talk about your <span className="text-gradient">scanning workflow.</span></>}
+          subtitle="Have questions about ScanFlow or want to see how it can fit into your business? We're here to help."
         />
         <section
           id="contact"

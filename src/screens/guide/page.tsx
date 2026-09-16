@@ -3,7 +3,6 @@
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
-import LiveScanDemo from "@/components/sections/LiveScanDemo";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 
@@ -13,8 +12,8 @@ export default function Guide() {
       <div className="pt-26">
         <PageHero
           badgeText="Guide"
-          title={<>Get started with <span className="text-gradient">ScanPro</span></>}
-          subtitle="This is a guide section. Learn how to integrate ScanPro's barcode scanning engine into your workflows in minutes."
+          title={<>Get started with <span className="text-gradient">ScanFlow</span></>}
+          subtitle="Learn how simple barcode scanning can fit into your everyday workflow."
         />
         <HowItWorksSection />
         {/* <LiveScanDemo /> */}
@@ -61,7 +60,7 @@ export default function Guide() {
               </h2>
 
               <p className="text-xl text-white/85 leading-relaxed max-w-2xl mx-auto mb-12">
-                Integrate ScanPro's barcode scanning engine into your web or mobile workflow today. Fast to set up, built to scale.
+                Integrate ScanFlow&apos;s barcode scanning engine into your web or mobile workflow today. Fast to set up, built to scale.
               </p>
 
               {/* CTAs */}

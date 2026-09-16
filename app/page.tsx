@@ -4,14 +4,14 @@ import { buildMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Fast Barcode Scanning for Web & Mobile",
   description:
-    "ScanPro detects and decodes QR and 1D barcodes from images and live camera feeds. Built for modern scanning workflows.",
+    "ScanFlow detects and decodes QR and 1D barcodes from images and live camera feeds. Built for modern scanning workflows.",
   path: "/",
 });
 
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "ScanPro",
+  name: "ScanFlow",
   url: SITE_URL,
   description:
     "Fast, accurate barcode scanning for web and mobile applications.",

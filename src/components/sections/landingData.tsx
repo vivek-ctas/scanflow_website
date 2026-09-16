@@ -1,4 +1,28 @@
-import { BadgeCheck, Boxes, Camera, CheckCircle, Gauge, ImageUp, Layers, ScanLine, ScanSearch, ShieldCheck, ShoppingBag, Truck, Warehouse, Zap } from "lucide-react";
+import { BadgeCheck, Boxes, Camera, CheckCircle, EyeOff, FileWarning, ImageUp, Layers, RotateCcw, ScanLine, ScanSearch, ShieldCheck, ShoppingBag, Truck, Warehouse, Zap } from "lucide-react";
+
+// for ProblemValueSection
+export const problemCards = [
+  {
+    icon: EyeOff,
+    title: "Blurry Barcodes",
+    description: "Scan labels that aren't perfectly clear.",
+  },
+  {
+    icon: FileWarning,
+    title: "Damaged Labels",
+    description: "Keep scanning even when part of a barcode is difficult to read.",
+  },
+  {
+    icon: RotateCcw,
+    title: "Difficult Angles",
+    description: "Scan without needing to position every barcode perfectly.",
+  },
+  {
+    icon: CheckCircle,
+    title: "Everyday Conditions",
+    description: "Built for the way employees actually work.",
+  },
+];
 
 // for FeaturesSection.tsx
 export const features = [
@@ -53,7 +77,7 @@ export const steps = [
     step: "02",
     title: "Detect Barcode",
     description:
-      "ScanPro automatically locates supported barcodes in the image.",
+      "ScanFlow automatically locates supported barcodes in the image.",
     icon: ScanSearch,
   },
   {
@@ -76,22 +100,22 @@ export const steps = [
 export const useCases = [
   {
     title: 'Warehouses',
-    description: 'Speed up receiving, putaway, picking, packing, and outbound verification.',
+    description: 'Scan products, packages, shelves, and inventory while moving through daily operations.',
     icon: Warehouse,
   },
   {
     title: 'Retail',
-    description: 'Reduce checkout friction and improve shelf-level scanning reliability.',
+    description: 'Quickly scan products and labels without depending on dedicated scanning devices.',
     icon: ShoppingBag,
   },
   {
     title: 'Logistics',
-    description: 'Process damaged shipment labels in fast-moving last-mile and hub operations.',
+    description: 'Scan packages and shipments throughout receiving, sorting, and dispatch workflows.',
     icon: Truck,
   },
   {
     title: 'Inventory',
-    description: 'Keep stock counts accurate with consistent barcode scanning across mobile and desktop setups.',
+    description: 'Make inventory-related scanning simpler for your team.',
     icon: Boxes,
   },
 ];

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -31,9 +32,11 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-1 group shrink-0"
         >
-          <img
+          <Image
             src="/ctasis-logo_blue.svg"
             alt="scanflow"
+            width={120}
+            height={40}
             className="h-10 w-auto object-contain"
           />
 

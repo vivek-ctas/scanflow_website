@@ -1,4 +1,4 @@
-import { ScanLine } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = {
@@ -36,9 +36,11 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
 
             <Link href="/" className="flex items-center gap-2.5 w-fit">
-              <img
+              <Image
                 src="/ctasis-logo_white.svg"
                 alt="scanflow"
+                width={150}
+                height={56}
                 className="h-14 w-auto object-contain"
               />
               <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-white via-[#8FE7FF] to-[#3C9AC4] bg-clip-text text-transparent">
@@ -99,7 +101,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-400">
-            © 2025 ScanPro Technologies, Inc. All rights reserved.
+            © 2026 ScanFlow Technologies, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <span className="text-xs text-slate-400">Made for warehouse-scale reliability</span>

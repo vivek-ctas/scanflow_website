@@ -2,19 +2,19 @@ import Contact from "@/screens/contact";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact - ScanPro Support & Sales",
+  title: "Contact - ScanFlow Support & Sales",
   description:
-    "Reach the ScanPro team via email or phone. We reply within one business day.",
+    "Reach the ScanFlow team via email or phone. We reply within one business day.",
   path: "/contact",
 });
 
 const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact ScanPro",
+  name: "Contact ScanFlow",
   url: `${SITE_URL}/contact`,
   description:
-    "Reach the ScanPro team via email or phone. We reply within one business day.",
+    "Reach the ScanFlow team via email or phone. We reply within one business day.",
   publisher: {
     "@type": "Organization",
     name: "CTAS",

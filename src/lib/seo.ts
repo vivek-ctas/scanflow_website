@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "ScanPro";
+export const SITE_NAME = "ScanFlow";
 export const SITE_URL = "https://ctasis.com";
 export const SITE_DESCRIPTION =
-  "ScanPro detects and decodes QR and 1D barcodes from images and live camera feeds. Built for modern scanning workflows.";
+  "ScanFlow detects and decodes QR and 1D barcodes from images and live camera feeds. Built for modern scanning workflows.";
 
 export const DEFAULT_OG_IMAGE = "/scanpro.png";
 
