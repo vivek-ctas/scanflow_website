@@ -1,0 +1,190 @@
+.stage {
+    position: relative;
+    width: 740px;
+    height: 680px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+/* ---------- background: radar rings + sweep ---------- */
+
+.radarRing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px dashed rgba(23, 224, 138, 0.18);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.sweep {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(23, 224, 138, 0.14), transparent 35%);
+    animation: spin 9s linear infinite;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #17e08a;
+    opacity: 0.5;
+    animation: twinkle 3.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* ---------- orbiting badges ---------- */
+
+.orbitRing {
+    position: absolute;
+    inset: 0;
+    animation: orbit 48s linear infinite;
+}
+
+.spoke {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--radius);
+    height: 0;
+    transform-origin: 0 0;
+}
+
+.spokeLine {
+    position: absolute;
+    top: 0;
+    left: 105px;
+    width: calc(var(--radius) - 105px);
+    height: 0;
+    border-top: 1.5px dashed rgba(23, 224, 138, 0.45);
+}
+
+.badgeAnchor {
+    position: absolute;
+    top: 0;
+    left: var(--radius);
+    transform: translate(-50%, -50%);
+}
+
+.badgeCounter {
+    animation: counterOrbit 48s linear infinite;
+}
+
+.badge {
+    width: 124px;
+    padding: 9px;
+    border-radius: 14px;
+    background: rgba(8, 20, 16, 0.92);
+    border: 1px solid rgba(23, 224, 138, 0.35);
+    box-shadow: 0 0 20px rgba(23, 224, 138, 0.12);
+    backdrop-filter: blur(4px);
+}
+
+.badgeHeader {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #17e08a;
+    font: 600 11px/1 Arial, sans-serif;
+    margin-bottom: 7px;
+}
+
+.badgeIcon {
+    color: #17e08a;
+    flex-shrink: 0;
+}
+
+.badgeThumb {
+    width: 100%;
+    height: 54px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* ---------- center phone ---------- */
+
+.phoneWrap {
+    position: relative;
+    width: 220px;
+    height: 480px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+/* ---------- keyframes ---------- */
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counterOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .stage {
+        transform: scale(0.78);
+    }
+}
+
+@media (max-width: 480px) {
+    .stage {
+        transform: scale(0.62);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .orbitRing,
+    .badgeCounter,
+    .sweep,
+    .star {
+        animation: none;
+    }
+}

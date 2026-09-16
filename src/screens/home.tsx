@@ -1,7 +1,6 @@
 "use client";
 
 import Layout from "@/components/layout";
-import { HeroScanVisual } from "@/components/sections/HeroSection";
 import { conditions } from "@/components/sections/BarcodeConditions";
 import { ArrowRight, Zap, ChevronDown } from "lucide-react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -13,6 +12,9 @@ import WaveDivider from "@/components/sections/WaveDivider";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import BusinessWorkflowSection from "@/components/sections/BusinessWorkflowSection";
 import WhyUseScanflowSection from "@/components/sections/WhyUseScanflowSection";
+import dynamic from 'next/dynamic';
+
+const ScanFlowHero = dynamic(() => import('@/components/ui/Mobileillustration/Scanflowhero'), { ssr: false });
 
 const faqs = [
   {
@@ -105,7 +107,8 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-6">
-                <HeroScanVisual />
+                <ScanFlowHero
+                />
               </div>
             </div>
           </div>
