@@ -33,7 +33,7 @@ export default function ScanFlowHero() {
     const backSvg = renderToStaticMarkup(<ScanFlowBackMark />);
 
     return (
-        <div className={styles.stage} style={{ ['--radius' as string]: '340px' }}>
+        <div className={styles.stage} style={{ ['--radius' as string]: '360px' }}>
             {/* radar rings + sweep */}
             <div className={styles.sweep} />
             {[180, 260, 340].map((r) => (

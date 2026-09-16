@@ -10,8 +10,8 @@ import { useState } from "react";
 import { useCases, problemCards } from "@/components/sections/landingData";
 import WaveDivider from "@/components/sections/WaveDivider";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
-import BusinessWorkflowSection from "@/components/sections/BusinessWorkflowSection";
 import WhyUseScanflowSection from "@/components/sections/WhyUseScanflowSection";
+import { BarcodeReliabilityMockup } from "@/components/ui/illustration";
 import dynamic from 'next/dynamic';
 
 const ScanFlowHero = dynamic(() => import('@/components/ui/Mobileillustration/Scanflowhero'), { ssr: false });
@@ -116,48 +116,29 @@ export default function Home() {
         </section>
 
         {/* Problem / Value Section */}
-        <section id="problem-value" className="relative isolate bg-[#F7F9FC] border-t border-[#EAECF3] py-20 lg:py-24 overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-3xl animate-drift" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl animate-drift [animation-delay:2s]" />
-          </div>
+        <section id="problem-value" className="relative bg-white border-t border-[#EAECF3] py-16 lg:py-24 overflow-hidden">
 
           <div className="px-5 sm:px-8 lg:px-[70px]">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-secondary ring-1 ring-secondary/20 mb-6">
-                Problem &amp; Value
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
-                Barcode scanning shouldn&apos;t <span className="text-gradient">slow your team down.</span>
-              </h2>
-              <p className="mt-6 text-slate-700 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                Real-world barcodes aren&apos;t always perfect. Labels get damaged, printed poorly, become blurry, or appear at difficult angles.
-              </p>
-            </div>
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              {/* Left Column: Heading & Description */}
+              <div className="lg:col-span-5 text-left">
+                <span className="inline-flex items-center rounded-full bg-[#EBF4FA] px-5 py-2 text-xs sm:text-sm font-bold tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 uppercase mb-6 shadow-xs">
+                  PROBLEM &amp; VALUE
+                </span>
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#13355A] leading-tight">
+                  Barcode scanning shouldn&apos;t <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">slow your team down.</span>
+                </h2>
+                <p className="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
+                  Real-world barcodes aren&apos;t always perfect. Labels get damaged, printed poorly, become blurry, or appear at difficult angles.
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {problemCards.map((card) => {
-                const Icon = card.icon;
-                return (
-                  <article
-                    key={card.title}
-                    className="group relative overflow-hidden rounded-[2rem] border border-primary/10 bg-white/95 backdrop-blur-sm p-7 shadow-[0_16px_44px_rgba(19,53,90,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between"
-                  >
-                    <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-r from-secondary/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative z-10 flex flex-col h-full">
-                      <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-secondary/12 text-secondary transition-all duration-300 group-hover:bg-secondary group-hover:text-white group-hover:scale-105 mb-6 shadow-sm">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="font-display text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors duration-200">
-                        {card.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {card.description}
-                      </p>
-                    </div>
-                  </article>
-                );
-              })}
+              {/* Right Column: BarcodeReliabilityMockup SVG Illustration */}
+              <div className="lg:col-span-7">
+                <div className="relative animate-float-slow">
+                  <BarcodeReliabilityMockup className="w-full h-auto" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -165,27 +146,25 @@ export default function Home() {
         {/* 3. How ScanFlow Works Section */}
         <HowItWorksSection />
 
-        {/* 4. Business Workflow Section */}
-        <BusinessWorkflowSection />
-
-        {/* 5. Real-World Scanning Section */}
+        {/* 4. Real-World Scanning Section */}
         <section
           id="reliability"
           className="py-20 lg:py-28 px-5 sm:px-8 lg:px-[70px] bg-white border-t border-[#EAECF3] relative overflow-hidden"
         >
           {/* Background ambient lighting */}
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-3xl animate-drift" />
+            <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-[#3C9AC4]/8 blur-3xl animate-drift" />
+            <div className="absolute bottom-10 right-1/4 w-[450px] h-[450px] rounded-full bg-[#6BC1E0]/8 blur-3xl animate-drift [animation-delay:2s]" />
           </div>
 
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-primary ring-1 ring-primary/20 mb-6">
-              05. Real-World Scanning
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
+              <Zap className="w-3.5 h-3.5" /> REAL-WORLD SCANNING
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight">
-              Built for <span className="text-gradient">real-world barcodes.</span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#13355A] leading-tight">
+              Built for <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">real-world barcodes.</span>
             </h2>
-            <p className="mt-6 text-slate-700 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Your team doesn&apos;t always get a perfect barcode. ScanFlow is designed for everyday scanning situations where labels may be difficult to read.
             </p>
           </div>
@@ -196,22 +175,22 @@ export default function Home() {
               return (
                 <article
                   key={c.title}
-                  className="group rounded-[2rem] border border-primary/10 bg-white/95 backdrop-blur-sm p-6 shadow-[0_16px_44px_rgba(19,53,90,0.06)] overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between"
+                  className="group rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-sm p-6 shadow-[0_12px_36px_rgba(19,53,90,0.05)] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_55px_rgba(19,53,90,0.12)] hover:border-[#3C9AC4]/40 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-secondary/12 text-secondary flex items-center justify-center transition-colors group-hover:bg-secondary group-hover:text-white">
+                        <div className="h-10 w-10 rounded-xl bg-[#EBF4FA] text-[#3C9AC4] flex items-center justify-center transition-colors group-hover:bg-[#13355A] group-hover:text-white shadow-xs">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <h3 className="font-display text-xl font-bold text-primary group-hover:text-secondary transition-colors">{c.title}</h3>
+                        <h3 className="font-display text-xl font-bold text-[#13355A] group-hover:text-[#3C9AC4] transition-colors">{c.title}</h3>
                       </div>
-                      <span className="text-[10px] font-mono font-bold text-secondary bg-secondary/10 border border-secondary/25 rounded-full px-2.5 py-0.5">
+                      <span className="text-[10px] font-mono font-bold text-[#3C9AC4] bg-[#EBF4FA] border border-[#3C9AC4]/20 rounded-full px-2.5 py-0.5 shadow-xs">
                         READY
                       </span>
                     </div>
 
-                    <div className="rounded-2xl bg-slate-900 p-2 relative overflow-hidden mb-4 shadow-inner">
+                    <div className="rounded-2xl bg-slate-900 p-2 relative overflow-hidden mb-4 shadow-inner border border-slate-800">
                       {c.render()}
                     </div>
                   </div>
@@ -219,12 +198,12 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-slate-600 leading-relaxed">{c.desc}</p>
 
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-muted-foreground">
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
                       <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                        <span className="text-primary font-semibold">99.02% accuracy</span>
+                        <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                        <span className="text-[#13355A] font-semibold">99.02% accuracy</span>
                       </div>
-                      <span className="text-[10px] text-secondary">LIVE DEMO</span>
+                      <span className="text-[10px] font-bold text-[#3C9AC4] tracking-wide">LIVE DEMO</span>
                     </div>
                   </div>
                 </article>
@@ -234,8 +213,8 @@ export default function Home() {
 
           {/* Small Line Banner */}
           <div className="mt-14 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-secondary/10 px-7 py-3 text-base font-semibold text-secondary shadow-sm">
-              <Zap className="w-4 h-4 text-accent-2" /> Just point. Scan. Continue.
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#3C9AC4]/30 bg-[#EBF4FA] px-7 py-3 text-sm sm:text-base font-semibold text-[#13355A] shadow-xs hover:border-[#3C9AC4]/50 transition-colors">
+              <Zap className="w-4 h-4 text-[#3C9AC4]" /> Just point. Scan. Continue.
             </span>
           </div>
         </section>

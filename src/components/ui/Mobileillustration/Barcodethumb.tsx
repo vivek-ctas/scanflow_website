@@ -29,15 +29,15 @@ export default function BarcodeThumb({ variant }: { variant: Variant }) {
                 )}
             </defs>
 
-            <rect width="100" height="56" fill={isDark ? '#0c0c0c' : '#f2f0e9'} />
+            <rect width="100" height="56" fill={isDark ? '#0A1B2E' : '#f2f0e9'} />
 
             <g
                 filter={variant === 'blurry' ? `url(#${filterId})` : undefined}
                 transform={variant === 'tilted' ? 'rotate(-16 50 28)' : undefined}
-                opacity={isDark ? 0.55 : 1}
+                opacity={isDark ? 0.65 : 1}
             >
                 {BARS.map((b, i) => (
-                    <rect key={i} x={b.x} y={8} width={b.w} height={40} fill={isDark ? '#9aa8a2' : '#1a1a1a'} />
+                    <rect key={i} x={b.x} y={8} width={b.w} height={40} fill={isDark ? '#8FA7BF' : '#13355A'} />
                 ))}
             </g>
 
@@ -50,13 +50,13 @@ export default function BarcodeThumb({ variant }: { variant: Variant }) {
             )}
 
             {variant === 'covered' && (
-                <path d="M0 56 L0 30 Q50 10 100 30 L100 56 Z" fill="#1a1a1a" opacity="0.75" />
+                <path d="M0 56 L0 30 Q50 10 100 30 L100 56 Z" fill="#13355A" opacity="0.8" />
             )}
 
             {variant === 'dirty' && <rect width="100" height="56" filter={`url(#${filterId})`} opacity="0.5" />}
 
             {variant === 'lowlight' && (
-                <path d="M86 12 A9 9 0 1 0 88 26 A7 7 0 0 1 86 12 Z" fill="#cbd5d1" opacity="0.9" />
+                <path d="M86 12 A9 9 0 1 0 88 26 A7 7 0 0 1 86 12 Z" fill="#3C9AC4" opacity="0.9" />
             )}
         </svg>
     );

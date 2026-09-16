@@ -1,227 +1,252 @@
 "use client";
 
-import { Smartphone, Camera, ScanLine, CheckCircle2, Copy } from "lucide-react";
+import { Zap, Smartphone, ShieldCheck, Cloud, Camera, ScanLine, CheckCircle2, FileText, ArrowRight } from "lucide-react";
+
+const STEPS = [
+  {
+    num: "01",
+    title: "Open",
+    description: "Open ScanFlow on your phone.",
+    icon: Smartphone,
+    iconBg: "bg-[#EBF4FA] text-[#3C9AC4]",
+  },
+  {
+    num: "02",
+    title: "Scan",
+    description: "Point your camera at the barcode.",
+    icon: ScanLine,
+    iconBg: "bg-[#EBF4FA] text-[#3C9AC4]",
+  },
+  {
+    num: "03",
+    title: "Detect",
+    description: "ScanFlow detects the barcode automatically.",
+    icon: CheckCircle2,
+    iconBg: "bg-[#F0EDFA] text-[#6E44FF]",
+  },
+  {
+    num: "04",
+    title: "Process",
+    description: "Data is processed in real-time.",
+    icon: FileText,
+    iconBg: "bg-[#FEF5E7] text-[#F59E0B]",
+  },
+  {
+    num: "05",
+    title: "Continue",
+    description: "Get the result and keep working.",
+    icon: ArrowRight,
+    iconBg: "bg-[#E6F8F3] text-[#10B981]",
+  },
+];
+
+const PILLARS = [
+  {
+    title: "Fast & Accurate",
+    desc: "Instant results with high precision.",
+    icon: Zap,
+    iconBg: "bg-[#EBF4FA] text-[#3C9AC4]",
+  },
+  {
+    title: "Works Offline",
+    desc: "Scan anytime, anywhere.",
+    icon: Smartphone,
+    iconBg: "bg-[#EBF8F7] text-[#0EA5E9]",
+  },
+  {
+    title: "Secure & Reliable",
+    desc: "Your data stays protected.",
+    icon: ShieldCheck,
+    iconBg: "bg-[#F0EDFA] text-[#6E44FF]",
+  },
+  {
+    title: "Multi-format Support",
+    desc: "Barcodes, QR codes and more.",
+    icon: Cloud,
+    iconBg: "bg-[#E6F8F3] text-[#10B981]",
+  },
+];
 
 export default function HowItWorksSection() {
   return (
     <section
       id="how-it-works"
-      className="py-20 lg:py-28 px-5 sm:px-8 lg:px-[70px] relative bg-white border-t border-[#EAECF3] overflow-hidden"
+      className="relative bg-gradient-to-b from-[#F7FAFC] via-white to-[#F4F8FC] border-t border-[#EAECF3] py-16 lg:py-24 overflow-hidden"
     >
-      {/* Background decoration */}
+      {/* Background ambient lighting */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/4 -left-20 w-80 h-80 rounded-full bg-secondary/5 blur-3xl animate-drift" />
-        <div className="absolute bottom-10 right-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-drift [animation-delay:2s]" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#3C9AC4]/8 blur-3xl animate-drift" />
+        <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] rounded-full bg-[#6BC1E0]/8 blur-3xl animate-drift [animation-delay:2s]" />
       </div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-primary ring-1 ring-primary/20 mb-6">
-            03. How ScanFlow Works
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
-            From phone to scan in <span className="text-gradient">seconds.</span>
-          </h2>
-          <p className="mt-6 text-slate-700 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            ScanFlow keeps barcode scanning simple. Your team can use their own phones and start scanning without dedicated scanning equipment.
-          </p>
-        </div>
+      <div className="px-5 sm:px-8 lg:px-[70px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-        {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-          {/* Step 01: Open */}
-          <article className="group relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-b from-slate-50/80 via-white to-white p-6 shadow-[0_16px_44px_rgba(19,53,90,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between">
+          {/* ── LEFT COLUMN: Header Text & Bottom Pillar Cards ── */}
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-10">
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
-                  Step 01
+              {/* Badge */}
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
+                <Zap className="w-3.5 h-3.5" /> HOW IT WORKS
+              </span>
+
+              {/* Heading */}
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#13355A] leading-tight">
+                Turn every employee phone into a{" "}
+                <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">
+                  scanning tool.
                 </span>
-                <div className="h-9 w-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                  <Smartphone className="w-5 h-5" />
-                </div>
-              </div>
+              </h2>
 
-              {/* Visual 1: Phone showing ScanFlow */}
-              <div className="relative h-48 w-full rounded-2xl bg-gradient-to-b from-slate-900 to-slate-800 p-3 overflow-hidden shadow-inner flex flex-col items-center justify-center mb-6">
-                <div className="relative w-36 h-40 bg-slate-950 rounded-2xl border-2 border-slate-700/60 p-2 shadow-2xl flex flex-col items-center justify-between">
-                  <div className="w-10 h-1.5 bg-slate-700 rounded-full mb-1" />
+              {/* Subtitle */}
+              <p className="mt-5 text-slate-600 text-base sm:text-lg leading-relaxed">
+                Connect ScanFlow to your business workflow and give your team a simple way to scan wherever work happens.
+              </p>
+            </div>
 
-                  <div className="w-full flex-1 bg-gradient-to-b from-slate-900 to-[#13355A] rounded-lg p-2 flex flex-col items-center justify-center text-center relative overflow-hidden">
-                    <div className="w-8 h-8 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center mb-1 animate-pulse">
-                      <Smartphone className="w-4 h-4 text-accent-2" />
+            {/* Bottom 4 Horizontal Pillars Box */}
+            <div className="rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-[0_12px_36px_rgba(19,53,90,0.05)] backdrop-blur-md">
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+                {PILLARS.map((p, idx) => {
+                  const IconComp = p.icon;
+                  return (
+                    <div key={idx} className="flex flex-col items-start text-left space-y-2">
+                      <div className={`p-2.5 rounded-xl ${p.iconBg} shadow-xs`}>
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs sm:text-sm text-[#13355A]">{p.title}</h4>
+                        <p className="text-[11px] text-slate-500 leading-snug mt-0.5">{p.desc}</p>
+                      </div>
                     </div>
-                    <span className="text-[10px] font-bold text-white tracking-wider">ScanFlow</span>
-                    <span className="text-[8px] text-slate-300 mt-0.5">Ready on Phone</span>
-                    <div className="mt-2 px-2 py-0.5 bg-secondary/30 rounded text-[7px] text-accent-2 font-mono border border-secondary/40">
-                      BYOD Active
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full bg-secondary/20 blur-xl pointer-events-none" />
+                  );
+                })}
               </div>
             </div>
-
-            <div>
-              <h3 className="font-display text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
-                Open
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Open ScanFlow on your phone.
-              </p>
-            </div>
-          </article>
-
-          {/* Step 02: Scan */}
-          <article className="group relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-b from-slate-50/80 via-white to-white p-6 shadow-[0_16px_44px_rgba(19,53,90,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
-                  Step 02
-                </span>
-                <div className="h-9 w-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                  <Camera className="w-5 h-5" />
-                </div>
-              </div>
-
-              {/* Visual 2: Barcode inside camera frame */}
-              <div className="relative h-48 w-full rounded-2xl bg-slate-900 p-3 overflow-hidden shadow-inner flex flex-col items-center justify-center mb-6">
-                <div className="relative w-44 h-36 border border-slate-700 bg-slate-950/80 rounded-xl p-3 flex flex-col items-center justify-center">
-                  <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-accent-2 rounded-tl" />
-                  <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-accent-2 rounded-tr" />
-                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-accent-2 rounded-bl" />
-                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-accent-2 rounded-br" />
-
-                  <div className="flex items-end gap-[2px] opacity-80 mb-2">
-                    {[4, 2, 6, 1, 5, 2, 4, 1, 7, 2, 3, 5, 2, 6, 1, 4, 2, 5].map((w, i) => (
-                      <div key={i} className="bg-white rounded-sm h-12" style={{ width: `${w * 1.5}px` }} />
-                    ))}
-                  </div>
-
-                  <div className="absolute inset-x-3 h-[2px] bg-accent-2 shadow-[0_0_12px_#3C9AC4] animate-scan-premium" />
-
-                  <span className="text-[9px] font-mono text-slate-400 mt-1">Aligning barcode...</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
-                Scan
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Point your camera at the barcode.
-              </p>
-            </div>
-          </article>
-
-          {/* Step 03: Detect */}
-          <article className="group relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-b from-slate-50/80 via-white to-white p-6 shadow-[0_16px_44px_rgba(19,53,90,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
-                  Step 03
-                </span>
-                <div className="h-9 w-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                  <ScanLine className="w-5 h-5" />
-                </div>
-              </div>
-
-              {/* Visual 3: Detection state */}
-              <div className="relative h-48 w-full rounded-2xl bg-slate-900 p-3 overflow-hidden shadow-inner flex flex-col items-center justify-center mb-6">
-                <div className="relative w-44 h-36 border-2 border-emerald-400 bg-emerald-950/20 rounded-xl p-3 flex flex-col items-center justify-center shadow-[0_0_20px_rgba(52,211,153,0.15)]">
-                  <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-emerald-400 rounded-tl" />
-                  <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-emerald-400 rounded-tr" />
-                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-emerald-400 rounded-bl" />
-                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-emerald-400 rounded-br" />
-
-                  <div className="flex items-end gap-[2px] opacity-90 mb-2">
-                    {[4, 2, 6, 1, 5, 2, 4, 1, 7, 2, 3, 5, 2, 6, 1, 4, 2, 5].map((w, i) => (
-                      <div key={i} className="bg-emerald-300 rounded-sm h-12" style={{ width: `${w * 1.5}px` }} />
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-1.5 bg-emerald-500/90 text-white px-2.5 py-1 rounded-full text-[10px] font-bold shadow-md">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    Code 128 Detected
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
-                Detect
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                ScanFlow detects the barcode automatically.
-              </p>
-            </div>
-          </article>
-
-          {/* Step 04: Continue */}
-          <article className="group relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-b from-slate-50/80 via-white to-white p-6 shadow-[0_16px_44px_rgba(19,53,90,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
-                  Step 04
-                </span>
-                <div className="h-9 w-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-              </div>
-
-              {/* Visual 4: Result screen */}
-              <div className="relative h-48 w-full rounded-2xl bg-slate-900 p-3 overflow-hidden shadow-inner flex flex-col items-center justify-center mb-6">
-                <div className="w-44 bg-white/95 backdrop-blur-sm rounded-xl p-3 shadow-xl border border-slate-200 text-left">
-                  <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 mb-1">
-                    <span>SCANNED DATA</span>
-                    <span className="text-emerald-600 font-bold">SUCCESS</span>
-                  </div>
-                  <div className="font-mono text-xs font-bold text-primary bg-slate-100 p-2 rounded border border-slate-200 truncate mb-2">
-                    SKU-88492019
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] text-slate-500">18ms decode</span>
-                    <div className="flex items-center gap-1 bg-secondary text-white px-2 py-0.5 rounded text-[9px] font-medium">
-                      <Copy className="w-2.5 h-2.5" /> Copied
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
-                Continue
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Use the scanned result in your workflow.
-              </p>
-            </div>
-          </article>
-
-        </div>
-
-        {/* Bottom Statement (Employee's Own Phone Concept) */}
-        <div className="mt-16 rounded-3xl border border-secondary/20 bg-gradient-to-r from-primary via-[#1B4A75] to-[#13355A] p-8 md:p-10 text-white shadow-xl relative overflow-hidden text-center">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-accent-2/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-2 mb-4 border border-white/15">
-              <Smartphone className="w-4 h-4" /> Employee Phone First (BYOD)
-            </div>
-            <h3 className="font-display text-2xl md:text-3xl font-bold leading-snug">
-              Simple enough for every employee. <br className="hidden sm:inline" />
-              <span className="text-accent-2">Powerful enough for everyday business operations.</span>
-            </h3>
-            <p className="mt-4 text-white/80 text-base max-w-xl mx-auto">
-              Empower your workforce with instant barcode scanning on the devices they already carry. No expensive dedicated hardware required.
-            </p>
           </div>
-        </div>
 
+          {/* ── CENTER COLUMN: Animated Smartphone Viewfinder & Floating Orbits ── */}
+          <div className="lg:col-span-4 flex justify-center items-center relative py-6">
+
+            {/* Circular Orbit Dashed Lines */}
+            <div className="absolute w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] rounded-full border-2 border-dashed border-[#3C9AC4]/25 pointer-events-none animate-spin-slow" />
+
+            {/* Orbit Floating Elements */}
+            {/* Top Left: Camera Badge */}
+            <div className="absolute top-4 left-4 sm:left-6 z-20 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 animate-float flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-[#EBF4FA] text-[#3C9AC4] flex items-center justify-center">
+                <Camera className="w-5 h-5" />
+              </div>
+            </div>
+
+            {/* Top Right: Lightning Badge */}
+            <div className="absolute top-12 right-4 sm:right-6 z-20 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 animate-float [animation-delay:1.2s] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-[#EBF4FA] text-[#3C9AC4] flex items-center justify-center">
+                <Zap className="w-5 h-5" />
+              </div>
+            </div>
+
+            {/* Middle Left: Barcode Card Floating Snippet */}
+            <div className="absolute top-1/2 -left-6 sm:-left-10 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-xl shadow-2xl border border-slate-200/80 animate-float [animation-delay:2s] flex items-center gap-2">
+              <div className="flex items-end gap-[1.5px]">
+                {[3, 1, 4, 1, 2, 5, 1, 3, 2, 4].map((w, i) => (
+                  <div key={i} className="bg-[#13355A] rounded-xs h-6" style={{ width: `${w * 1.5}px` }} />
+                ))}
+              </div>
+              <span className="font-mono text-[10px] font-bold text-[#13355A]">890123456789</span>
+            </div>
+
+            {/* Bottom Left: QR Code Badge */}
+            <div className="absolute bottom-10 left-6 sm:left-8 z-20 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 animate-float [animation-delay:1.6s] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-[#EBF8F7] text-[#0EA5E9] flex items-center justify-center">
+                <ScanLine className="w-5 h-5" />
+              </div>
+            </div>
+
+            {/* Smartphone Phone Frame */}
+            <div className="relative z-10 w-[240px] sm:w-[270px] h-[480px] sm:h-[510px] bg-slate-950 rounded-[44px] border-[8px] border-slate-900 shadow-[0_25px_70px_rgba(19,53,90,0.22)] overflow-hidden flex flex-col justify-between">
+              
+              {/* Phone Speaker Notch */}
+              <div className="w-24 h-4 bg-slate-900 rounded-b-xl mx-auto flex items-center justify-center z-30">
+                <div className="w-8 h-1 bg-slate-700 rounded-full" />
+              </div>
+
+              {/* Viewfinder Screen */}
+              <div className="relative flex-1 bg-gradient-to-b from-slate-900 via-[#13355A]/90 to-slate-950 p-4 flex flex-col items-center justify-center overflow-hidden">
+                
+                {/* Viewfinder Scanning Box */}
+                <div className="relative w-44 h-40 rounded-2xl border border-cyan-500/30 bg-slate-900/60 backdrop-blur-xs p-3 flex flex-col items-center justify-center shadow-inner">
+                  {/* Glowing Corner Brackets */}
+                  <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-[#6BC1E0] rounded-tl" />
+                  <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-[#6BC1E0] rounded-tr" />
+                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-[#6BC1E0] rounded-bl" />
+                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-[#6BC1E0] rounded-br" />
+
+                  {/* Barcode Graphic */}
+                  <div className="flex items-end gap-[2px] opacity-90 my-auto">
+                    {[3, 1, 4, 1, 2, 5, 2, 1, 4, 1, 3, 2, 5, 1, 3, 2].map((w, i) => (
+                      <div key={i} className="bg-white rounded-xs h-14" style={{ width: `${w * 1.8}px` }} />
+                    ))}
+                  </div>
+
+                  {/* Laser Beam Scanner */}
+                  <div className="absolute inset-x-2 h-0.5 bg-gradient-to-r from-transparent via-[#6BC1E0] to-transparent shadow-[0_0_12px_#6BC1E0] animate-pulse" />
+                </div>
+
+                {/* Status Pill */}
+                <div className="mt-8 flex items-center gap-2 bg-[#3C9AC4]/20 border border-[#3C9AC4]/40 px-4 py-1.5 rounded-full backdrop-blur-md">
+                  <div className="w-2 h-2 rounded-full bg-[#6BC1E0] animate-ping" />
+                  <span className="text-xs font-semibold text-white tracking-wide">Scanning...</span>
+                </div>
+              </div>
+
+              {/* Bottom Home Indicator Line */}
+              <div className="w-28 h-1 bg-slate-700 rounded-full mx-auto my-2" />
+            </div>
+
+          </div>
+
+          {/* ── RIGHT COLUMN: Vertical Step Timeline (01 to 05) ── */}
+          <div className="lg:col-span-4 pl-0 lg:pl-4">
+            <div className="relative space-y-4">
+              
+              {/* Vertical Dashed Connecting Line */}
+              <div className="absolute top-6 bottom-6 left-6 w-0.5 border-l-2 border-dashed border-[#3C9AC4]/30 pointer-events-none" />
+
+              {STEPS.map((step) => {
+                const IconComponent = step.icon;
+                return (
+                  <div
+                    key={step.num}
+                    className="group relative flex items-center gap-4 p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200/70 shadow-xs hover:shadow-md hover:border-[#3C9AC4]/40 transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    {/* Number Badge with Dashed Line Node */}
+                    <div className="relative z-10 flex-shrink-0 w-11 h-11 rounded-full bg-white border-2 border-[#3C9AC4]/40 flex items-center justify-center font-mono text-xs font-bold text-[#13355A] shadow-xs group-hover:border-[#3C9AC4] group-hover:bg-[#EBF4FA] transition-colors">
+                      {step.num}
+                    </div>
+
+                    {/* Icon */}
+                    <div className={`flex-shrink-0 p-2.5 rounded-xl ${step.iconBg}`}>
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="text-left flex-1 min-w-0">
+                      <h3 className="font-display text-base font-bold text-[#13355A] group-hover:text-[#3C9AC4] transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-500 leading-snug truncate">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { Smartphone, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import { ScanFlowOrbitMockup } from "@/components/ui/illustration";
 
 const benefits = [
   {
@@ -8,28 +9,68 @@ const benefits = [
     title: "Use Existing Phones",
     description: "Let employees scan using phones they already know how to use.",
     icon: Smartphone,
-    highlight: "BYOD Ready",
+    highlight: "BYOD READY",
+    theme: {
+      bg: "bg-white",
+      border: "border-slate-200/80 hover:border-[#3C9AC4]/40",
+      iconBg: "bg-[#EBF4FA]",
+      iconColor: "text-[#3C9AC4]",
+      numBg: "bg-[#EBF4FA]",
+      numColor: "text-[#3C9AC4]",
+      tagColor: "text-[#3C9AC4]",
+      dotColor: "bg-[#3C9AC4]",
+    },
   },
   {
     number: "02",
     title: "Easy to Adopt",
     description: "Minimal learning curve for everyday barcode scanning.",
     icon: Sparkles,
-    highlight: "Zero Training",
+    highlight: "ZERO TRAINING",
+    theme: {
+      bg: "bg-white",
+      border: "border-slate-200/80 hover:border-[#10B981]/40",
+      iconBg: "bg-[#E6F8F3]",
+      iconColor: "text-[#10B981]",
+      numBg: "bg-[#E6F8F3]",
+      numColor: "text-[#10B981]",
+      tagColor: "text-[#10B981]",
+      dotColor: "bg-[#10B981]",
+    },
   },
   {
     number: "03",
     title: "Fast Workflow",
     description: "Move from barcode to result without unnecessary steps.",
     icon: Zap,
-    highlight: "Sub-Frame Decode",
+    highlight: "SUB-FRAME DECODE",
+    theme: {
+      bg: "bg-white",
+      border: "border-slate-200/80 hover:border-[#6E44FF]/40",
+      iconBg: "bg-[#F0EDFA]",
+      iconColor: "text-[#6E44FF]",
+      numBg: "bg-[#F0EDFA]",
+      numColor: "text-[#6E44FF]",
+      tagColor: "text-[#6E44FF]",
+      dotColor: "bg-[#6E44FF]",
+    },
   },
   {
     number: "04",
     title: "Built for Real Conditions",
     description: "Designed around the imperfect barcodes teams encounter every day.",
     icon: ShieldCheck,
-    highlight: "Resilient Scan",
+    highlight: "RESILIENT SCAN",
+    theme: {
+      bg: "bg-white",
+      border: "border-slate-200/80 hover:border-[#F59E0B]/40",
+      iconBg: "bg-[#FEF5E7]",
+      iconColor: "text-[#F59E0B]",
+      numBg: "bg-[#FEF5E7]",
+      numColor: "text-[#F59E0B]",
+      tagColor: "text-[#F59E0B]",
+      dotColor: "bg-[#F59E0B]",
+    },
   },
 ];
 
@@ -37,67 +78,81 @@ export default function WhyUseScanflowSection() {
   return (
     <section
       id="why-scanflow"
-      className="py-20 lg:py-28 px-5 sm:px-8 lg:px-[70px] relative bg-white border-t border-[#EAECF3] overflow-hidden"
+      className="relative bg-white border-t border-[#EAECF3] py-16 lg:py-24 overflow-hidden"
     >
-      {/* Background ambient lighting */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-10 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-3xl animate-drift" />
-        <div className="absolute bottom-10 right-10 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl animate-drift [animation-delay:2s]" />
-      </div>
+      <div className="px-5 sm:px-8 lg:px-[70px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          {/* ── LEFT COLUMN: ScanFlow Orbit Mockup SVG Illustration ── */}
+          <div className="lg:col-span-5 order-2 lg:order-1">
+            <div className="relative animate-float-slow">
+              <ScanFlowOrbitMockup className="w-full h-auto" />
+            </div>
+          </div>
 
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-primary ring-1 ring-primary/20 mb-6">
-            07. Why Businesses Use ScanFlow
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
-            Less equipment. Less friction. <span className="text-gradient">Easier scanning.</span>
-          </h2>
-          <p className="mt-6 text-slate-700 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Instead of exposing complicated tech, ScanFlow focuses on practical benefits that streamline daily scanning operations.
-          </p>
-        </div>
+          {/* ── RIGHT COLUMN: Section Header, Subtext & 4 Cards Grid ── */}
+          <div className="lg:col-span-7 text-left order-1 lg:order-2">
+            {/* Badge */}
+            <span className="inline-flex items-center rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
+              07. WHY BUSINESSES USE SCANFLOW
+            </span>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article
-                key={item.title}
-                className="group relative overflow-hidden rounded-[2rem] border border-primary/10 bg-gradient-to-b from-slate-50/80 via-white to-white p-7 shadow-[0_16px_44px_rgba(19,53,90,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(19,53,90,0.12)] hover:border-secondary/30 flex flex-col justify-between"
-              >
-                <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-r from-secondary/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Main Heading */}
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#13355A] leading-tight">
+              Less equipment. Less friction.{" "}
+              <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">
+                Easier scanning.
+              </span>
+            </h2>
 
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/12 text-secondary transition-all duration-300 group-hover:bg-secondary group-hover:text-white group-hover:scale-105 shadow-sm">
-                      <Icon className="h-6 w-6" />
+            {/* Subtitle */}
+            <p className="mt-5 text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl">
+              Instead of exposing complicated tech, ScanFlow focuses on practical benefits that streamline daily scanning operations.
+            </p>
+
+            {/* 4 Cards Horizontal Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+              {benefits.map((item) => {
+                const Icon = item.icon;
+                const { theme } = item;
+                return (
+                  <article
+                    key={item.title}
+                    className={`group relative rounded-2xl border ${theme.border} ${theme.bg} p-5 shadow-[0_8px_24px_rgba(19,53,90,0.04)] hover:shadow-[0_16px_36px_rgba(19,53,90,0.09)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between`}
+                  >
+                    <div>
+                      {/* Top Row: Icon + Number Badge */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className={`h-11 w-11 rounded-xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center shadow-xs`}>
+                          <Icon className="h-5.5 w-5.5" />
+                        </div>
+                        <span className={`text-xs font-mono font-bold ${theme.numBg} ${theme.numColor} px-2.5 py-0.5 rounded-full border border-current/15`}>
+                          {item.number}
+                        </span>
+                      </div>
+
+                      {/* Title & Description */}
+                      <h3 className="font-display text-base font-bold text-[#13355A] mb-2 group-hover:text-[#3C9AC4] transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-500 text-xs leading-relaxed">
+                        {item.description}
+                      </p>
                     </div>
-                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2.5 py-1 rounded-full border border-secondary/20">
-                      {item.number}
-                    </span>
-                  </div>
 
-                  <h3 className="font-display text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors duration-200">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
+                    {/* Bottom Tag & Pulsing Dot */}
+                    <div className="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold tracking-wider">
+                      <span className={theme.tagColor}>{item.highlight}</span>
+                      <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor} animate-pulse`} />
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-muted-foreground">
-                  <span className="text-primary font-semibold">{item.highlight}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                </div>
-              </article>
-            );
-          })}
         </div>
       </div>
     </section>
   );
 }
-

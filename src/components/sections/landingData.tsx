@@ -1,26 +1,42 @@
-import { BadgeCheck, Boxes, Camera, CheckCircle, EyeOff, FileWarning, ImageUp, Layers, RotateCcw, ScanLine, ScanSearch, ShieldCheck, ShoppingBag, Truck, Warehouse, Zap } from "lucide-react";
+import { BadgeCheck, Boxes, Camera, CheckCircle, EyeOff, FileText, FileWarning, ImageUp, Layers, RotateCcw, Scan, ScanLine, ScanSearch, ShieldCheck, ShoppingBag, Sun, Truck, Warehouse, Zap } from "lucide-react";
 
 // for ProblemValueSection
 export const problemCards = [
   {
-    icon: EyeOff,
+    icon: Scan,
     title: "Blurry Barcodes",
     description: "Scan labels that aren't perfectly clear.",
+    borderAccent: "border-l-[#3C9AC4]",
+    bgAccent: "bg-[#3C9AC4]/10",
+    textAccent: "text-[#3C9AC4]",
+    btnBg: "bg-[#EBF6FC]",
   },
   {
-    icon: FileWarning,
+    icon: FileText,
     title: "Damaged Labels",
     description: "Keep scanning even when part of a barcode is difficult to read.",
+    borderAccent: "border-l-[#10B981]",
+    bgAccent: "bg-[#10B981]/10",
+    textAccent: "text-[#10B981]",
+    btnBg: "bg-[#ECFDF5]",
   },
   {
     icon: RotateCcw,
     title: "Difficult Angles",
     description: "Scan without needing to position every barcode perfectly.",
+    borderAccent: "border-l-[#6366F1]",
+    bgAccent: "bg-[#6366F1]/10",
+    textAccent: "text-[#6366F1]",
+    btnBg: "bg-[#EEF2FF]",
   },
   {
-    icon: CheckCircle,
+    icon: Sun,
     title: "Everyday Conditions",
     description: "Built for the way employees actually work.",
+    borderAccent: "border-l-[#F59E0B]",
+    bgAccent: "bg-[#F59E0B]/10",
+    textAccent: "text-[#F59E0B]",
+    btnBg: "bg-[#FEF3C7]",
   },
 ];
 

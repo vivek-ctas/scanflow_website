@@ -1,7 +1,7 @@
 .stage {
     position: relative;
-    width: 740px;
-    height: 680px;
+    width: 780px;
+    height: 720px;
     max-width: 100%;
     margin: 0 auto;
     display: flex;
@@ -16,7 +16,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 1px dashed rgba(23, 224, 138, 0.18);
+    border: 1px dashed rgba(60, 154, 196, 0.22);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -26,7 +26,7 @@
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, rgba(23, 224, 138, 0.14), transparent 35%);
+    background: conic-gradient(from 0deg, rgba(60, 154, 196, 0.18), transparent 35%);
     animation: spin 9s linear infinite;
     pointer-events: none;
 }
@@ -36,8 +36,8 @@
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    background: #17e08a;
-    opacity: 0.5;
+    background: #3C9AC4;
+    opacity: 0.6;
     animation: twinkle 3.5s ease-in-out infinite;
     pointer-events: none;
 }
@@ -62,10 +62,10 @@
 .spokeLine {
     position: absolute;
     top: 0;
-    left: 105px;
-    width: calc(var(--radius) - 105px);
+    left: 130px;
+    width: calc(var(--radius) - 130px);
     height: 0;
-    border-top: 1.5px dashed rgba(23, 224, 138, 0.45);
+    border-top: 1.5px dashed rgba(60, 154, 196, 0.4);
 }
 
 .badgeAnchor {
@@ -83,9 +83,9 @@
     width: 124px;
     padding: 9px;
     border-radius: 14px;
-    background: rgba(8, 20, 16, 0.92);
-    border: 1px solid rgba(23, 224, 138, 0.35);
-    box-shadow: 0 0 20px rgba(23, 224, 138, 0.12);
+    background: rgba(10, 27, 46, 0.92);
+    border: 1px solid rgba(60, 154, 196, 0.35);
+    box-shadow: 0 0 20px rgba(60, 154, 196, 0.15);
     backdrop-filter: blur(4px);
 }
 
@@ -93,13 +93,13 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #17e08a;
+    color: #3C9AC4;
     font: 600 11px/1 Arial, sans-serif;
     margin-bottom: 7px;
 }
 
 .badgeIcon {
-    color: #17e08a;
+    color: #3C9AC4;
     flex-shrink: 0;
 }
 
@@ -114,8 +114,8 @@
 
 .phoneWrap {
     position: relative;
-    width: 220px;
-    height: 480px;
+    width: 240px;
+    height: 500px;
     z-index: 2;
     display: flex;
     align-items: center;
