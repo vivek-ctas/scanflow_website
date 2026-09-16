@@ -37,7 +37,7 @@ export default function LiveBarcodeAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [results, setResults] = useState<ScanResult[]>([]);
   const [scanLine, setScanLine] = useState(0);
-  const [scanning, setScanning] = useState(true);
+  const [scanning] = useState(true);
   const resultIdRef = useRef(0);
   const animFrameRef = useRef<number>(0);
   const startRef = useRef<number | null>(null);
@@ -114,7 +114,6 @@ export default function LiveBarcodeAnimation() {
     const interval = setInterval(() => {
       const canvas = canvasRef.current;
       const H = canvas?.height ?? 300;
-      const W = canvas?.width ?? 400;
       const id = ++resultIdRef.current;
       const typeIdx = id % BARCODE_TYPES.length;
       const valIdx = id % BARCODE_VALUES.length;
@@ -157,7 +156,7 @@ export default function LiveBarcodeAnimation() {
             <span className="text-gradient">in real time</span>
           </h2>
           <p className="text-slate-700 text-lg max-w-lg mx-auto">
-            ScanPro&apos;s engine processes every frame continuously — detecting and decoding barcodes as fast as they appear.
+            ScanFlow&apos;s engine processes every frame continuously — detecting and decoding barcodes as fast as they appear.
           </p>
         </motion.div>
 

@@ -4,17 +4,17 @@ import { buildMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Guide - Barcode Scanning Integration & Setup",
   description:
-    "Learn how to integrate ScanPro's barcode scanning engine in minutes. Step-by-step guide with a live scan demo.",
+    "Learn how to integrate ScanFlow's barcode scanning engine in minutes. Step-by-step guide with a live scan demo.",
   path: "/guide",
 });
 
 const guideJsonLd = {
   "@context": "https://schema.org",
   "@type": "Guide",
-  name: "ScanPro Guide",
+  name: "ScanFlow Guide",
   url: `${SITE_URL}/guide`,
   description:
-    "Step-by-step instructions for integrating ScanPro's barcode scanning engine into web and mobile workflows.",
+    "Step-by-step instructions for integrating ScanFlow's barcode scanning engine into web and mobile workflows.",
   publisher: {
     "@type": "Organization",
     name: "CTAS",

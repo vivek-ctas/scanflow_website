@@ -2,16 +2,16 @@ import Pricing from "@/screens/pricing";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Pricing - ScanPro Plans for Every Workflow",
+  title: "Pricing - ScanFlow Plans for Every Workflow",
   description:
-    "Explore ScanPro pricing plans for businesses of every size. Compare Starter, Pro, and Enterprise plans for barcode scanning.",
+    "Explore ScanFlow pricing plans for businesses of every size. Compare Starter, Pro, and Enterprise plans for barcode scanning.",
   path: "/pricing",
 });
 
 const pricingJsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "ScanPro",
+  name: "ScanFlow",
   url: `${SITE_URL}/pricing`,
   description:
     "Barcode scanning plans for businesses of every size. Starter, Pro, and Enterprise options.",
