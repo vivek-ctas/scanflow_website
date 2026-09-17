@@ -67,7 +67,7 @@ export default function Navbar() {
             href="/contact"
             className="text-sm font-semibold bg-gradient-to-r from-primary to-secondary text-white px-5 py-2.5 rounded-full hover:opacity-95 transition-all duration-200 hover:-translate-y-0.5 glow-sm"
           >
-            Start Free Trial
+            Get started
           </Link>
         </div>
 
@@ -105,7 +105,7 @@ export default function Navbar() {
                 className="mt-2 text-center font-semibold bg-gradient-to-r from-primary to-secondary text-white px-5 py-3 rounded-full"
                 onClick={() => setOpen(false)}
               >
-                Start Free Trial
+                Get started
               </Link>
             </nav>
           </motion.div>

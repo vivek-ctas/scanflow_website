@@ -12,9 +12,21 @@ export default function Guide() {
     <Layout>
       <div className="pt-26">
         <PageHero
-          badgeText="Guide"
-          title={<>Get started with <span className="text-gradient">ScanFlow</span></>}
-          subtitle="Learn how simple barcode scanning can fit into your everyday workflow."
+          badgeIcon={Zap}
+          badgeText="Getting Started Guide"
+          title={
+            <>
+              The fastest way to{" "}
+              <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                start scanning
+              </span>{" "}
+              with CTAS ScanFlow.
+            </>
+          }
+          subtitle="Follow our simple setup guide to add barcode scanning to your web or mobile app in minutes - blurry, damaged, tilted, or low-light labels are read in milliseconds."
+          badgeClassName="mb-6 inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-sm"
+          titleClassName="text-5xl sm:text-6xl lg:text-[4.25rem] font-bold text-primary mb-6 leading-[1.05] tracking-tight"
+          subtitleClassName="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl"
           visual={
             <div className="relative animate-float-slow w-full max-w-2xl lg:max-w-3xl lg:scale-105">
               <DashboardIllustration className="w-full h-auto drop-shadow-xl" />
@@ -67,37 +79,37 @@ export default function Guide() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
                 <Zap className="w-3.5 h-3.5 text-accent-2" />
-                <span className="text-[11px] uppercase tracking-[0.2em] text-accent-2 font-mono">Ready in 10 minutes</span>
+                <span className="text-xs font-semibold text-accent-2">Ready in 10 minutes</span>
               </div>
 
-              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.05] text-white">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
                 Start scanning{" "}
                 <span className="text-accent-2">in minutes</span>.
               </h2>
 
-              <p className="text-xl text-white/85 leading-relaxed max-w-2xl mx-auto mb-12">
+              <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
                 Integrate ScanFlow&apos;s barcode scanning engine into your web or mobile workflow today. Fast to set up, built to scale.
               </p>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
                 <a
-                  href="#contact"
-                  className="group flex items-center gap-2 bg-white text-primary font-bold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
+                  href="/contact"
+                  className="group flex items-center gap-2 bg-white text-primary font-semibold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
                 >
-                  Start Free Trial
+                  contact sales
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="#how-it-works"
+                  href="/pricing"
                   className="flex items-center gap-2 bg-white/10 border border-white/25 text-white font-medium px-9 py-4 rounded-full hover:bg-white/20 transition-all duration-200 text-base"
                 >
-                  View Docs
+                  quick start
                 </a>
               </div>
 
               {/* Trust signals */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/75">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
                 {[
                   "✓ No credit card required",
                   "✓ Fast setup",

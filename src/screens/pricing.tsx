@@ -62,14 +62,14 @@ function FaqItem({
       >
         <div className="flex items-center gap-5 min-w-0">
           <span
-            className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300 ${open
+            className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold transition-colors duration-300 ${open
               ? "bg-secondary text-white"
               : "bg-secondary/10 text-secondary border border-secondary/15"
               }`}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="font-display text-lg font-semibold text-primary leading-snug">
+          <span className="text-lg font-semibold text-primary leading-snug">
             {faq.question}
           </span>
         </div>
@@ -95,7 +95,7 @@ function FaqItem({
           >
             <div className="px-7 pt-3 pb-5">
               <div className="ml-14 border-l-2 border-secondary/20 pl-5">
-                <p className="text-slate-700 leading-relaxed text-base">
+                <p className="text-slate-600 leading-relaxed text-base">
                   {faq.answer}
                 </p>
               </div>
@@ -112,9 +112,21 @@ export default function Pricing() {
     <Layout>
       <div className="pt-26">
         <PageHero
-          badgeText="Pricing"
-          title={<>Simple pricing for simpler <span className="text-gradient">scanning.</span></>}
-          subtitle="Choose the plan that fits your scanning needs and scale as your team grows."
+          badgeIcon={Zap}
+          badgeText="Simple, Transparent Pricing"
+          title={
+            <>
+              Choose a plan that{" "}
+              <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                scales with you
+              </span>{" "}
+              - no hidden fees.
+            </>
+          }
+          subtitle="Start free with a 14-day trial - no credit card required. Every plan includes the full ScanFlow engine for fast, accurate scanning that grows with your team's volume."
+          badgeClassName="mb-6 inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-sm"
+          titleClassName="text-5xl sm:text-6xl lg:text-[4.25rem] font-bold text-primary mb-6 leading-[1.05] tracking-tight"
+          subtitleClassName="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl"
           visual={
             <div className="relative animate-float-slow w-full max-w-2xl lg:max-w-3xl lg:scale-105">
               <WarehouseIllustration className="w-full h-auto drop-shadow-xl" />
@@ -141,33 +153,33 @@ export default function Pricing() {
                     }`}
                 >
                   {plan.badge && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-secondary text-primary text-xs font-bold px-4 py-1.5 rounded-full">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-secondary text-primary text-xs font-semibold px-4 py-1.5 rounded-full">
                       <Zap className="w-3 h-3" />
                       {plan.badge}
                     </div>
                   )}
 
                   <div className="mb-6">
-                    <h3 className="font-display text-xl font-bold text-primary mb-1">
+                    <h3 className="text-xl font-bold text-primary mb-1">
                       {plan.name}
                     </h3>
                     <p className="text-sm text-primary mb-5">{plan.description}</p>
                     <div className="flex items-end gap-1">
                       {plan.price === "Custom" ? (
-                        <span className="font-display text-4xl font-bold text-primary">
+                        <span className="font-bold text-4xl text-primary tracking-tight">
                           Custom
                         </span>
                       ) : (
                         <>
-                          <span className="font-display text-4xl font-bold text-primary">
+                          <span className="font-bold text-4xl text-primary tracking-tight">
                             ${plan.price}
                           </span>
-                          <span className="text-muted-foreground mb-1.5">{plan.period}</span>
+                          <span className="text-slate-600 mb-1.5">{plan.period}</span>
                         </>
                       )}
                     </div>
                     <div className="mt-1">
-                      <span className="font-mono text-xs text-secondary border border-secondary/20 rounded-full px-2.5 py-1">
+                      <span className="text-xs font-semibold text-secondary border border-secondary/20 rounded-full px-2.5 py-1">
                         {plan.scans}
                       </span>
                     </div>
@@ -199,7 +211,7 @@ export default function Pricing() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-center text-sm text-muted-foreground mt-8"
+              className="text-center text-sm text-slate-600 mt-8"
             >
               All plans include a 14-day free trial. No credit card required.
             </motion.p>
@@ -231,16 +243,16 @@ export default function Pricing() {
                 className="lg:sticky lg:top-28 h-fit"
               >
                 {/* Pill badge */}
-                <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-secondary ring-1 ring-secondary/20 mb-6">
+                <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-semibold text-secondary ring-1 ring-secondary/20 mb-6">
                   FAQ
                 </span>
 
                 {/* Heading */}
-                <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-primary mb-5">
+                <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-primary mb-5">
                   Frequently{" "}
                   <br className="hidden sm:block" />
                   asked{" "}
-                  <span className="text-gradient">questions</span>
+                  <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">questions</span>
                 </h2>
 
                 {/* Sub-copy */}
@@ -302,15 +314,15 @@ export default function Pricing() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
               <Zap className="w-3.5 h-3.5 text-accent-2" />
-              <span className="text-[11px] uppercase tracking-[0.2em] text-accent-2 font-mono">14-day free trial</span>
+              <span className="text-xs font-semibold text-accent-2">14-day free trial</span>
             </div>
 
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.05] text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
               Ready to choose{" "}
               <span className="text-accent-2">your plan</span>?
             </h2>
 
-            <p className="text-xl text-white/85 leading-relaxed max-w-2xl mx-auto mb-12">
+            <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
               Start with a free 14-day trial on any plan — no credit card required. Upgrade, downgrade, or cancel anytime.
             </p>
 
@@ -318,7 +330,7 @@ export default function Pricing() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
               <a
                 href="#pricing"
-                className="group flex items-center gap-2 bg-white text-primary font-bold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
+                className="group flex items-center gap-2 bg-white text-primary font-semibold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
               >
                 Start Free Trial
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -332,7 +344,7 @@ export default function Pricing() {
             </div>
 
             {/* Trust signals */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/75">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
               {[
                 "✓ No credit card required",
                 "✓ Cancel anytime",

@@ -133,7 +133,7 @@ function ContactCard({ item, index, isInView }: { item: ContactItem; index: numb
           <div className="relative z-10 flex items-start gap-6 p-7">
             {/* Watermark number */}
             <div
-              className="absolute right-6 top-3 font-display text-7xl font-bold tracking-tighter select-none pointer-events-none transition-opacity duration-300"
+              className="absolute right-6 top-3 text-7xl font-bold tracking-tighter select-none pointer-events-none transition-opacity duration-300"
               style={{ color: item.accent, opacity: hovered ? 0.1 : 0.05 }}
             >
               {item.number}
@@ -160,15 +160,15 @@ function ContactCard({ item, index, isInView }: { item: ContactItem; index: numb
             {/* Text */}
             <div className="flex-1 min-w-0 pt-0.5">
               <p
-                className="text-[10px] font-bold uppercase tracking-[0.28em] mb-1.5"
+                className="text-[10px] font-semibold mb-1.5"
                 style={{ color: item.accent }}
               >
                 {item.tag}
               </p>
-              <p className="font-display text-xl font-semibold text-primary leading-tight mb-2 truncate">
+              <p className="text-xl font-semibold text-primary leading-tight mb-2 truncate">
                 {item.heading}
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.sub}</p>
+              <p className="text-sm text-slate-600 leading-relaxed">{item.sub}</p>
             </div>
 
             {/* Arrow for linked cards */}
@@ -217,7 +217,7 @@ export default function Contact() {
       <div className="pt-26">
         <PageHero
           badgeText="Contact us"
-          title={<>Let&apos;s talk about your <span className="text-gradient">scanning workflow.</span></>}
+          title={<>Let&apos;s talk about your <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">scanning workflow.</span></>}
           subtitle="Have questions about ScanFlow or want to see how it can fit into your business? We're here to help."
           visual={
             <div className="relative animate-float-slow w-full max-w-2xl lg:max-w-3xl lg:scale-105">
@@ -251,10 +251,10 @@ export default function Contact() {
           >
             <div className="pointer-events-none absolute -right-12 top-0 h-40 w-40 rounded-full bg-secondary/10 blur-3xl" />
             <div>
-              <p className="font-display text-xl text-primary font-semibold">
+              <p className="text-xl text-primary font-semibold">
                 Prefer a quick email?
               </p>
-              <p className="mt-1 text-muted-foreground text-sm leading-relaxed">
+              <p className="mt-1 text-slate-600 text-sm leading-relaxed">
                 Drop us a line at {" "}
                 <a
                   href="mailto:info@ctasis.com"

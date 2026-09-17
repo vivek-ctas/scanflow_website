@@ -67,41 +67,46 @@ export default function Home() {
           <div className="px-5 sm:px-8 lg:px-[70px] py-16 md:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6">
-                <p className="section-label mb-5">
-                  Enterprise Barcode Intelligence
+                <p className="inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-sm mb-6">
+                  <Zap className="w-3.5 h-3.5" /> Enterprise Barcode Intelligence
                 </p>
-                <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight text-primary max-w-3xl">
-                  Scan any barcode in <span className="text-gradient">real-world conditions</span> with CTAS ScanFlow.
+                <h1 className="text-4xl sm:text-5xl lg:text-[4.25rem] font-bold text-primary mb-6 leading-[1.05] tracking-tight max-w-3xl">
+                  Scan any barcode in{" "}
+                  <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    real-world conditions
+                  </span>{" "}
+                  with CTAS ScanFlow.
                 </h1>
-                <p className="mt-6 text-lg text-slate-700 max-w-2xl leading-relaxed">
+                <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
                   ScanFlow helps businesses scan barcodes quickly using a mobile phone camera - even when labels are blurry, damaged, tilted, or difficult to read.
                 </p>
-                <div className="mt-10 flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-4">
                   <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] px-7 py-3.5 text-white font-semibold transition-all hover:-translate-y-0.5 hover:scale-[1.01] active:scale-[0.98] glow-accent"
-                  >
-                    Start Free Trial <ArrowRight className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="#reliability"
-                    className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-7 py-3.5 text-primary font-semibold hover:border-secondary/40 hover:-translate-y-0.5 transition-all"
+                    href="#how-it-works"
+                    className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-7 py-3.5 text-primary font-semibold text-base hover:border-secondary/40 hover:-translate-y-0.5 transition-all"
                   >
                     See How It Works
                   </a>
+                  <a
+                    href="/pricing"
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] px-7 py-3.5 text-white font-semibold text-base transition-all hover:-translate-y-0.5 hover:scale-[1.01] active:scale-[0.98] glow-accent"
+                  >
+                    Quick start <ArrowRight className="w-4 h-4" />
+                  </a>
+
                 </div>
                 <div className="mt-10 grid grid-cols-3 gap-3">
                   <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                    <p className="font-display text-xl text-primary"><AnimatedCounter target={99.02} suffix="%" decimals={2} /></p>
-                    <p className="text-muted-foreground text-xs">Scan reliability</p>
+                    <p className="text-2xl font-bold text-primary tracking-tight"><AnimatedCounter target={99.02} suffix="%" decimals={2} /></p>
+                    <p className="text-sm text-slate-600">Scan reliability</p>
                   </div>
                   <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                    <p className="font-display text-xl text-primary"><AnimatedCounter target={18} suffix="ms" decimals={1} /></p>
-                    <p className="text-muted-foreground text-xs">Average scan time</p>
+                    <p className="text-2xl font-bold text-primary tracking-tight"><AnimatedCounter target={18} suffix="ms" decimals={1} /></p>
+                    <p className="text-sm text-slate-600">Average scan time</p>
                   </div>
                   <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                    <p className="font-display text-xl text-primary"><AnimatedCounter target={10000} suffix="+" /></p>
-                    <p className="text-muted-foreground text-xs">Scans tested</p>
+                    <p className="text-2xl font-bold text-primary tracking-tight"><AnimatedCounter target={10000} suffix="+" /></p>
+                    <p className="text-sm text-slate-600">Scans tested</p>
                   </div>
                 </div>
               </div>
@@ -122,13 +127,13 @@ export default function Home() {
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               {/* Left Column: Heading & Description */}
               <div className="lg:col-span-5 text-left">
-                <span className="inline-flex items-center rounded-full bg-[#EBF4FA] px-5 py-2 text-xs sm:text-sm font-bold tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 uppercase mb-6 shadow-xs">
+                <span className="inline-flex items-center rounded-full bg-[#EBF4FA] px-5 py-2 text-xs font-semibold text-primary border border-primary/15 mb-6 shadow-xs">
                   PROBLEM &amp; VALUE
                 </span>
-                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#13355A] leading-tight">
-                  Barcode scanning shouldn&apos;t <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">slow your team down.</span>
+                <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
+                  Barcode scanning shouldn&apos;t <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">slow your team down.</span>
                 </h2>
-                <p className="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
+                <p className="text-lg text-slate-600 leading-relaxed">
                   Real-world barcodes aren&apos;t always perfect. Labels get damaged, printed poorly, become blurry, or appear at difficult angles.
                 </p>
               </div>
@@ -144,7 +149,10 @@ export default function Home() {
         </section>
 
         {/* 3. How ScanFlow Works Section */}
-        <HowItWorksSection />
+        <div id="how-it-works">
+          <HowItWorksSection />
+        </div>
+
 
         {/* 4. Real-World Scanning Section */}
         <section
@@ -158,13 +166,13 @@ export default function Home() {
           </div>
 
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-xs mb-6">
               <Zap className="w-3.5 h-3.5" /> REAL-WORLD SCANNING
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#13355A] leading-tight">
-              Built for <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">real-world barcodes.</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
+              Built for <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">real-world barcodes.</span>
             </h2>
-            <p className="mt-6 text-slate-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
               Your team doesn&apos;t always get a perfect barcode. ScanFlow is designed for everyday scanning situations where labels may be difficult to read.
             </p>
           </div>
@@ -183,9 +191,9 @@ export default function Home() {
                         <div className="h-10 w-10 rounded-xl bg-[#EBF4FA] text-[#3C9AC4] flex items-center justify-center transition-colors group-hover:bg-[#13355A] group-hover:text-white shadow-xs">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <h3 className="font-display text-xl font-bold text-[#13355A] group-hover:text-[#3C9AC4] transition-colors">{c.title}</h3>
+                        <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">{c.title}</h3>
                       </div>
-                      <span className="text-[10px] font-mono font-bold text-[#3C9AC4] bg-[#EBF4FA] border border-[#3C9AC4]/20 rounded-full px-2.5 py-0.5 shadow-xs">
+                      <span className="text-[10px] font-bold text-primary bg-[#EBF4FA] border border-primary/15 rounded-full px-2.5 py-0.5 shadow-xs">
                         READY
                       </span>
                     </div>
@@ -198,12 +206,12 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-slate-600 leading-relaxed">{c.desc}</p>
 
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-500">
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
                       <div className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                        <span className="text-[#13355A] font-semibold">99.02% accuracy</span>
+                        <span className="text-primary font-semibold">99.02% accuracy</span>
                       </div>
-                      <span className="text-[10px] font-bold text-[#3C9AC4] tracking-wide">LIVE DEMO</span>
+                      <span className="text-[10px] font-semibold text-primary tracking-wide">LIVE DEMO</span>
                     </div>
                   </div>
                 </article>
@@ -213,7 +221,7 @@ export default function Home() {
 
           {/* Small Line Banner */}
           <div className="mt-14 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#3C9AC4]/30 bg-[#EBF4FA] px-7 py-3 text-sm sm:text-base font-semibold text-[#13355A] shadow-xs hover:border-[#3C9AC4]/50 transition-colors">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#3C9AC4]/30 bg-[#EBF4FA] px-7 py-3 text-sm sm:text-base font-semibold text-primary shadow-xs hover:border-[#3C9AC4]/50 transition-colors">
               <Zap className="w-4 h-4 text-[#3C9AC4]" /> Just point. Scan. Continue.
             </span>
           </div>
@@ -229,13 +237,13 @@ export default function Home() {
 
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             <div className="text-center mb-24">
-              <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-primary ring-1 ring-primary/20 mb-6">
+              <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary ring-1 ring-primary/20 mb-6">
                 Real-world applications
               </span>
-              <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                Works wherever <span className="text-gradient">your team scans.</span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
+                Works wherever <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">your team scans.</span>
               </h2>
-              <p className="text-slate-700 text-xl max-w-2xl mx-auto leading-relaxed">
+              <p className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed">
                 From warehouse operations to retail workflows, ScanFlow fits into everyday barcode-based work.
               </p>
             </div>
@@ -256,16 +264,16 @@ export default function Home() {
                         <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/15 to-secondary/5 text-secondary flex items-center justify-center shadow-lg group-hover:shadow-secondary/25 transition-shadow duration-300">
                           <Icon className="w-7 h-7" />
                         </div>
-                        <div className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary/80">
+                        <div className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary/80">
                           {String(i + 1).padStart(2, '0')}
                         </div>
                       </div>
 
-                      <h3 className="font-display text-2xl font-bold text-primary mb-4 group-hover:text-secondary transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-secondary transition-colors duration-300">
                         {uc.title}
                       </h3>
 
-                      <p className="text-muted-foreground leading-relaxed text-base">
+                      <p className="text-slate-600 leading-relaxed text-base">
                         {uc.description}
                       </p>
 
@@ -299,16 +307,16 @@ export default function Home() {
           <div className="px-5 sm:px-8 lg:px-[70px]">
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-14 lg:mb-16">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-xs mb-6">
                 <Zap className="w-3.5 h-3.5" /> PERFORMANCE
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#13355A] leading-tight">
+              <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
                 Scanning that{" "}
-                <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   keeps up with your workflow.
                 </span>
               </h2>
-              <p className="mt-5 text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
+              <p className="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
                 High-speed decoding designed for enterprise reliability and efficiency.
               </p>
             </div>
@@ -316,7 +324,7 @@ export default function Home() {
             {/* Main Featured Performance Card */}
             <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-10 shadow-[0_16px_48px_rgba(19,53,90,0.06)] mb-16">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                
+
                 {/* 1. Viewfinder Graphic */}
                 <div className="md:col-span-3 flex justify-center pb-4 md:pb-0">
                   <div className="relative w-40 h-24 rounded-2xl border border-slate-700/60 bg-slate-950 p-2.5 flex items-center justify-center shadow-inner overflow-hidden">
@@ -340,27 +348,27 @@ export default function Home() {
 
                 {/* 2. Stat 1: 99.02% Scan accuracy */}
                 <div className="md:col-span-3 text-center md:text-left pt-4 md:pt-0 md:pl-6">
-                  <div className="font-display text-4xl sm:text-5xl font-bold text-[#13355A]">
+                  <div className="font-bold text-4xl sm:text-5xl text-primary tracking-tight">
                     <AnimatedCounter target={99.02} suffix="%" decimals={2} />
                   </div>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                  <p className="text-sm font-semibold text-slate-600 mt-1">
                     Scan accuracy
                   </p>
                 </div>
 
                 {/* 3. Stat 2: 18 ms Median scan time */}
                 <div className="md:col-span-3 text-center md:text-left pt-4 md:pt-0 md:pl-6">
-                  <div className="font-display text-4xl sm:text-5xl font-bold text-[#13355A]">
+                  <div className="font-bold text-4xl sm:text-5xl text-primary tracking-tight">
                     <AnimatedCounter target={18} suffix=" ms" decimals={0} />
                   </div>
-                  <p className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                  <p className="text-sm font-semibold text-slate-600 mt-1">
                     Median scan time
                   </p>
                 </div>
 
                 {/* 4. Status Pill: Real-world scan ready */}
                 <div className="md:col-span-3 flex justify-center md:justify-end pt-4 md:pt-0 md:pl-4">
-                  <div className="inline-flex items-center gap-2 bg-[#E6F8F3] text-[#10B981] border border-[#10B981]/25 px-4 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-xs">
+                  <div className="inline-flex items-center gap-2 bg-[#E6F8F3] text-[#10B981] border border-[#10B981]/25 px-4 py-2.5 rounded-full font-semibold text-sm shadow-xs">
                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#10B981] text-white">
                       ✓
                     </span>
@@ -375,24 +383,24 @@ export default function Home() {
             <div className="max-w-7xl mx-auto pt-10 border-t border-slate-200/80">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x-0 sm:divide-x divide-slate-200/70">
                 <div className="px-2">
-                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">
+                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">
                     <AnimatedCounter target={10000} suffix="+" />
                   </p>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Scans tested</p>
+                  <p className="text-sm text-slate-600 mt-1">Scans tested</p>
                 </div>
                 <div className="px-2">
-                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">24/7</p>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Scanner availability</p>
+                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">24/7</p>
+                  <p className="text-sm text-slate-600 mt-1">Scanner availability</p>
                 </div>
                 <div className="px-2">
-                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">2+</p>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Barcode types</p>
+                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">2+</p>
+                  <p className="text-sm text-slate-600 mt-1">Barcode types</p>
                 </div>
                 <div className="px-2">
-                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">
+                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">
                     <AnimatedCounter target={500} suffix="+" />
                   </p>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Images processed</p>
+                  <p className="text-sm text-slate-600 mt-1">Images processed</p>
                 </div>
               </div>
             </div>
@@ -422,14 +430,14 @@ export default function Home() {
                 >
                   <div className="flex items-center gap-5 min-w-0">
                     <span
-                      className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] transition-colors duration-300 ${open
+                      className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold transition-colors duration-300 ${open
                         ? "bg-secondary text-white"
                         : "bg-secondary/10 text-secondary border border-secondary/15"
                         }`}
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-display text-lg font-semibold text-primary leading-snug">
+                    <span className="text-lg font-semibold text-primary leading-snug">
                       {faq.question}
                     </span>
                   </div>
@@ -446,7 +454,7 @@ export default function Home() {
                 {open && (
                   <div className="px-7 pt-3 pb-5">
                     <div className="ml-14 border-l-2 border-secondary/20 pl-5">
-                      <p className="text-slate-700 leading-relaxed text-base">
+                      <p className="text-slate-600 leading-relaxed text-base">
                         {faq.answer}
                       </p>
                     </div>
@@ -475,16 +483,16 @@ export default function Home() {
                   {/* ── Left: sticky title panel ── */}
                   <div className="lg:sticky lg:top-28 h-fit">
                     {/* Pill badge */}
-                    <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-2 text-sm font-medium uppercase tracking-[0.22em] text-secondary ring-1 ring-secondary/20 mb-6">
+                    <span className="inline-flex items-center rounded-full bg-secondary/10 px-4 py-1.5 text-xs font-semibold text-secondary ring-1 ring-secondary/20 mb-6">
                       FAQ
                     </span>
 
                     {/* Heading */}
-                    <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] text-primary mb-5">
+                    <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-primary mb-5">
                       Frequently{" "}
                       <br className="hidden sm:block" />
                       asked{" "}
-                      <span className="text-gradient">questions</span>
+                      <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">questions</span>
                     </h2>
 
                     {/* Sub-copy */}
@@ -495,7 +503,7 @@ export default function Home() {
 
                     {/* CTA */}
                     <a
-                      href="#contact"
+                      href="/contact"
                       className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-6 py-3 text-primary font-semibold text-sm hover:border-secondary/40 hover:text-secondary hover:-translate-y-0.5 hover:scale-[1.01] transition-all duration-200 shadow-[0_4px_16px_rgba(19,53,90,0.08)]"
                     >
                       Contact us <ArrowRight className="w-4 h-4" />
@@ -542,26 +550,26 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
               <Zap className="w-3.5 h-3.5 text-accent-2" />
-              <span className="text-[11px] uppercase tracking-[0.2em] text-accent-2 font-mono">Ready in 10 minutes</span>
+              <span className="text-xs font-semibold text-accent-2">Ready in 10 minutes</span>
             </div>
 
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.05] text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
               Built for modern{" "}
               <span className="text-accent-2">barcode</span>{" "}
               workflows.
             </h2>
 
-            <p className="text-xl text-white/85 leading-relaxed max-w-2xl mx-auto mb-12">
+            <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
               Built for fast and reliable barcode scanning across web and mobile workflows. Start testing ScanFlow in minutes with a free trial.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
               <a
-                href="#contact"
-                className="group flex items-center gap-2 bg-white text-primary font-bold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
+                href="/guide"
+                className="group flex items-center gap-2 bg-white text-primary font-semibold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
               >
-                Start Free 14-Day Trial
+                see our guide
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
@@ -573,7 +581,7 @@ export default function Home() {
             </div>
 
             {/* Trust signals */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/75">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
               {[
                 "✓ No credit card required",
                 "✓ Fast setup",
