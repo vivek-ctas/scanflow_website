@@ -288,78 +288,115 @@ export default function Home() {
         <WhyUseScanflowSection />
 
 
-        {/* 8. PERFORMANCE  */}
-        <section id="performance" className="py-28 relative bg-[#F1F3FC] border-t border-[#EAECF3] overflow-hidden">
-          {/* Animated barcode BG */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-[0.025] pointer-events-none select-none">
-            <div className="flex items-end gap-[3px] h-64 w-full max-w-5xl">
-              {Array.from({ length: 80 }).map((_, i) => {
-                const h = [4, 2, 5, 1, 3, 5, 2, 4, 1, 3, 5][i % 11];
-                return (
-                  <div
-                    key={i}
-                    className="flex-1 bg-secondary rounded-sm"
-                    style={{ height: `${h * 18 + 10}%` }}
-                  />
-                );
-              })}
-            </div>
+        {/* 8. PERFORMANCE */}
+        <section id="performance" className="py-20 lg:py-28 relative bg-gradient-to-b from-[#F7FAFC] via-white to-[#F4F8FC] border-t border-[#EAECF3] overflow-hidden">
+          {/* Background ambient lighting */}
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[#3C9AC4]/8 blur-3xl animate-drift" />
+            <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] rounded-full bg-[#6BC1E0]/8 blur-3xl animate-drift [animation-delay:2s]" />
           </div>
 
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-secondary/5 blur-[120px] rounded-full" />
-
-          <div className="relative px-5 sm:px-8 lg:px-[70px]">
-            <div className="text-center mb-20">
-              <p className="section-label mb-4">Performance</p>
-              <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight mb-5">
+          <div className="px-5 sm:px-8 lg:px-[70px]">
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto mb-14 lg:mb-16">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
+                <Zap className="w-3.5 h-3.5" /> PERFORMANCE
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#13355A] leading-tight">
                 Scanning that{" "}
-                <span className="text-gradient">keeps up with your workflow.</span>
+                <span className="bg-gradient-to-r from-[#3C9AC4] via-[#1B4A75] to-[#13355A] bg-clip-text text-transparent">
+                  keeps up with your workflow.
+                </span>
               </h2>
-              <p className="text-slate-700 text-lg max-w-lg mx-auto">
-                Designed for fast and reliable barcode scanning in everyday working conditions.
+              <p className="mt-5 text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
+                High-speed decoding designed for enterprise reliability and efficiency.
               </p>
             </div>
 
-            {/* Donut + Speed chart hero row */}
-            <div className="grid md:grid-cols-2 gap-5 mb-10">
-              <div className="glass rounded-3xl p-8 flex flex-col items-center justify-center">
-                <AccuracyDonut value={99.02} />
-                <p className="mt-4 text-sm text-muted-foreground text-center max-w-xs">
-                  Tested across 10,000+ real-world barcode samples in production environments.
-                </p>
-              </div>
-              <div className="glass rounded-3xl p-8 flex flex-col justify-center">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">Decode latency</span>
-                  <span className="text-xs font-mono text-secondary">live</span>
+            {/* Main Featured Performance Card */}
+            <div className="max-w-5xl mx-auto rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-md p-6 sm:p-8 shadow-[0_16px_48px_rgba(19,53,90,0.06)] mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                
+                {/* 1. Viewfinder Graphic */}
+                <div className="md:col-span-3 flex justify-center pb-4 md:pb-0">
+                  <div className="relative w-40 h-24 rounded-2xl border border-slate-700/60 bg-slate-950 p-2.5 flex items-center justify-center shadow-inner overflow-hidden">
+                    {/* Viewfinder Corners */}
+                    <div className="absolute top-1.5 left-1.5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#6BC1E0] rounded-tl-xs" />
+                    <div className="absolute top-1.5 right-1.5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#6BC1E0] rounded-tr-xs" />
+                    <div className="absolute bottom-1.5 left-1.5 w-3.5 h-3.5 border-b-2 border-l-2 border-[#6BC1E0] rounded-bl-xs" />
+                    <div className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 border-b-2 border-r-2 border-[#6BC1E0] rounded-br-xs" />
+
+                    {/* Barcode bars */}
+                    <div className="flex items-end gap-[1.5px] opacity-90 my-auto">
+                      {[3, 1, 4, 1, 2, 5, 2, 1, 4, 1, 3, 2, 4].map((w, i) => (
+                        <div key={i} className="bg-white rounded-xs h-10" style={{ width: `${w * 1.5}px` }} />
+                      ))}
+                    </div>
+
+                    {/* Scan Laser */}
+                    <div className="absolute inset-x-2 h-0.5 bg-gradient-to-r from-transparent via-[#6BC1E0] to-transparent shadow-[0_0_10px_#6BC1E0] animate-pulse" />
+                  </div>
                 </div>
-                <div className="font-display text-5xl font-bold text-primary mb-1">
-                  18<span className="text-2xl text-muted-foreground ml-1">ms</span>
+
+                {/* 2. Stat 1: 99.02% Scan accuracy */}
+                <div className="md:col-span-3 text-center md:text-left pt-4 md:pt-0 md:pl-6">
+                  <div className="font-display text-4xl sm:text-5xl font-bold text-[#13355A]">
+                    <AnimatedCounter target={99.02} suffix="%" decimals={2} />
+                  </div>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                    Scan accuracy
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">Median end-to-end response time per scan.</p>
-                <SpeedChart />
+
+                {/* 3. Stat 2: 18 ms Median scan time */}
+                <div className="md:col-span-3 text-center md:text-left pt-4 md:pt-0 md:pl-6">
+                  <div className="font-display text-4xl sm:text-5xl font-bold text-[#13355A]">
+                    <AnimatedCounter target={18} suffix=" ms" decimals={0} />
+                  </div>
+                  <p className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
+                    Median scan time
+                  </p>
+                </div>
+
+                {/* 4. Status Pill: Real-world scan ready */}
+                <div className="md:col-span-3 flex justify-center md:justify-end pt-4 md:pt-0 md:pl-4">
+                  <div className="inline-flex items-center gap-2 bg-[#E6F8F3] text-[#10B981] border border-[#10B981]/25 px-4 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-xs">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#10B981] text-white">
+                      ✓
+                    </span>
+                    <span>Real-world scan ready</span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mb-16">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="glass rounded-2xl p-7 text-center group hover:border-secondary/20 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="font-display text-5xl font-bold text-primary mb-2">
-                    <AnimatedCounter
-                      target={stat.value}
-                      suffix={stat.suffix}
-                      decimals={stat.decimals}
-                      duration={2200}
-                    />
-                  </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+            {/* Bottom Metrics 4-Column Divider Grid */}
+            <div className="max-w-5xl mx-auto pt-10 border-t border-slate-200/80">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x-0 sm:divide-x divide-slate-200/70">
+                <div className="px-2">
+                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">
+                    <AnimatedCounter target={10000} suffix="+" />
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Scans tested</p>
                 </div>
-              ))}
+                <div className="px-2">
+                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">24/7</p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Scanner availability</p>
+                </div>
+                <div className="px-2">
+                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">2+</p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Barcode types</p>
+                </div>
+                <div className="px-2">
+                  <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">
+                    <AnimatedCounter target={500} suffix="+" />
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Images processed</p>
+                </div>
+              </div>
             </div>
+
           </div>
         </section>
 

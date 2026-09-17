@@ -2,6 +2,7 @@
 
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
+import { BoxWithPhoneIllustration } from "@/components/ui/illustration";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, useState, type MouseEvent } from "react";
 import { Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
@@ -218,6 +219,11 @@ export default function Contact() {
           badgeText="Contact us"
           title={<>Let&apos;s talk about your <span className="text-gradient">scanning workflow.</span></>}
           subtitle="Have questions about ScanFlow or want to see how it can fit into your business? We're here to help."
+          visual={
+            <div className="relative animate-float-slow w-full max-w-2xl lg:max-w-3xl lg:scale-105">
+              <BoxWithPhoneIllustration className="w-full h-auto drop-shadow-xl" />
+            </div>
+          }
         />
         <section
           id="contact"
