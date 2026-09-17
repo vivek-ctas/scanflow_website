@@ -1073,8 +1073,6 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
                 </g>
             </g>
 
-            {/* ── Scan beam ── */}
-            <path d="M 850 500 L 1075 430 L 1075 610 L 850 570 Z" fill="url(#sfl-beam)" />
 
             {/* ── Box (isometric) ── */}
             <g filter="url(#sfl-shadow)">
@@ -1123,62 +1121,65 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
             <path d="M 538 288 L 566 298 L 552 312 Z" fill="#22d3ee" opacity="0.85" />
             <path d="M 505 340 Q 480 370 500 400" stroke="#7dd3fc" strokeWidth="3" strokeDasharray="6 6" fill="none" />
 
+            {/* ── Scan beam ── */}
+            <path d="M 760 580 L 1075 430 L 1075 610 L 760 625 Z" fill="url(#sfl-beam)" />
+
             {/* ── Phone (tilted) ── */}
             <g transform="rotate(8 1030 495)" filter="url(#sfl-shadow)">
-                <rect x="905" y="285" width="250" height="460" rx="42" fill="#0f172a" />
-                <rect x="919" y="308" width="222" height="414" rx="30" fill="#0b1220" />
+                <rect x="955" y="285" width="250" height="460" rx="42" fill="#0f172a" />
+                <rect x="969" y="308" width="222" height="414" rx="30" fill="#0b1220" />
             </g>
             <g transform="rotate(8 1030 495)">
-                <text x="933" y="336" fontFamily="'DM Sans',sans-serif" fontSize="13" fontWeight="700" fill="white">9:41</text>
+                <text x="983" y="336" fontFamily="'DM Sans',sans-serif" fontSize="18" fontWeight="700" fill="white">9:41</text>
                 <g fill="white">
-                    <circle cx="1082" cy="332" r="1.8" />
-                    <circle cx="1088" cy="332" r="1.8" />
-                    <circle cx="1094" cy="332" r="1.8" />
-                    <rect x="1102" y="327" width="18" height="9" rx="2" fill="none" stroke="white" strokeWidth="1" />
+                    <circle cx="1134" cy="334" r="2" />
+                    <circle cx="1140" cy="334" r="2" />
+                    <circle cx="1146" cy="334" r="2" />
+                    <rect x="1152" y="327" width="22" height="12" rx="2" fill="none" stroke="white" strokeWidth="1" />
                 </g>
-                <circle cx="936" cy="372" r="15" fill="#1e293b" />
-                <path d="M 940 366 L 933 372 L 940 378" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="986" cy="372" r="15" fill="#1e293b" />
+                <path d="M 990 366 L 983 372 L 990 378" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
 
                 {/* Viewfinder + barcode */}
                 <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none">
-                    <path d="M 965 480 V 460 H 985" />
-                    <path d="M 1075 460 H 1095 V 480" />
-                    <path d="M 965 600 V 620 H 985" />
-                    <path d="M 1095 600 V 620 H 1075" />
+                    <path d="M 1015 480 V 460 H 1035" />
+                    <path d="M 1125 460 H 1145 V 480" />
+                    <path d="M 1015 600 V 620 H 1035" />
+                    <path d="M 1145 600 V 620 H 1125" />
                 </g>
-                <rect x="978" y="500" width="104" height="80" rx="6" fill="white" />
+                <rect x="1025" y="500" width="104" height="80" rx="6" fill="white" />
                 {[2, 1, 3, 1, 2, 3, 1, 2, 1, 3].map((w, i, arr) => {
                     const totalW = arr.reduce((s, v) => s + v * 2.4 + 1.6, 0);
-                    const startX = 1030 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2.4 + 1.6, 0);
+                    const startX = 1080 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2.4 + 1.6, 0);
                     return <rect key={i} x={startX} y="514" width={w * 2.4} height="52" fill="#1e293b" />;
                 })}
-                <rect x="960" y="535" width="140" height="6" fill="url(#sfl-scanline)" />
+                <rect x="1010" y="535" width="140" height="6" fill="url(#sfl-scanline)" />
 
                 {/* Scan successful pill */}
-                <rect x="960" y="655" width="150" height="38" rx="19" fill="#1e3a5f" opacity="0.9" />
-                <circle cx="985" cy="674" r="11" fill="#38bdf8" />
-                <path d="M 980 674 L 984 678 L 991 670" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <text x="1002" y="679" fontFamily="'DM Sans',sans-serif" fontSize="12" fontWeight="700" fill="white">Scan Successful</text>
+                <rect x="990" y="655" width="200" height="38" rx="19" fill="#1e3a5f" opacity="0.9" />
+                <circle cx="1010" cy="674" r="11" fill="#38bdf8" />
+                <path d="M 1005 674 L 1009 678 L 1016 670" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                <text x="1025" y="682" fontFamily="'DM Sans',sans-serif" fontSize="20" fontWeight="500" fill="white">Scan Successful</text>
 
-                <rect x="1010" y="712" width="40" height="4" rx="2" fill="#334155" />
+                <rect x="1060" y="712" width="40" height="4" rx="2" fill="#334155" />
             </g>
 
             {/* ── Product ID result card ── */}
             <path d="M 1075 400 Q 1105 370 1140 340" stroke="#7dd3fc" strokeWidth="3" strokeDasharray="6 6" fill="none" />
             <g filter="url(#sfl-shadow)">
-                <rect x="1140" y="170" width="375" height="150" rx="16" fill="white" />
+                <rect x="1140" y="160" width="375" height="150" rx="16" fill="white" />
             </g>
-            <rect x="1165" y="200" width="60" height="52" rx="6" fill="#eef4fc" />
+            <rect x="1165" y="185" width="60" height="52" rx="6" fill="#eef4fc" />
             {[2, 1, 2, 1, 2, 1, 2].map((w, i, arr) => {
                 const totalW = arr.reduce((s, v) => s + v * 1.8 + 1.6, 0);
                 const startX = 1195 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 1.8 + 1.6, 0);
-                return <rect key={i} x={startX} y="212" width={w * 1.8} height="28" fill="#1e293b" />;
+                return <rect key={i} x={startX} y="198" width={w * 1.8} height="28" fill="#1e293b" />;
             })}
-            <text x="1245" y="212" fontFamily="'DM Sans',sans-serif" fontSize="14" fill="#94a3b8">Product ID</text>
-            <text x="1245" y="243" fontFamily="'DM Sans',sans-serif" fontSize="21" fontWeight="700" fill="#0f172a">GTIN 123456789012</text>
-            <circle cx="1257" cy="280" r="12" fill="#10b981" />
+            <text x="1245" y="200" fontFamily="'DM Sans',sans-serif" fontSize="21" fill="#94a3b8">Product ID</text>
+            <text x="1245" y="243" fontFamily="'DM Sans',sans-serif" fontSize="28" fontWeight="700" fill="#0f172a">GTIN 123456789012</text>
+            <circle cx="1257" cy="280" r="18" fill="#10b981" />
             <path d="M 1251 280 L 1255 284 L 1263 274" stroke="white" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <text x="1276" y="285" fontFamily="'DM Sans',sans-serif" fontSize="15" fontWeight="700" fill="#10b981">Scan Successful</text>
+            <text x="1280" y="285" fontFamily="'DM Sans',sans-serif" fontSize="22" fontWeight="700" fill="#10b981">Scan Successful</text>
         </svg>
     );
 };
@@ -1304,8 +1305,8 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
             {/* ── Worker (side profile) ── */}
             <g>
                 {/* legs */}
-                <path d="M 700 690 L 700 800 L 745 800 L 755 700 Z" fill="#1e2a44" />
-                <path d="M 758 700 L 780 800 L 825 800 L 800 690 Z" fill="#16213a" />
+                <path d="M 710 690 L 700 800 L 745 800 L 755 700 Z" fill="#1e2a44" />
+                <path d="M 778 700 L 810 800 L 845 800 L 830 690 Z" fill="#16213a" />
                 {/* torso */}
                 <path d="M 690 460 Q 685 420 720 400 L 830 400 Q 855 420 855 460 L 855 700 L 690 700 Z" fill="#3b82f6" />
                 {/* reflective stripe */}
@@ -1316,13 +1317,13 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <path d="M 845 430 Q 900 460 935 480" stroke="#3b82f6" strokeWidth="30" strokeLinecap="round" fill="none" />
                 <ellipse cx="945" cy="490" rx="20" ry="16" fill="#f2b389" />
                 {/* neck + head */}
-                <rect x="805" y="360" width="26" height="30" fill="#f2b389" />
-                <circle cx="820" cy="330" r="42" fill="#f2b389" />
+                <rect x="755" y="360" width="26" height="30" fill="#f2b389" />
+                <circle cx="770" cy="330" r="42" fill="#f2b389" />
                 {/* cap */}
-                <path d="M 778 305 Q 782 260 828 258 Q 872 258 878 305 Z" fill="#2563eb" />
-                <path d="M 862 300 Q 905 296 915 312 Q 905 322 862 316 Z" fill="#1d4ed8" />
+                <path d="M 728 305 Q 732 260 778 258 Q 822 258 828 305 Z" fill="#2563eb" />
+                <path d="M 812 300 Q 855 296 865 312 Q 855 322 812 316 Z" fill="#1d4ed8" />
                 {/* hair sliver */}
-                <path d="M 780 310 Q 778 335 790 350" stroke="#1e2a44" strokeWidth="6" strokeLinecap="round" fill="none" />
+                <path d="M 730 310 Q 728 335 740 350" stroke="#1e2a44" strokeWidth="6" strokeLinecap="round" fill="none" />
             </g>
 
             {/* Scanner gun */}
@@ -1334,7 +1335,7 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
             </g>
 
             {/* Scan beam to box */}
-            <path d="M 995 470 L 1150 445 L 1150 545 L 995 495 Z" fill="url(#wh-beam)" />
+            <path d="M 995 470 L 1150 500 L 1150 600 L 995 495 Z" fill="url(#wh-beam)" />
 
             {/* Green success badge */}
             <circle cx="1075" cy="405" r="26" fill="#10b981" filter="url(#wh-shadow)" />
@@ -1458,7 +1459,7 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
 
     return (
         <svg
-            viewBox="0 0 1946 807"
+            viewBox="15 100 1915 640"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             {...props}
@@ -1487,8 +1488,6 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
             {/* Soft blobs behind each step */}
             <circle cx="200" cy="320" r="200" fill="#c9d9ee" opacity="0.35" filter="url(#sfs-blur)" />
             <circle cx="590" cy="320" r="200" fill="#c9d9ee" opacity="0.3" filter="url(#sfs-blur)" />
-            <circle cx="1265" cy="300" r="220" fill="#c9d9ee" opacity="0.3" filter="url(#sfs-blur)" />
-            <circle cx="1770" cy="300" r="210" fill="#c9d9ee" opacity="0.3" filter="url(#sfs-blur)" />
 
             {/* Connector arrows */}
             <line x1="380" y1="335" x2="440" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" />
@@ -1497,17 +1496,17 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* ── Step 1: worker with tablet ── */}
             <g>
-                <path d="M 55 500 L 55 545 L 90 545 L 95 460 Z" fill="#1e2a44" />
-                <path d="M 95 460 L 100 545 L 135 545 L 125 455 Z" fill="#16213a" />
+                <path d="M 65 400 L 65 545 L 95 545 L 100 460 Z" fill="#1e2a44" />
+                <path d="M 125 460 L 130 545 L 155 545 L 160 455 Z" fill="#16213a" />
                 <path d="M 45 300 Q 40 260 75 240 L 165 240 Q 190 260 190 300 L 190 470 L 45 470 Z" fill="#3b82f6" />
                 <path d="M 90 240 L 120 240 L 145 470 L 110 470 Z" fill="#bfdbfe" opacity="0.85" />
                 <path d="M 40 265 Q 15 300 25 345" stroke="#3b82f6" strokeWidth="20" strokeLinecap="round" fill="none" />
                 <path d="M 175 265 Q 220 280 245 300" stroke="#3b82f6" strokeWidth="22" strokeLinecap="round" fill="none" />
                 <ellipse cx="252" cy="308" rx="15" ry="12" fill="#f2b389" />
-                <rect x="150" y="200" width="20" height="24" fill="#f2b389" />
-                <circle cx="163" cy="175" r="32" fill="#f2b389" />
-                <path d="M 138 155 Q 142 122 178 120 Q 214 120 220 155 Z" fill="#2563eb" />
-                <path d="M 205 150 Q 238 147 246 160 Q 238 168 205 163 Z" fill="#1d4ed8" />
+                <rect x="100" y="200" width="20" height="24" fill="#f2b389" />
+                <circle cx="113" cy="175" r="32" fill="#f2b389" />
+                <path d="M 88 155 Q 92 122 128 120 Q 164 120 170 155 Z" fill="#2563eb" />
+                <path d="M 145 150 Q 188 147 196 160 Q 188 168 145 163 Z" fill="#1d4ed8" />
             </g>
             <g filter="url(#sfs-shadow)">
                 <rect x="228" y="248" width="132" height="180" rx="14" fill="#0f172a" transform="rotate(-4 294 338)" />
@@ -1525,8 +1524,8 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <rect x="462" y="215" width="258" height="325" rx="26" fill="#0f172a" />
                 <rect x="478" y="240" width="226" height="230" rx="10" fill="#1a2b4a" />
             </g>
-            <path d="M 555 305 L 660 300 L 660 405 L 555 405 Z" fill="#eec18e" opacity="0.9" />
-            <path d="M 555 305 L 660 300 L 645 315 L 570 320 Z" fill="#f6d7ae" opacity="0.9" />
+            <path d="M 525 305 L 660 300 L 660 405 L 525 405 Z" fill="#eec18e" opacity="0.9" />
+            <path d="M 525 305 L 660 300 L 645 315 L 540 320 Z" fill="#f6d7ae" opacity="0.9" />
             <rect x="560" y="330" width="90" height="55" rx="4" fill="white" />
             {[2, 1, 3, 1, 2, 1, 3].map((w, i, arr) => {
                 const totalW = arr.reduce((s, v) => s + v * 2 + 1.6, 0);
@@ -1601,32 +1600,32 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* ── Step 4: sync loop + system card ── */}
             <g fill="none" stroke="#93c5fd" strokeWidth="2" strokeDasharray="6 6">
-                <path d="M 1710 250 Q 1770 200 1830 250" markerEnd="url(#sfs-arrow)" />
+                <path d="M 1670 280 Q 1730 210 1820 280" markerEnd="url(#sfs-arrow)" />
                 <path d="M 1830 320 Q 1830 380 1770 410" markerEnd="url(#sfs-arrow)" />
                 <path d="M 1710 410 Q 1650 380 1650 320" markerEnd="url(#sfs-arrow)" />
             </g>
-            <circle cx="1770" cy="240" r="30" fill="white" filter="url(#sfs-shadow)" />
-            <path d="M 1755 250 q -12 -18 8 -20 q 3 -12 17 -6 q 12 -4 14 10 q 10 2 6 14 q -2 6 -10 6 h -28 q -10 0 -8 -6 z" fill="#3b82f6" />
+            <circle cx="1740" cy="240" r="30" fill="white" filter="url(#sfs-shadow)" />
+            <path d="M 1725 250 q -12 -18 8 -20 q 3 -12 17 -6 q 12 -4 14 10 q 10 2 6 14 q -2 6 -10 6 h -28 q -10 0 -8 -6 z" fill="#3b82f6" />
             <circle cx="1650" cy="335" r="30" fill="white" filter="url(#sfs-shadow)" />
             <g fill="#2563eb">
                 <ellipse cx="1650" cy="322" rx="12" ry="5" />
                 <path d="M 1638 322 v 20 a 12 5 0 0 0 24 0 v -20" />
                 <ellipse cx="1650" cy="335" rx="12" ry="5" fill="#1d4ed8" />
             </g>
-            <circle cx="1770" cy="295" r="42" fill="#10b981" filter="url(#sfs-shadow)" />
-            <path d="M 1753 296 L 1765 308 L 1790 280" stroke="white" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="1890" cy="335" r="30" fill="white" filter="url(#sfs-shadow)" />
+            <circle cx="1740" cy="320" r="42" fill="#10b981" filter="url(#sfs-shadow)" />
+            <path d="M 1723 326 L 1735 338 L 1760 310" stroke="white" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="1825" cy="335" r="30" fill="white" filter="url(#sfs-shadow)" />
             <g fill="none" stroke="#2563eb" strokeWidth="2.4">
-                <circle cx="1890" cy="335" r="9" />
-                <circle cx="1890" cy="335" r="3.4" fill="#2563eb" stroke="none" />
+                <circle cx="1825" cy="335" r="9" />
+                <circle cx="1825" cy="335" r="3.4" fill="#2563eb" stroke="none" />
                 {[0, 60, 120, 180, 240, 300].map((deg) => {
                     const rad = (deg * Math.PI) / 180;
                     return (
                         <line
                             key={deg}
-                            x1={1890 + Math.cos(rad) * 12}
+                            x1={1825 + Math.cos(rad) * 12}
                             y1={335 + Math.sin(rad) * 12}
-                            x2={1890 + Math.cos(rad) * 17}
+                            x2={1825 + Math.cos(rad) * 17}
                             y2={335 + Math.sin(rad) * 17}
                         />
                     );
@@ -1647,11 +1646,11 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
             {/* ── Bottom captions ── */}
             {STEPS.map((s) => (
                 <g key={s.num}>
-                    <circle cx={s.x + 25} cy="622" r="19" fill="#93c5fd" />
-                    <text x={s.x + 25} y="628" textAnchor="middle" fontFamily="'DM Sans',sans-serif" fontSize="14" fontWeight="700" fill="white">
+                    <circle cx={s.x + 25} cy="622" r="20" fill="#93c5fd" />
+                    <text x={s.x + 25} y="628" textAnchor="middle" fontFamily="'DM Sans',sans-serif" fontSize="21" fontWeight="700" fill="white">
                         {s.num}
                     </text>
-                    <text x={s.x + 65} y="629" fontFamily="'DM Sans',sans-serif" fontSize="20" fontWeight="700" fill="#0f172a">
+                    <text x={s.x + 65} y="629" fontFamily="'DM Sans',sans-serif" fontSize="27" fontWeight="700" fill="#0f172a">
                         {s.title}
                     </text>
                     {s.lines.map((line, i) => (
@@ -1660,7 +1659,7 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
                             x={s.x + 65}
                             y={666 + i * 24}
                             fontFamily="'DM Sans',sans-serif"
-                            fontSize="14"
+                            fontSize="21"
                             fill="#475569"
                         >
                             {line}

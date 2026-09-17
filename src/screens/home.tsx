@@ -314,7 +314,7 @@ export default function Home() {
             </div>
 
             {/* Main Featured Performance Card */}
-            <div className="max-w-5xl mx-auto rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-md p-6 sm:p-8 shadow-[0_16px_48px_rgba(19,53,90,0.06)] mb-16">
+            <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-10 shadow-[0_16px_48px_rgba(19,53,90,0.06)] mb-16">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
                 
                 {/* 1. Viewfinder Graphic */}
@@ -372,7 +372,7 @@ export default function Home() {
             </div>
 
             {/* Bottom Metrics 4-Column Divider Grid */}
-            <div className="max-w-5xl mx-auto pt-10 border-t border-slate-200/80">
+            <div className="max-w-7xl mx-auto pt-10 border-t border-slate-200/80">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x-0 sm:divide-x divide-slate-200/70">
                 <div className="px-2">
                   <p className="font-display text-2xl sm:text-3xl font-bold text-[#13355A]">

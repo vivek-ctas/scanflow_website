@@ -23,10 +23,10 @@ export default function Guide() {
         />
 
         {/* Full-width ScanFlow Steps Illustration */}
-        <section className="relative py-12 lg:py-16 px-5 sm:px-8 lg:px-[70px] bg-white border-t border-[#EAECF3] overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <div className="relative animate-float-slow">
-              <ScanFlowStepsIllustration className="w-full h-auto" />
+        <section className="relative py-14 lg:py-20 px-4 sm:px-6 lg:px-10 bg-white border-t border-[#EAECF3] overflow-hidden">
+          <div className="max-w-[1440px] mx-auto">
+            <div className="relative animate-float-slow lg:scale-105">
+              <ScanFlowStepsIllustration className="w-full h-auto drop-shadow-xl" />
             </div>
           </div>
         </section>
