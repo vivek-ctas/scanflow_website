@@ -123,38 +123,38 @@ function Phone({ screenSvg, backSvg }: PhoneProps) {
             </mesh>
 
             {/* Pro Camera Bump Island */}
-            <mesh position={[-0.32, 0.74, -0.082]}>
+            <mesh position={[0.32, 0.74, -0.082]}>
                 <boxGeometry args={[0.46, 0.46, 0.035]} />
                 <meshStandardMaterial color="#0A1B2E" metalness={0.7} roughness={0.3} />
             </mesh>
 
             {/* Triple Lens Cameras */}
-            {/* Lens 1 (Top Left) */}
-            <mesh position={[-0.41, 0.84, -0.10]} rotation={[Math.PI / 2, 0, 0]}>
+            {/* Lens 1 (Top Inner) */}
+            <mesh position={[0.23, 0.84, -0.10]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[0.075, 0.075, 0.018, 24]} />
                 <meshStandardMaterial color="#3C9AC4" metalness={0.9} roughness={0.1} />
             </mesh>
-            <mesh position={[-0.41, 0.84, -0.11]} rotation={[Math.PI / 2, 0, 0]}>
+            <mesh position={[0.23, 0.84, -0.11]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[0.055, 0.055, 0.01, 24]} />
                 <meshStandardMaterial color="#050B14" metalness={0.3} roughness={0.05} />
             </mesh>
 
-            {/* Lens 2 (Top Right) */}
-            <mesh position={[-0.23, 0.84, -0.10]} rotation={[Math.PI / 2, 0, 0]}>
+            {/* Lens 2 (Top Outer) */}
+            <mesh position={[0.41, 0.84, -0.10]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[0.075, 0.075, 0.018, 24]} />
                 <meshStandardMaterial color="#3C9AC4" metalness={0.9} roughness={0.1} />
             </mesh>
-            <mesh position={[-0.23, 0.84, -0.11]} rotation={[Math.PI / 2, 0, 0]}>
+            <mesh position={[0.41, 0.84, -0.11]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[0.055, 0.055, 0.01, 24]} />
                 <meshStandardMaterial color="#050B14" metalness={0.3} roughness={0.05} />
             </mesh>
 
             {/* Lens 3 (Bottom Center) */}
-            <mesh position={[-0.32, 0.65, -0.10]} rotation={[Math.PI / 2, 0, 0]}>
+            <mesh position={[0.32, 0.65, -0.10]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[0.075, 0.075, 0.018, 24]} />
                 <meshStandardMaterial color="#3C9AC4" metalness={0.9} roughness={0.1} />
             </mesh>
-            <mesh position={[-0.32, 0.65, -0.11]} rotation={[Math.PI / 2, 0, 0]}>
+            <mesh position={[0.32, 0.65, -0.11]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[0.055, 0.055, 0.01, 24]} />
                 <meshStandardMaterial color="#050B14" metalness={0.3} roughness={0.05} />
             </mesh>

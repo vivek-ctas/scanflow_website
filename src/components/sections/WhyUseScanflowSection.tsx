@@ -82,7 +82,7 @@ export default function WhyUseScanflowSection() {
     >
       <div className="px-5 sm:px-8 lg:px-[70px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
+
           {/* ── LEFT COLUMN: ScanFlow Orbit Mockup SVG Illustration ── */}
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative animate-float-slow">
@@ -94,7 +94,7 @@ export default function WhyUseScanflowSection() {
           <div className="lg:col-span-7 text-left order-1 lg:order-2">
             {/* Badge */}
             <span className="inline-flex items-center rounded-full bg-[#EBF4FA] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#3C9AC4] border border-[#3C9AC4]/20 shadow-xs mb-6">
-              07. WHY BUSINESSES USE SCANFLOW
+              WHY BUSINESSES USE SCANFLOW
             </span>
 
             {/* Main Heading */}
