@@ -2,7 +2,7 @@
 
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
-import { ScanflowDocMockup } from "@/components/ui/illustration";
+import { WarehouseIllustration } from "@/components/ui/illustration";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Zap, ChevronDown, ArrowRight } from "lucide-react";
 import { plans } from "@/components/sections/landingData";
@@ -116,8 +116,8 @@ export default function Pricing() {
           title={<>Simple pricing for simpler <span className="text-gradient">scanning.</span></>}
           subtitle="Choose the plan that fits your scanning needs and scale as your team grows."
           visual={
-            <div className="relative animate-float-slow w-full max-w-lg">
-              <ScanflowDocMockup className="w-full h-auto" />
+            <div className="relative animate-float-slow w-full max-w-2xl lg:max-w-3xl lg:scale-105">
+              <WarehouseIllustration className="w-full h-auto drop-shadow-xl" />
             </div>
           }
         />

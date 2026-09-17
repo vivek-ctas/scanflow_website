@@ -3,6 +3,7 @@
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
+import { DashboardIllustration, ScanFlowStepsIllustration } from "@/components/ui/illustration";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 
@@ -14,7 +15,22 @@ export default function Guide() {
           badgeText="Guide"
           title={<>Get started with <span className="text-gradient">ScanFlow</span></>}
           subtitle="Learn how simple barcode scanning can fit into your everyday workflow."
+          visual={
+            <div className="relative animate-float-slow w-full max-w-2xl lg:max-w-3xl lg:scale-105">
+              <DashboardIllustration className="w-full h-auto drop-shadow-xl" />
+            </div>
+          }
         />
+
+        {/* Full-width ScanFlow Steps Illustration */}
+        <section className="relative py-12 lg:py-16 px-5 sm:px-8 lg:px-[70px] bg-white border-t border-[#EAECF3] overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="relative animate-float-slow">
+              <ScanFlowStepsIllustration className="w-full h-auto" />
+            </div>
+          </div>
+        </section>
+
         <HowItWorksSection />
         {/* <LiveScanDemo /> */}
 
