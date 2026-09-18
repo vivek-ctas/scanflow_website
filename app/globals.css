@@ -55,8 +55,30 @@
     scroll-behavior: smooth;
   }
 
+  /* ── Custom Sleek Scrollbar ── */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F1F5F9;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3C9AC4 0%, #13355A 100%);
+    border-radius: 9999px;
+    border: 2px solid #F1F5F9;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #6BC1E0 0%, #3C9AC4 100%);
+  }
+
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: #3C9AC4 #F1F5F9;
   }
 
   body {

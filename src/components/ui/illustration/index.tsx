@@ -781,9 +781,9 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
                     <stop offset="100%" stopColor="#dba873" />
                 </linearGradient>
                 <linearGradient id="sf-phone-glow" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-                    <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.9" />
-                    <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#22d3ee" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#22d3ee" stopOpacity="1" />
                 </linearGradient>
                 <filter id="sf-shadow" x="-30%" y="-30%" width="160%" height="160%">
                     <feDropShadow dx="0" dy="8" stdDeviation="14" floodColor="#000000" floodOpacity="0.35" />
@@ -791,6 +791,68 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <filter id="sf-soft-blur" x="-50%" y="-50%" width="200%" height="200%">
                     <feGaussianBlur stdDeviation="18" />
                 </filter>
+                <style>{`
+                    @keyframes diDashFlow {
+                        from { stroke-dashoffset: 0; }
+                        to { stroke-dashoffset: -10; }
+                    }
+                    @keyframes diScanBeam {
+                        0%, 100% { transform: translateY(-28px); opacity: 0.25; }
+                        50% { transform: translateY(28px); opacity: 0.9; }
+                    }
+                    @keyframes diDotPulse {
+                        0%, 100% { opacity: 0.45; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes diRaySpin {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                    @keyframes diFloat {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-8px); }
+                    }
+                    @keyframes diBracketPulse {
+                        0%, 100% { opacity: 0.45; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes diDonutPulse {
+                        0%, 100% { opacity: 0.55; }
+                        50% { opacity: 1; }
+                    }
+                    .di-arrow-flow {
+                        animation: diDashFlow 0.9s linear infinite;
+                    }
+                    .di-scan-beam {
+                        animation: diScanBeam 2.2s ease-in-out infinite;
+                    }
+                    .di-dot-pulse { animation: diDotPulse 2.4s ease-in-out infinite; }
+                    .di-dot-pulse-1 { animation: diDotPulse 2.4s ease-in-out infinite 0.3s; }
+                    .di-dot-pulse-2 { animation: diDotPulse 2.4s ease-in-out infinite 0.7s; }
+                    .di-dot-pulse-3 { animation: diDotPulse 2.4s ease-in-out infinite 1.1s; }
+                    .di-dot-pulse-4 { animation: diDotPulse 2.4s ease-in-out infinite 1.5s; }
+                    .di-dot-pulse-5 { animation: diDotPulse 2.4s ease-in-out infinite 1.9s; }
+                    .di-dot-pulse-6 { animation: diDotPulse 2.4s ease-in-out infinite 0.5s; }
+                    .di-dot-pulse-7 { animation: diDotPulse 2.4s ease-in-out infinite 0.9s; }
+                    .di-dot-pulse-8 { animation: diDotPulse 2.4s ease-in-out infinite 1.3s; }
+                    .di-dot-pulse-9 { animation: diDotPulse 2.4s ease-in-out infinite 1.7s; }
+                    .di-status-pulse { animation: diDotPulse 1.8s ease-in-out infinite; }
+                    .di-ray-spin {
+                        transform-origin: 1090px 168px;
+                        animation: diRaySpin 24s linear infinite;
+                    }
+                    .di-float { animation: diFloat 6s ease-in-out infinite; }
+                    .di-float-1 { animation: diFloat 7s ease-in-out infinite 1.2s; }
+                    .di-bracket-pulse { animation: diBracketPulse 2.2s ease-in-out infinite; }
+                    .di-donut-pulse { animation: diDonutPulse 3s ease-in-out infinite; }
+                    @media (prefers-reduced-motion: reduce) {
+                        .di-arrow-flow, .di-scan-beam, .di-dot-pulse, .di-dot-pulse-1,
+                        .di-dot-pulse-2, .di-dot-pulse-3, .di-dot-pulse-4, .di-dot-pulse-5,
+                        .di-dot-pulse-6, .di-dot-pulse-7, .di-dot-pulse-8, .di-dot-pulse-9,
+                        .di-status-pulse, .di-ray-spin, .di-float, .di-float-1,
+                        .di-bracket-pulse, .di-donut-pulse { animation: none; }
+                    }
+                `}</style>
             </defs>
 
             {/* ── Cloud backdrop ── */}
@@ -798,9 +860,9 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
             <ellipse cx="180" cy="440" rx="220" ry="150" fill="#cbd5e1" opacity="0.18" filter="url(#sf-soft-blur)" />
 
             {/* Decorative floating badges */}
-            <circle cx="175" cy="308" r="17" fill="rgba(142, 186, 244, 1)" opacity="0.85" />
+            <circle cx="175" cy="308" r="17" fill="rgba(142, 186, 244, 1)" opacity="0.85" className="di-float" />
             <circle cx="1090" cy="168" r="46" fill="#dbeafe" />
-            <g stroke="#2563eb" strokeWidth="2.4" fill="none" strokeLinecap="round">
+            <g stroke="#2563eb" strokeWidth="2.4" fill="none" strokeLinecap="round" className="di-ray-spin">
                 <circle cx="1090" cy="168" r="11" />
                 {[0, 60, 120, 180, 240, 300].map((deg) => {
                     const rad = (deg * Math.PI) / 180;
@@ -815,12 +877,13 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
                     );
                 })}
             </g>
-            <circle cx="1160" cy="470" r="42" fill="#dbeafe" />
+            <circle cx="1160" cy="470" r="42" fill="#dbeafe" className="di-float" />
             <path
                 d="M 1135 478 q -8 -20 12 -22 q 4 -14 20 -8 q 14 -4 16 12 q 12 2 8 16 q -2 8 -12 8 h -34 q -12 0 -10 -6 z"
                 fill="#93c5fd"
+                className="di-float"
             />
-            <circle cx="1156" cy="592" r="12" fill="#cbd5e1" opacity="0.7" />
+            <circle cx="1156" cy="592" r="12" fill="#cbd5e1" opacity="0.7" className="di-float-1" />
 
             {/* ── Package with barcode label ── */}
             <g filter="url(#sf-shadow)">
@@ -830,7 +893,7 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
             </g>
             <g transform="translate(178, 435) rotate(-8)">
                 <rect x="0" y="0" width="150" height="100" rx="4" fill="white" filter="url(#sf-shadow)" />
-                <g stroke="#22d3ee" strokeWidth="3" strokeLinecap="round" fill="none">
+                <g stroke="#22d3ee" strokeWidth="3" strokeLinecap="round" fill="none" className="di-bracket-pulse">
                     <path d="M 8 22 V 8 H 22" />
                     <path d="M 128 8 H 142 V 22" />
                     <path d="M 8 78 V 92 H 22" />
@@ -867,14 +930,18 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <path d="M 350 500 V 516 H 366" />
                 <path d="M 506 500 V 516 H 490" />
             </g>
-            <rect x="0" y="0" width="6" height="70" fill="url(#sf-phone-glow)" transform="translate(430, 400)" opacity="0.9" />
+            <g transform="translate(430, 430)">
+                <g className="di-scan-beam">
+                    <rect x="-80" y="0" width="160" height="6" rx="2" fill="url(#sf-phone-glow)" opacity="1" />
+                </g>
+            </g>
             {[3, 1, 2, 1, 3, 1, 2, 2, 1, 3, 2, 1].map((w, i, arr) => {
                 const totalW = arr.reduce((s, v) => s + v * 3.4 + 2, 0);
                 const startX = 429 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 3.4 + 2, 0);
                 return <rect key={i} x={startX} y="410" width={w * 3.4} height="56" fill="white" />;
             })}
             <rect x="360" y="546" width="140" height="30" rx="13" fill="#0e3a2f" />
-            <circle cx="372" cy="560" r="7" fill="#22c55e" />
+            <circle cx="372" cy="560" r="7" fill="#22c55e" className="di-status-pulse" />
             <text x="425" y="509 " fontFamily="'DM Sans',sans-serif" fontSize="0" fill="transparent">spacer</text>
             <text x="386" y="566" fontFamily="'DM Sans',sans-serif" fontSize="15" fontWeight="400" fill="#4ade80">Scan Successful</text>
 
@@ -948,10 +1015,17 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
                 ["726,555", "748,545", "770,530", "792,535", "814,515", "836,508", "858,490", "880,498", "902,480"].map(
                     (p, i) => {
                         const [x, y] = p.split(",").map(Number);
-                        return <circle key={i} cx={x} cy={y} r="2" fill="#2563eb" />;
+                        return <circle key={i} cx={x} cy={y} r="2.5" fill="#2563eb" className={`di-dot-pulse-${i + 1}`} />;
                     }
                 )
             }
+            <circle cx="726" cy="555" r="4" fill="#22d3ee" className="di-dot-pulse-6">
+                <animateMotion
+                    dur="4s"
+                    repeatCount="indefinite"
+                    path="M726,555 L748,545 L770,530 L792,535 L814,515 L836,508 L858,490 L880,498 L902,480"
+                />
+            </circle>
             <text x="726" y="600" fontFamily="'DM Sans',sans-serif" fontSize="15" fill="#94a3b8">Apr 20</text>
             <text x="870" y="600" fontFamily="'DM Sans',sans-serif" fontSize="15" fill="#94a3b8">Apr 26</text>
 
@@ -968,6 +1042,7 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
                 strokeWidth="10"
                 strokeDasharray="94 150"
                 transform="rotate(-90 980 510)"
+                className="di-donut-pulse"
             />
             {
                 SCAN_TYPES.map((t, i) => (
@@ -984,7 +1059,7 @@ export const DashboardIllustration = (props: SVGProps<SVGSVGElement>) => {
             {
                 CALLOUTS.map((c) => (
                     <g key={c.num}>
-                        <path d={c.arrow} stroke="#38bdf8" strokeWidth="2" strokeDasharray="5 5" fill="none" />
+                        <path d={c.arrow} stroke="#38bdf8" strokeWidth="2" strokeDasharray="5 5" fill="none" className="di-arrow-flow" />
                         <g filter="url(#sf-shadow)">
                             <rect x={c.x} y={c.y} width={c.w} height="74" rx="14" fill="white" />
                         </g>
@@ -1036,13 +1111,13 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
                     <stop offset="100%" stopColor="#eec190" />
                 </linearGradient>
                 <linearGradient id="sfl-beam" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#94a3b8" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.05" />
+                    <stop offset="0%" stopColor="#94a3b8" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.9" />
                 </linearGradient>
                 <linearGradient id="sfl-scanline" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-                    <stop offset="50%" stopColor="#7dd3fc" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#22d3ee" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#7dd3fc" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#22d3ee" stopOpacity="1" />
                 </linearGradient>
                 <filter id="sfl-shadow" x="-30%" y="-30%" width="160%" height="160%">
                     <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="#94a3b8" floodOpacity="0.3" />
@@ -1050,11 +1125,47 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <filter id="sfl-blur" x="-60%" y="-60%" width="220%" height="220%">
                     <feGaussianBlur stdDeviation="16" />
                 </filter>
+                <style>{`
+                    @keyframes bwpFloat {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-8px); }
+                    }
+                    @keyframes bwpDashFlow {
+                        from { stroke-dashoffset: 0; }
+                        to { stroke-dashoffset: -12; }
+                    }
+                    @keyframes bwpBracketPulse {
+                        0%, 100% { opacity: 0.45; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes bwpScanSweep {
+                        0%, 100% { transform: translateY(-18px); opacity: 0.25; }
+                        50% { transform: translateY(18px); opacity: 1; }
+                    }
+                    @keyframes bwpPulse {
+                        0%, 100% { opacity: 0.5; }
+                        50% { opacity: 1; }
+                    }
+                    .bwp-float { animation: bwpFloat 6s ease-in-out infinite; }
+                    .bwp-float-1 { animation: bwpFloat 7s ease-in-out infinite 1.2s; }
+                    .bwp-dash-flow {
+                        animation: bwpDashFlow 1.2s linear infinite;
+                    }
+                    .bwp-bracket-pulse { animation: bwpBracketPulse 2.2s ease-in-out infinite; }
+                    .bwp-scan-sweep { animation: bwpScanSweep 2.4s ease-in-out infinite; }
+                    .bwp-scan-sweep-b { animation: bwpScanSweep 2.8s ease-in-out infinite 0.6s; }
+                    .bwp-pulse { animation: bwpPulse 2.4s ease-in-out infinite; }
+                    .bwp-pulse-1 { animation: bwpPulse 2s ease-in-out infinite 0.4s; }
+                    @media (prefers-reduced-motion: reduce) {
+                        .bwp-float, .bwp-float-1, .bwp-dash-flow, .bwp-bracket-pulse,
+                        .bwp-scan-sweep, .bwp-scan-sweep-b, .bwp-pulse, .bwp-pulse-1 { animation: none; }
+                    }
+                `}</style>
             </defs>
 
             {/* Decorative circles */}
-            <circle cx="275" cy="285" r="30" fill="#c9d9ee" opacity="0.7" />
-            <circle cx="1475" cy="472" r="32" fill="#c9d9ee" opacity="0.6" />
+            <circle cx="275" cy="285" r="30" fill="#c9d9ee" opacity="0.7" className="bwp-float" />
+            <circle cx="1475" cy="472" r="32" fill="#c9d9ee" opacity="0.6" className="bwp-float-1" />
 
             {/* Ground shadows */}
             <ellipse cx="605" cy="740" rx="270" ry="20" fill="#94a3b8" opacity="0.18" />
@@ -1087,7 +1198,7 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* Barcode label on box front */}
             <rect x="610" y="555" width="150" height="105" rx="6" fill="white" transform="rotate(2 685 607)" />
-            <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none" transform="rotate(2 685 607)">
+            <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none" transform="rotate(2 685 607)" className="bwp-bracket-pulse">
                 <path d="M 618 578 V 562 H 634" />
                 <path d="M 736 562 H 752 V 578" />
                 <path d="M 618 638 V 654 H 634" />
@@ -1099,6 +1210,7 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
                     const startX = 685 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 3 + 2, 0);
                     return <rect key={i} x={startX} y="588" width={w * 3} height="38" fill="#1e293b" />;
                 })}
+                <rect x="635" y="607" width="100" height="5" rx="2.5" fill="url(#sfl-scanline)" className="bwp-scan-sweep-b" />
             </g>
 
             {/* Warning icons on box front */}
@@ -1112,17 +1224,17 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* Scan target badge above box */}
             <circle cx="552" cy="298" r="46" fill="white" filter="url(#sfl-shadow)" />
-            <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none">
+            <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none" className="bwp-bracket-pulse">
                 <path d="M 532 288 V 278 H 542" />
                 <path d="M 562 278 H 572 V 288" />
                 <path d="M 532 308 V 318 H 542" />
                 <path d="M 572 308 V 318 H 562" />
             </g>
-            <path d="M 538 288 L 566 298 L 552 312 Z" fill="#22d3ee" opacity="0.85" />
-            <path d="M 505 340 Q 480 370 500 400" stroke="#7dd3fc" strokeWidth="3" strokeDasharray="6 6" fill="none" />
+            <path d="M 538 288 L 566 298 L 552 312 Z" fill="#22d3ee" opacity="0.85" className="bwp-pulse" />
+            <path d="M 505 340 Q 480 370 500 400" stroke="#7dd3fc" strokeWidth="3" strokeDasharray="6 6" fill="none" className="bwp-dash-flow" />
 
             {/* ── Scan beam ── */}
-            <path d="M 760 580 L 1075 430 L 1075 610 L 760 625 Z" fill="url(#sfl-beam)" />
+            <path d="M 760 570 L 1075 430 L 1075 610 L 760 650 Z" fill="url(#sfl-beam)" className="bwp-pulse" />
 
             {/* ── Phone (tilted) ── */}
             <g transform="rotate(8 1030 495)" filter="url(#sfl-shadow)">
@@ -1141,7 +1253,7 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <path d="M 990 366 L 983 372 L 990 378" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
 
                 {/* Viewfinder + barcode */}
-                <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none">
+                <g stroke="#22d3ee" strokeWidth="3.5" strokeLinecap="round" fill="none" className="bwp-bracket-pulse">
                     <path d="M 1015 480 V 460 H 1035" />
                     <path d="M 1125 460 H 1145 V 480" />
                     <path d="M 1015 600 V 620 H 1035" />
@@ -1153,11 +1265,11 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
                     const startX = 1080 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2.4 + 1.6, 0);
                     return <rect key={i} x={startX} y="514" width={w * 2.4} height="52" fill="#1e293b" />;
                 })}
-                <rect x="1010" y="535" width="140" height="6" fill="url(#sfl-scanline)" />
+                <rect x="1010" y="535" width="140" height="6" fill="url(#sfl-scanline)" className="bwp-scan-sweep" />
 
                 {/* Scan successful pill */}
                 <rect x="990" y="655" width="200" height="38" rx="19" fill="#1e3a5f" opacity="0.9" />
-                <circle cx="1010" cy="674" r="11" fill="#38bdf8" />
+                <circle cx="1010" cy="674" r="11" fill="#38bdf8" className="bwp-pulse" />
                 <path d="M 1005 674 L 1009 678 L 1016 670" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                 <text x="1025" y="682" fontFamily="'DM Sans',sans-serif" fontSize="20" fontWeight="500" fill="white">Scan Successful</text>
 
@@ -1165,7 +1277,7 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
             </g>
 
             {/* ── Product ID result card ── */}
-            <path d="M 1075 400 Q 1105 370 1140 340" stroke="#7dd3fc" strokeWidth="3" strokeDasharray="6 6" fill="none" />
+            <path d="M 1075 450 Q 1105 370 1140 300" stroke="#7dd3fc" strokeWidth="3" strokeDasharray="6 6" fill="none" className="bwp-dash-flow" />
             <g filter="url(#sfl-shadow)">
                 <rect x="1140" y="160" width="375" height="150" rx="16" fill="white" />
             </g>
@@ -1177,7 +1289,7 @@ export const BoxWithPhoneIllustration = (props: SVGProps<SVGSVGElement>) => {
             })}
             <text x="1245" y="200" fontFamily="'DM Sans',sans-serif" fontSize="21" fill="#94a3b8">Product ID</text>
             <text x="1245" y="243" fontFamily="'DM Sans',sans-serif" fontSize="28" fontWeight="700" fill="#0f172a">GTIN 123456789012</text>
-            <circle cx="1257" cy="280" r="18" fill="#10b981" />
+            <circle cx="1257" cy="280" r="18" fill="#10b981" className="bwp-pulse-1" />
             <path d="M 1251 280 L 1255 284 L 1263 274" stroke="white" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             <text x="1280" y="285" fontFamily="'DM Sans',sans-serif" fontSize="22" fontWeight="700" fill="#10b981">Scan Successful</text>
         </svg>
@@ -1218,8 +1330,9 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
                     <stop offset="100%" stopColor="#e2ecf9" />
                 </linearGradient>
                 <linearGradient id="wh-beam" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#7dd3fc" stopOpacity="0.05" />
-                    <stop offset="100%" stopColor="#7dd3fc" stopOpacity="0.55" />
+                    <stop offset="0%" stopColor="#7dd3fc" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#7dd3fc" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#7dd3fc" stopOpacity="1" />
                 </linearGradient>
                 <filter id="wh-shadow" x="-30%" y="-30%" width="160%" height="160%">
                     <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#94a3b8" floodOpacity="0.28" />
@@ -1227,6 +1340,57 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <filter id="wh-blur" x="-60%" y="-60%" width="220%" height="220%">
                     <feGaussianBlur stdDeviation="20" />
                 </filter>
+                <style>{`
+                    @keyframes whDashFlow {
+                        from { stroke-dashoffset: 0; }
+                        to { stroke-dashoffset: -10; }
+                    }
+                    @keyframes whScanSweep {
+                        0%, 100% { transform: translateY(-16px); opacity: 0.2; }
+                        50% { transform: translateY(16px); opacity: 1; }
+                    }
+                    @keyframes whScanSweepB {
+                        0%, 100% { transform: translateY(-20px); opacity: 0.2; }
+                        50% { transform: translateY(20px); opacity: 1; }
+                    }
+                    @keyframes whBracketPulse {
+                        0%, 100% { opacity: 0.45; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes whPulse {
+                        0%, 100% { opacity: 0.5; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes whLampSwing {
+                        0%, 100% { transform: rotate(-3deg); }
+                        50% { transform: rotate(3deg); }
+                    }
+                    @keyframes whGlow {
+                        0%, 100% { opacity: 0.5; }
+                        50% { opacity: 1; }
+                    }
+                    .wh-dash-flow {
+                        animation: whDashFlow 1.1s linear infinite;
+                    }
+                    .wh-scan-sweep {
+                        animation: whScanSweep 2.4s ease-in-out infinite;
+                    }
+                    .wh-scan-sweep-b {
+                        animation: whScanSweepB 2.8s ease-in-out infinite 0.6s;
+                    }
+                    .wh-bracket-pulse { animation: whBracketPulse 2.2s ease-in-out infinite; }
+                    .wh-pulse { animation: whPulse 2.4s ease-in-out infinite; }
+                    .wh-pulse-1 { animation: whPulse 2s ease-in-out infinite 0.4s; }
+                    .wh-lamp {
+                        transform-origin: 920px 80px;
+                        animation: whLampSwing 6s ease-in-out infinite;
+                    }
+                    .wh-glow { animation: whGlow 2.2s ease-in-out infinite; }
+                    @media (prefers-reduced-motion: reduce) {
+                        .wh-dash-flow, .wh-scan-sweep, .wh-scan-sweep-b, .wh-bracket-pulse,
+                        .wh-pulse, .wh-pulse-1, .wh-lamp, .wh-glow { animation: none; }
+                    }
+                `}</style>
             </defs>
 
             {/* Back wall with window grid */}
@@ -1239,9 +1403,12 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
             ))}
 
             {/* Hanging lamp */}
-            <line x1="920" y1="80" x2="920" y2="150" stroke="#a9c1e0" strokeWidth="3" />
-            <path d="M 885 150 L 955 150 L 940 185 L 900 185 Z" fill="#c7d7ee" stroke="#a9c1e0" strokeWidth="2" />
-            <circle cx="920" cy="195" r="9" fill="#eef4fc" stroke="#a9c1e0" strokeWidth="2" />
+            <g className="wh-lamp">
+                <line x1="920" y1="80" x2="920" y2="150" stroke="#a9c1e0" strokeWidth="3" />
+                <path d="M 885 150 L 955 150 L 940 185 L 900 185 Z" fill="#c7d7ee" stroke="#a9c1e0" strokeWidth="2" />
+                <circle cx="920" cy="195" r="9" fill="#eef4fc" stroke="#a9c1e0" strokeWidth="2" />
+            </g>
+            <circle cx="920" cy="195" r="26" fill="#93c5fd" opacity="0.4" filter="url(#wh-blur)" className="wh-glow" />
 
             {/* Shelving unit */}
             <g stroke="#aec4e3" strokeWidth="4" fill="none">
@@ -1289,7 +1456,7 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
 
             {/* ── Scan icon badge (top-left) ── */}
             <rect x="480" y="220" width="135" height="115" rx="16" fill="white" filter="url(#wh-shadow)" />
-            <g stroke="#2563eb" strokeWidth="3.5" strokeLinecap="round" fill="none">
+            <g stroke="#2563eb" strokeWidth="3.5" strokeLinecap="round" fill="none" className="wh-bracket-pulse">
                 <path d="M 512 250 V 240 H 522" />
                 <path d="M 572 240 H 582 V 250" />
                 <path d="M 512 305 V 315 H 522" />
@@ -1300,7 +1467,8 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
                 const startX = 547 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2.6 + 2, 0);
                 return <rect key={i} x={startX} y="262" width={w * 2.6} height="30" fill="#1e293b" />;
             })}
-            <path d="M 615 300 Q 660 320 700 320 Q 730 320 745 340" stroke="#2563eb" strokeWidth="2.5" strokeDasharray="5 5" fill="none" />
+            <rect x="518" y="277" width="58" height="6" rx="2" fill="url(#wh-beam)" className="wh-scan-sweep" />
+            <path d="M 615 300 Q 660 320 700 320 Q 730 320 745 340" stroke="#2563eb" strokeWidth="2.5" strokeDasharray="5 5" fill="none" className="wh-dash-flow" />
 
             {/* ── Worker (side profile) ── */}
             <g>
@@ -1335,12 +1503,12 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
             </g>
 
             {/* Scan beam to box */}
-            <path d="M 995 470 L 1150 500 L 1150 600 L 995 495 Z" fill="url(#wh-beam)" />
+            <path d="M 995 482 L 1150 500 L 1150 600 L 995 495 Z" fill="url(#wh-beam)" className="wh-pulse" />
 
             {/* Green success badge */}
-            <circle cx="1075" cy="405" r="26" fill="#10b981" filter="url(#wh-shadow)" />
+            <circle cx="1075" cy="405" r="26" fill="#10b981" filter="url(#wh-shadow)" className="wh-pulse-1" />
             <path d="M 1064 405 L 1071 412 L 1088 393" stroke="white" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <g stroke="#34d399" strokeWidth="2.5" strokeLinecap="round">
+            <g stroke="#34d399" strokeWidth="2.5" strokeLinecap="round" className="wh-bracket-pulse">
                 <line x1="1075" y1="368" x2="1075" y2="358" />
                 <line x1="1108" y1="380" x2="1116" y2="373" />
                 <line x1="1040" y1="380" x2="1032" y2="373" />
@@ -1360,6 +1528,7 @@ export const WarehouseIllustration = (props: SVGProps<SVGSVGElement>) => {
                     const startX = 1240 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2.8 + 2, 0);
                     return <rect key={i} x={startX} y="535" width={w * 2.8} height="42" fill="#1e293b" />;
                 })}
+                <rect x="1190" y="554" width="98" height="5" rx="2.5" fill="url(#wh-beam)" className="wh-scan-sweep-b" />
             </g>
 
             {/* Warning icons on box */}
@@ -1483,16 +1652,78 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
                 <marker id="sfs-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                     <path d="M2 1L8 5L2 9" fill="none" stroke="#3b82f6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </marker>
+                <style>{`
+                    @keyframes sfsDashFlow {
+                        from { stroke-dashoffset: 0; }
+                        to { stroke-dashoffset: -12; }
+                    }
+                    @keyframes sfsScanSweep {
+                        0%, 100% { transform: translateY(-18px); opacity: 0.25; }
+                        50% { transform: translateY(18px); opacity: 1; }
+                    }
+                    @keyframes sfsBracketPulse {
+                        0%, 100% { opacity: 0.45; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes sfsPulse {
+                        0%, 100% { opacity: 0.45; }
+                        50% { opacity: 1; }
+                    }
+                    @keyframes sfsFloat {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-8px); }
+                    }
+                    @keyframes sfsRaySpin {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                    @keyframes sfsBlob {
+                        0%, 100% { opacity: 0.3; }
+                        50% { opacity: 0.42; }
+                    }
+                    .sfs-dash-flow {
+                        animation: sfsDashFlow 1.2s linear infinite;
+                    }
+                    .sfs-scan-sweep {
+                        animation: sfsScanSweep 2.4s ease-in-out infinite;
+                    }
+                    .sfs-scan-sweep-b {
+                        animation: sfsScanSweep 2.8s ease-in-out infinite 0.6s;
+                    }
+                    .sfs-bracket-pulse { animation: sfsBracketPulse 2.2s ease-in-out infinite; }
+                    .sfs-pulse { animation: sfsPulse 2.4s ease-in-out infinite; }
+                    .sfs-pulse-1 { animation: sfsPulse 2.4s ease-in-out infinite 0.3s; }
+                    .sfs-pulse-2 { animation: sfsPulse 2.4s ease-in-out infinite 0.7s; }
+                    .sfs-pulse-3 { animation: sfsPulse 2.4s ease-in-out infinite 1.1s; }
+                    .sfs-pulse-4 { animation: sfsPulse 2.4s ease-in-out infinite 1.5s; }
+                    .sfs-float { animation: sfsFloat 6s ease-in-out infinite; }
+                    .sfs-float-1 { animation: sfsFloat 7s ease-in-out infinite 1.2s; }
+                    .sfs-step-1 { animation-delay: 0s; }
+                    .sfs-step-2 { animation-delay: 0.5s; }
+                    .sfs-step-3 { animation-delay: 1s; }
+                    .sfs-step-4 { animation-delay: 1.5s; }
+                    .sfs-ray-spin {
+                        transform-origin: 1825px 335px;
+                        animation: sfsRaySpin 24s linear infinite;
+                    }
+                    .sfs-blob { animation: sfsBlob 5s ease-in-out infinite; }
+                    .sfs-blob-1 { animation: sfsBlob 6s ease-in-out infinite 1s; }
+                    @media (prefers-reduced-motion: reduce) {
+                        .sfs-dash-flow, .sfs-scan-sweep, .sfs-scan-sweep-b, .sfs-bracket-pulse,
+                        .sfs-pulse, .sfs-pulse-1, .sfs-pulse-2, .sfs-pulse-3, .sfs-pulse-4,
+                        .sfs-float, .sfs-float-1, .sfs-ray-spin, .sfs-blob, .sfs-blob-1 { animation: none; }
+                    }
+                `}</style>
             </defs>
 
             {/* Soft blobs behind each step */}
-            <circle cx="200" cy="320" r="200" fill="#c9d9ee" opacity="0.35" filter="url(#sfs-blur)" />
-            <circle cx="590" cy="320" r="200" fill="#c9d9ee" opacity="0.3" filter="url(#sfs-blur)" />
+            <circle cx="200" cy="320" r="200" fill="#c9d9ee" opacity="0.35" filter="url(#sfs-blur)" className="sfs-blob" />
+            <circle cx="590" cy="320" r="200" fill="#c9d9ee" opacity="0.3" filter="url(#sfs-blur)" className="sfs-blob-1" />
 
             {/* Connector arrows */}
-            <line x1="380" y1="335" x2="440" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" />
-            <line x1="765" y1="335" x2="825" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" />
-            <line x1="1445" y1="335" x2="1505" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" />
+            <line x1="380" y1="335" x2="440" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" className="sfs-dash-flow" />
+            <line x1="765" y1="335" x2="825" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" className="sfs-dash-flow" />
+            <line x1="1445" y1="335" x2="1505" y2="335" stroke="#3b82f6" strokeWidth="2.5" strokeDasharray="6 6" markerEnd="url(#sfs-arrow)" className="sfs-dash-flow" />
 
             {/* ── Step 1: worker with tablet ── */}
             <g>
@@ -1532,8 +1763,8 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
                 const startX = 605 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2 + 1.6, 0);
                 return <rect key={i} x={startX} y="340" width={w * 2} height="35" fill="#1e293b" />;
             })}
-            <rect x="500" y="350" width="200" height="8" fill="url(#sfs-scanline)" />
-            <g stroke="#22d3ee" strokeWidth="3" strokeLinecap="round" fill="none">
+            <rect x="500" y="350" width="200" height="8" fill="url(#sfs-scanline)" className="sfs-scan-sweep" />
+            <g stroke="#22d3ee" strokeWidth="3" strokeLinecap="round" fill="none" className="sfs-bracket-pulse">
                 <path d="M 505 300 V 285 H 520" />
                 <path d="M 660 285 H 675 V 300" />
                 <path d="M 505 415 V 430 H 520" />
@@ -1576,9 +1807,9 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
                 const startX = 1250 - totalW / 2 + arr.slice(0, i).reduce((s, v) => s + v * 2 + 1.6, 0);
                 return <rect key={i} x={startX} y="245" width={w * 2} height="32" fill="#1e293b" />;
             })}
-            <rect x="1155" y="258" width="205" height="6" fill="url(#sfs-scanline)" />
+            <rect x="1155" y="258" width="205" height="6" fill="url(#sfs-scanline)" className="sfs-scan-sweep-b" />
             <rect x="1146" y="330" width="223" height="182" rx="12" fill="white" />
-            <circle cx="1167" cy="349" r="10" fill="#10b981" />
+            <circle cx="1167" cy="349" r="10" fill="#10b981" className="sfs-pulse" />
             <path d="M 1163 349 L 1166 352 L 1172 345" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             <text x="1183" y="353" fontFamily="'DM Sans',sans-serif" fontSize="13" fontWeight="700" fill="#0f172a">Barcode Detected</text>
             <text x="1160" y="388" fontFamily="'DM Sans',sans-serif" fontSize="11" fill="#64748b">GTIN</text>
@@ -1599,23 +1830,23 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
             <rect x="1220" y="512" width="70" height="6" rx="3" fill="#334155" />
 
             {/* ── Step 4: sync loop + system card ── */}
-            <g fill="none" stroke="#93c5fd" strokeWidth="2" strokeDasharray="6 6">
+            <g fill="none" stroke="#93c5fd" strokeWidth="2" strokeDasharray="6 6" className="sfs-dash-flow">
                 <path d="M 1670 280 Q 1730 210 1820 280" markerEnd="url(#sfs-arrow)" />
                 <path d="M 1830 320 Q 1830 380 1770 410" markerEnd="url(#sfs-arrow)" />
                 <path d="M 1710 410 Q 1650 380 1650 320" markerEnd="url(#sfs-arrow)" />
             </g>
             <circle cx="1740" cy="240" r="30" fill="white" filter="url(#sfs-shadow)" />
-            <path d="M 1725 250 q -12 -18 8 -20 q 3 -12 17 -6 q 12 -4 14 10 q 10 2 6 14 q -2 6 -10 6 h -28 q -10 0 -8 -6 z" fill="#3b82f6" />
+            <path d="M 1725 250 q -12 -18 8 -20 q 3 -12 17 -6 q 12 -4 14 10 q 10 2 6 14 q -2 6 -10 6 h -28 q -10 0 -8 -6 z" fill="#3b82f6" className="sfs-float" />
             <circle cx="1650" cy="335" r="30" fill="white" filter="url(#sfs-shadow)" />
-            <g fill="#2563eb">
+            <g fill="#2563eb" className="sfs-float-1">
                 <ellipse cx="1650" cy="322" rx="12" ry="5" />
                 <path d="M 1638 322 v 20 a 12 5 0 0 0 24 0 v -20" />
                 <ellipse cx="1650" cy="335" rx="12" ry="5" fill="#1d4ed8" />
             </g>
-            <circle cx="1740" cy="320" r="42" fill="#10b981" filter="url(#sfs-shadow)" />
+            <circle cx="1740" cy="320" r="42" fill="#10b981" filter="url(#sfs-shadow)" className="sfs-pulse" />
             <path d="M 1723 326 L 1735 338 L 1760 310" stroke="white" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             <circle cx="1825" cy="335" r="30" fill="white" filter="url(#sfs-shadow)" />
-            <g fill="none" stroke="#2563eb" strokeWidth="2.4">
+            <g fill="none" stroke="#2563eb" strokeWidth="2.4" className="sfs-ray-spin">
                 <circle cx="1825" cy="335" r="9" />
                 <circle cx="1825" cy="335" r="3.4" fill="#2563eb" stroke="none" />
                 {[0, 60, 120, 180, 240, 300].map((deg) => {
@@ -1640,13 +1871,13 @@ export const ScanFlowStepsIllustration = (props: SVGProps<SVGSVGElement>) => {
             </g>
             <text x="1645" y="440" fontFamily="'DM Sans',sans-serif" fontSize="12" fill="#64748b">GTIN</text>
             <text x="1680" y="443" fontFamily="'DM Sans',sans-serif" fontSize="16" fontWeight="700" fill="#0f172a">123456789012</text>
-            <rect x="1645" y="455" width="120" height="24" rx="12" fill="#10b981" />
+            <rect x="1645" y="455" width="120" height="24" rx="12" fill="#10b981" className="sfs-pulse-2" />
             <text x="1657" y="471" fontFamily="'DM Sans',sans-serif" fontSize="10.5" fontWeight="700" fill="white">Added to System</text>
 
             {/* ── Bottom captions ── */}
-            {STEPS.map((s) => (
+            {STEPS.map((s, si) => (
                 <g key={s.num}>
-                    <circle cx={s.x + 25} cy="622" r="20" fill="#93c5fd" />
+                    <circle cx={s.x + 25} cy="622" r="20" fill="#93c5fd" className={`sfs-pulse sfs-step-${si + 1}`} />
                     <text x={s.x + 25} y="628" textAnchor="middle" fontFamily="'DM Sans',sans-serif" fontSize="21" fontWeight="700" fill="white">
                         {s.num}
                     </text>

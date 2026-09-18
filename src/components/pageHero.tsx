@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { LucideIcon } from "lucide-react";
 import WaveDivider from "@/components/sections/WaveDivider";
+import HeroDataFlowBackground from "@/components/ui/HeroDataFlowBackground";
 
 interface PageHeroProps {
   badgeIcon?: LucideIcon;
@@ -30,12 +31,10 @@ const PageHero = ({
   subtitleClassName,
 }: PageHeroProps) => {
   return (
-    <section className="relative overflow-hidden bg-grid-stripes">
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(107,193,224,0.22),transparent_38%),radial-gradient(circle_at_80%_0%,rgba(19,53,90,0.14),transparent_44%)]" />
-      <div className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full bg-accent-2/10 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-[440px] h-[440px] rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
+    <section className="relative isolate overflow-hidden">
+      <HeroDataFlowBackground />
 
-      <div className={`px-5 sm:px-8 lg:px-[70px] pt-20 pb-24 sm:pt-28 sm:pb-32 ${centered ? "text-center" : ""}`}>
+      <div className={`relative z-10 px-5 sm:px-8 lg:px-[70px] pt-20 pb-24 sm:pt-28 sm:pb-32 ${centered ? "text-center" : ""}`}>
         {visual && !centered ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-6 text-left">
