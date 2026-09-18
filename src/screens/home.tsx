@@ -14,6 +14,7 @@ import WhyUseScanflowSection from "@/components/sections/WhyUseScanflowSection";
 import { BarcodeReliabilityMockup } from "@/components/ui/illustration";
 import dynamic from 'next/dynamic';
 import ScanFlowDemoScene from '@/components/ui/Scanillusration/Scanflowdemoscene';
+import HeroDataFlowBackground from '@/components/ui/HeroDataFlowBackground';
 const ScanFlowHero = dynamic(() => import('@/components/ui/Mobileillustration/Scanflowhero'), { ssr: false });
 
 const faqs = [
@@ -56,15 +57,10 @@ export default function Home() {
   return (
     <Layout>
       <div className="pt-26 relative isolate overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-20 opacity-45" />
-        <div className="pointer-events-none absolute -top-24 -left-24 -z-10 h-72 w-72 rounded-full bg-secondary/15 blur-3xl animate-drift" />
-        <div className="pointer-events-none absolute top-[28rem] -right-20 -z-10 h-80 w-80 rounded-full bg-primary/12 blur-3xl animate-drift [animation-delay:1.4s]" />
-        <div className="pointer-events-none absolute bottom-10 left-1/3 -z-10 h-64 w-64 rounded-full bg-accent-2/20 blur-3xl animate-drift [animation-delay:2.2s]" />
-
         {/* HeroSection */}
-        <section className="relative overflow-hidden bg-grid-stripes">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(107,193,224,0.22),transparent_38%),radial-gradient(circle_at_80%_0%,rgba(19,53,90,0.14),transparent_44%)]" />
-          <div className="px-5 sm:px-8 lg:px-[70px] py-16 md:py-24">
+        <section className="relative isolate overflow-hidden">
+          <HeroDataFlowBackground />
+          <div className="relative z-10 px-5 sm:px-8 lg:px-[70px] py-16 md:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6">
                 <p className="inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-sm mb-6">

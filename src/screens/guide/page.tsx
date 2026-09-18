@@ -47,7 +47,7 @@ export default function Guide() {
         </section>
 
         {/* Full-Width 2-Column Showcase: 30% Left Text & 70% Right 3D Model on White Background */}
-        <section className="relative py-16 lg:py-24 px-4 sm:px-8 lg:px-14 xl:px-20 bg-white border-t border-[#EAECF3] overflow-hidden w-full">
+        <section className="relative py-16 lg:py-24 px-4 sm:px-8 lg:px-14 xl:px-20 bg-[#F7F9FC] border-t border-[#EAECF3] overflow-hidden w-full">
           {/* Subtle soft ambient light glow */}
           <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[700px] h-[550px] bg-secondary/10 blur-[150px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-1/4 w-[450px] h-[350px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
