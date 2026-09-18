@@ -13,7 +13,7 @@ import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import WhyUseScanflowSection from "@/components/sections/WhyUseScanflowSection";
 import { BarcodeReliabilityMockup } from "@/components/ui/illustration";
 import dynamic from 'next/dynamic';
-
+import ScanFlowDemoScene from '@/components/ui/Scanillusration/Scanflowdemoscene';
 const ScanFlowHero = dynamic(() => import('@/components/ui/Mobileillustration/Scanflowhero'), { ssr: false });
 
 const faqs = [
@@ -112,7 +112,7 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-6">
-                <ScanFlowHero
+                <ScanFlowDemoScene
                 />
               </div>
             </div>

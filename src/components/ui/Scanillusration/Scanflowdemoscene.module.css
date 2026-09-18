@@ -1,0 +1,799 @@
+/* Scanflowdemoscene.module.css */
+
+.sceneContainer {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    height: 590px;
+    margin: 0 auto;
+    background: transparent;
+    overflow: visible;
+    user-select: none;
+}
+
+/* ---------- Warehouse Background Shelf ---------- */
+
+.warehouseBackground {
+    position: absolute;
+    left: 20%;
+    top: 6%;
+    width: 360px;
+    height: 270px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.shelfFrame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.shelfPillarLeft {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: #BFDBFE;
+    border-radius: 2px;
+}
+
+.shelfPillarRight {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: #BFDBFE;
+    border-radius: 2px;
+}
+
+.shelfLevel1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 48%;
+    height: 8px;
+    background: #93C5FD;
+    border-radius: 2px;
+}
+
+.shelfLevel2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+    background: #93C5FD;
+    border-radius: 2px;
+}
+
+/* Background Cardboard Boxes on Shelf */
+.shelfBoxesRowTop {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 14%;
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.bgBox1 {
+    width: 64px;
+    height: 56px;
+    background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
+    border: 1px solid #D97706;
+    border-radius: 4px;
+}
+
+.bgBox2 {
+    width: 82px;
+    height: 68px;
+    background: linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
+    border: 1px solid #B45309;
+    border-radius: 4px;
+}
+
+.bgBox3 {
+    width: 56px;
+    height: 50px;
+    background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
+    border: 1px solid #D97706;
+    border-radius: 4px;
+}
+
+.shelfBoxesRowBottom {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+.bgBox4 {
+    width: 72px;
+    height: 60px;
+    background: linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
+    border: 1px solid #B45309;
+    border-radius: 4px;
+}
+
+.bgBox5 {
+    width: 60px;
+    height: 50px;
+    background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%);
+    border: 1px solid #D97706;
+    border-radius: 4px;
+}
+
+/* ---------- Foreground Desk Platform ---------- */
+
+.deskSurface {
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    bottom: 4%;
+    height: 140px;
+    background: linear-gradient(180deg, #F8FAFC 0%, #EDF2F7 100%);
+    border-radius: 20px 20px 0 0;
+    border-top: 2px solid #E2E8F0;
+    box-shadow: 0 -10px 30px rgba(19, 53, 90, 0.04);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.deskFrontEdge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 24px;
+    background: #E2E8F0;
+    border-top: 1px solid #CBD5E1;
+}
+
+/* ---------- Potted Plant on Desk ---------- */
+
+.plantContainer {
+    position: absolute;
+    right: 33%;
+    bottom: 9%;
+    width: 95px;
+    height: 125px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* ---------- Worker Container ---------- */
+
+.workerContainer {
+    position: absolute;
+    left: 0%;
+    bottom: 2%;
+    width: 320px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ---------- Dynamic Light Cone Beam SVG ---------- */
+
+.beamOverlaySvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 12;
+    overflow: visible;
+}
+
+.pulseBeam {
+    animation: beamPulse 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes beamPulse {
+    0% {
+        opacity: 0.65;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ---------- Draggable Cardboard Product Box ---------- */
+
+.boxContainer {
+    position: absolute;
+    left: 31%;
+    bottom: 9%;
+    width: 240px;
+    height: 220px;
+    touch-action: none;
+    filter: drop-shadow(0 16px 22px rgba(19, 53, 90, 0.16));
+    z-index: 14;
+    transition: filter 0.2s ease;
+    will-change: transform;
+}
+
+.boxContainer:active {
+    filter: drop-shadow(0 24px 30px rgba(19, 53, 90, 0.28));
+}
+
+/* ---------- Right Side: CTAS Titanium Phone Mockup (Mobileillustration Style) ---------- */
+
+.phoneContainer {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    width: 325px;
+    height: 565px;
+    z-index: 25;
+}
+
+.phoneMock {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #13355A;
+    border: 5px solid #1B4A75;
+    border-radius: 42px;
+    box-shadow:
+        0 25px 60px -15px rgba(19, 53, 90, 0.35),
+        0 0 0 1px rgba(60, 154, 196, 0.45),
+        inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Side Hardware Buttons */
+.phoneSidePower {
+    position: absolute;
+    right: -8px;
+    top: 100px;
+    width: 4px;
+    height: 48px;
+    background: #3C9AC4;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 1px 0 3px rgba(19, 53, 90, 0.4);
+}
+
+.phoneSideVolUp {
+    position: absolute;
+    left: -8px;
+    top: 90px;
+    width: 4px;
+    height: 38px;
+    background: #3C9AC4;
+    border-radius: 3px 0 0 3px;
+    box-shadow: -1px 0 3px rgba(19, 53, 90, 0.4);
+}
+
+.phoneSideVolDown {
+    position: absolute;
+    left: -8px;
+    top: 136px;
+    width: 4px;
+    height: 38px;
+    background: #3C9AC4;
+    border-radius: 3px 0 0 3px;
+    box-shadow: -1px 0 3px rgba(19, 53, 90, 0.4);
+}
+
+.phoneInnerScreen {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 35px;
+    padding: 8px 12px 14px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(19, 53, 90, 0.1);
+}
+
+/* Dynamic Island */
+.phoneNotch {
+    width: 95px;
+    height: 20px;
+    background: #071526;
+    border-radius: 10px;
+    margin: 0 auto 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.notchCam {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #13355A;
+}
+
+.notchSensor {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #1B4A75;
+}
+
+/* Status Bar */
+.phoneStatusRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #13355A;
+    padding: 0 6px 4px;
+}
+
+.statusTime {
+    font-variant-numeric: tabular-nums;
+}
+
+.statusIcons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.signalIcon {
+    font-size: 8px;
+    color: #3C9AC4;
+    letter-spacing: 1px;
+}
+
+.wifiIcon {
+    font-size: 9px;
+    color: #13355A;
+}
+
+.batteryPill {
+    width: 18px;
+    height: 9px;
+    border: 1.2px solid #13355A;
+    border-radius: 3px;
+    padding: 1px;
+    display: flex;
+}
+
+.batteryLevel {
+    width: 85%;
+    height: 100%;
+    background: #6BC1E0;
+    border-radius: 1px;
+}
+
+/* CTAS App Header */
+.phoneHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 4px 8px;
+    border-bottom: 1px solid rgba(19, 53, 90, 0.08);
+    margin-bottom: 6px;
+}
+
+.brandTitle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.brandIcon {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #1B4A75;
+    border: 1px solid #3C9AC4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brandText {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #13355A;
+    letter-spacing: 0.1px;
+}
+
+.brandAccent {
+    color: #3C9AC4;
+    font-weight: 800;
+}
+
+.fpsBadge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #0A1B2E;
+    border: 1px solid rgba(60, 154, 196, 0.4);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 8.5px;
+    font-weight: 800;
+    color: #6BC1E0;
+}
+
+.fpsDot {
+    width: 4.5px;
+    height: 4.5px;
+    border-radius: 50%;
+    background: #10B981;
+    animation: pulseFps 1.5s infinite;
+}
+
+@keyframes pulseFps {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+    }
+}
+
+/* ---------- Live Camera Viewfinder Card ---------- */
+
+.viewfinderCard {
+    width: 100%;
+    height: 185px;
+    border-radius: 18px;
+    background: #E2E8F0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(19, 53, 90, 0.08);
+}
+
+.viewfinderFeed {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #E0ECF8 0%, #D4E4F5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewfinderBoxWrapper {
+    width: 155px;
+    height: 140px;
+    transform: scale(0.95);
+    filter: drop-shadow(0 8px 14px rgba(19, 53, 90, 0.15));
+}
+
+/* Reticle brackets on camera feed */
+.reticleFrame {
+    position: absolute;
+    inset: 14px 18px;
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 3px solid #38BDF8;
+    border-radius: 2px;
+    filter: drop-shadow(0 0 4px #6BC1E0);
+}
+
+.cTL {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.cTR {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.cBL {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.cBR {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+/* Barcode specific target highlight */
+.barcodeHighlightBox {
+    position: absolute;
+    right: 100px;
+    bottom: 40px;
+    width: 90px;
+    height: 58px;
+    border: 2px solid rgba(56, 189, 248, 0.85);
+    background: rgba(56, 189, 248, 0.14);
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+.innerCorner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #0284C7;
+}
+
+.iTL {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.iTR {
+    top: -2px;
+    right: -2px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.iBL {
+    bottom: -2px;
+    left: -2px;
+    border-right: none;
+    border-top: none;
+}
+
+.iBR {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Laser Sweep */
+.scanSweep {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    height: 2.5px;
+    background: #38BDF8;
+    box-shadow: 0 0 10px 2px rgba(56, 189, 248, 0.85);
+    opacity: 0;
+    z-index: 5;
+}
+
+.sweepActive {
+    opacity: 1;
+    animation: liveSweep 1.1s ease-in-out infinite;
+}
+
+@keyframes liveSweep {
+    0% {
+        top: 18%;
+    }
+
+    50% {
+        top: 82%;
+    }
+
+    100% {
+        top: 18%;
+    }
+}
+
+/* ---------- Result Card Overlay ---------- */
+
+.resultCard {
+    flex: 1;
+    margin-top: 8px;
+    background: #FFFFFF;
+    border: 1px solid #F1F5F9;
+    border-radius: 18px;
+    padding: 10px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 16px rgba(19, 53, 90, 0.05);
+}
+
+.resultHead {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 5px;
+}
+
+.resultCheck {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #10B981;
+    color: #FFFFFF;
+    font-size: 10.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.resultTitle {
+    font-size: 13px;
+    font-weight: 800;
+    color: #10B981;
+    letter-spacing: -0.2px;
+}
+
+/* GTIN Row */
+.gtinRow {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.gtinLabel {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #64748B;
+}
+
+.gtinValue {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: #13355A;
+    letter-spacing: 0.2px;
+}
+
+/* Metadata List */
+.detailsList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.detailRow {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+}
+
+.detailLabel {
+    width: 56px;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.detailColon {
+    width: 12px;
+    color: #94A3B8;
+    text-align: center;
+}
+
+.detailValue {
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.detailStatusValid {
+    font-weight: 700;
+    color: #10B981;
+}
+
+/* ---------- Action Button & Thumb Pointer ---------- */
+
+.actionBtnWrapper {
+    position: relative;
+    margin-top: auto;
+}
+
+.actionBtn {
+    width: 100%;
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #13355A 0%, #1B4A75 50%, #3C9AC4 100%);
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(19, 53, 90, 0.3);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actionBtn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1B4A75 0%, #3C9AC4 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(60, 154, 196, 0.4);
+}
+
+.actionBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Animated Hand Pointer Cursor & Click Sparkles */
+.thumbPointer {
+    position: absolute;
+    right: 26%;
+    bottom: -16px;
+    pointer-events: none;
+    animation: tapHandCursor 3.4s infinite cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 25;
+}
+
+.clickRays {
+    transform-origin: 24px 16px;
+    animation: raySparkle 3.4s infinite cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes tapHandCursor {
+
+    0%,
+    20% {
+        transform: translateY(16px) scale(0.92);
+        opacity: 0.9;
+    }
+
+    30% {
+        transform: translateY(-4px) scale(1.06);
+        opacity: 1;
+    }
+
+    36% {
+        transform: translateY(3px) scale(0.96);
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        transform: translateY(16px) scale(0.92);
+        opacity: 0.9;
+    }
+}
+
+@keyframes raySparkle {
+
+    0%,
+    26% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    32% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    38% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    44%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
