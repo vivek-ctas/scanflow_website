@@ -12,11 +12,15 @@ export default function FloatingActions() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const currentScroll = window.scrollY;
 
       if (totalHeight > 0) {
-        const progress = Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100));
+        const progress = Math.min(
+          100,
+          Math.max(0, (currentScroll / totalHeight) * 100),
+        );
         setScrollProgress(progress);
       }
 
@@ -42,7 +46,8 @@ export default function FloatingActions() {
   // SVG circle calculation: radius 22, circumference = 2 * π * 22 ≈ 138.23
   const radius = 22;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
+  const strokeDashoffset =
+    circumference - (scrollProgress / 100) * circumference;
 
   return (
     <>
@@ -105,7 +110,10 @@ export default function FloatingActions() {
               className="group relative flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-white/95 backdrop-blur-md text-primary shadow-[0_8px_30px_rgba(19,53,90,0.18)] hover:shadow-[0_12px_36px_rgba(60,154,196,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-secondary/30 cursor-pointer overflow-visible"
             >
               {/* SVG Circular Progress Ring */}
-              <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-1" viewBox="0 0 52 52">
+              <svg
+                className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-1"
+                viewBox="0 0 52 52"
+              >
                 {/* Track Circle */}
                 <circle
                   cx="26"
@@ -129,7 +137,13 @@ export default function FloatingActions() {
                   className="transition-[stroke-dashoffset] duration-150 ease-out"
                 />
                 <defs>
-                  <linearGradient id="top-progress-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient
+                    id="top-progress-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
                     <stop offset="0%" stopColor="#3C9AC4" />
                     <stop offset="100%" stopColor="#13355A" />
                   </linearGradient>
@@ -153,7 +167,9 @@ export default function FloatingActions() {
                   className="hidden sm:flex items-center mr-3 px-3.5 py-1.5 bg-slate-900/90 backdrop-blur-md text-white text-xs font-semibold rounded-full shadow-lg pointer-events-none"
                 >
                   <span>Back to top</span>
-                  <span className="ml-2 font-mono text-[11px] text-[#8FE7FF]">{Math.round(scrollProgress)}%</span>
+                  <span className="ml-2 font-mono text-[11px] text-[#8FE7FF]">
+                    {Math.round(scrollProgress)}%
+                  </span>
                 </motion.div>
               )}
             </AnimatePresence>

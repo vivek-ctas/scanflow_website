@@ -3,17 +3,23 @@
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
-import { DashboardIllustration, ScanFlowStepsIllustration } from "@/components/ui/illustration";
+import {
+  DashboardIllustration,
+  ScanFlowStepsIllustration,
+} from "@/components/ui/illustration";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 
-const ScanFlowHero = dynamic(() => import("@/components/ui/Mobileillustration/Scanflowhero"), { ssr: false });
+const ScanFlowHero = dynamic(
+  () => import("@/components/ui/Mobileillustration/Scanflowhero"),
+  { ssr: false },
+);
 
 export default function Guide() {
   return (
     <Layout>
-      <div className="pt-26">
+      <div className="pt-16">
         <PageHero
           badgeIcon={Zap}
           badgeText="Getting Started Guide"
@@ -54,7 +60,6 @@ export default function Guide() {
 
           <div className="w-full max-w-[1720px] mx-auto">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-10">
-              
               {/* Left Column: Text Content (~30%) */}
               <div className="w-full lg:w-[32%] xl:w-[30%] flex-shrink-0 flex flex-col items-start z-10">
                 {/* Pill badge */}
@@ -74,7 +79,10 @@ export default function Guide() {
 
                 {/* Sub-copy */}
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-6">
-                  Transform any standard mobile device into an enterprise-grade barcode scanner. ScanFlow effortlessly decodes blurry, damaged, tilted, low-light, dirty, and partially covered barcodes in milliseconds.
+                  Transform any standard mobile device into an enterprise-grade
+                  barcode scanner. ScanFlow effortlessly decodes blurry,
+                  damaged, tilted, low-light, dirty, and partially covered
+                  barcodes in milliseconds.
                 </p>
 
                 {/* Feature highlights list */}
@@ -85,9 +93,14 @@ export default function Guide() {
                     "Zero specialized hardware needed",
                     "99.8% first-read reliability",
                   ].map((feat) => (
-                    <div key={feat} className="flex items-center gap-2.5 text-sm font-medium text-slate-700">
+                    <div
+                      key={feat}
+                      className="flex items-center gap-2.5 text-sm font-medium text-slate-700"
+                    >
                       <div className="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center flex-shrink-0">
-                        <span className="text-secondary text-xs font-bold">✓</span>
+                        <span className="text-secondary text-xs font-bold">
+                          ✓
+                        </span>
                       </div>
                       <span>{feat}</span>
                     </div>
@@ -107,7 +120,6 @@ export default function Guide() {
               <div className="w-full lg:w-[68%] xl:w-[70%] flex justify-center items-center overflow-visible">
                 <ScanFlowHero />
               </div>
-
             </div>
           </div>
         </section>
@@ -116,7 +128,10 @@ export default function Guide() {
         {/* <LiveScanDemo /> */}
 
         {/* cta section */}
-        <section id="cta" className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]">
+        <section
+          id="cta"
+          className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]"
+        >
           {/* Big glow */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-[700px] h-[400px] bg-accent-2/20 blur-[120px] rounded-full" />
@@ -126,7 +141,9 @@ export default function Guide() {
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
             <div className="flex items-end gap-[4px] h-full w-full">
               {Array.from({ length: 60 }).map((_, i) => {
-                const heights = [60, 30, 80, 50, 90, 40, 70, 20, 85, 55, 75, 35];
+                const heights = [
+                  60, 30, 80, 50, 90, 40, 70, 20, 85, 55, 75, 35,
+                ];
                 return (
                   <div
                     key={i}
@@ -148,16 +165,19 @@ export default function Guide() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
                 <Zap className="w-3.5 h-3.5 text-accent-2" />
-                <span className="text-xs font-semibold text-accent-2">Ready in 10 minutes</span>
+                <span className="text-xs font-semibold text-accent-2">
+                  Ready in 10 minutes
+                </span>
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
-                Start scanning{" "}
-                <span className="text-accent-2">in minutes</span>.
+                Start scanning <span className="text-accent-2">in minutes</span>
+                .
               </h2>
 
               <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
-                Integrate ScanFlow&apos;s barcode scanning engine into your web or mobile workflow today. Fast to set up, built to scale.
+                Integrate ScanFlow&apos;s barcode scanning engine into your web
+                or mobile workflow today. Fast to set up, built to scale.
               </p>
 
               {/* CTAs */}

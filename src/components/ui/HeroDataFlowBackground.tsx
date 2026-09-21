@@ -23,7 +23,13 @@ export default function HeroDataFlowBackground() {
       >
         <defs>
           {/* Cyan Glow Gradients */}
-          <linearGradient id="df-grad-primary" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient
+            id="df-grad-primary"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
             <stop offset="0%" stopColor="#0284C7" stopOpacity="0.05" />
             <stop offset="20%" stopColor="#00D2FF" stopOpacity="0.55" />
             <stop offset="55%" stopColor="#38BDF8" stopOpacity="0.6" />
@@ -31,7 +37,13 @@ export default function HeroDataFlowBackground() {
             <stop offset="100%" stopColor="#1B4A75" stopOpacity="0.05" />
           </linearGradient>
 
-          <linearGradient id="df-grad-secondary" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient
+            id="df-grad-secondary"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
             <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.05" />
             <stop offset="35%" stopColor="#00D2FF" stopOpacity="0.4" />
             <stop offset="75%" stopColor="#38BDF8" stopOpacity="0.45" />
@@ -39,9 +51,27 @@ export default function HeroDataFlowBackground() {
           </linearGradient>
 
           {/* Badge Drop Shadow */}
-          <filter id="badge-shadow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#00D2FF" floodOpacity="0.22" />
-            <feDropShadow dx="0" dy="3" stdDeviation="6" floodColor="#13355A" floodOpacity="0.08" />
+          <filter
+            id="badge-shadow"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%"
+          >
+            <feDropShadow
+              dx="0"
+              dy="2"
+              stdDeviation="4"
+              floodColor="#00D2FF"
+              floodOpacity="0.22"
+            />
+            <feDropShadow
+              dx="0"
+              dy="3"
+              stdDeviation="6"
+              floodColor="#13355A"
+              floodOpacity="0.08"
+            />
           </filter>
 
           {/* Keyframe animations */}
@@ -141,19 +171,47 @@ export default function HeroDataFlowBackground() {
         {/* Waypoint Glowing Dots */}
         <g transform="translate(320, 180)">
           <circle cx="0" cy="0" r="2" fill="#00D2FF" opacity="0.8" />
-          <circle cx="0" cy="0" r="5" fill="#00D2FF" opacity="0.2" className="dot-pulse" />
+          <circle
+            cx="0"
+            cy="0"
+            r="5"
+            fill="#00D2FF"
+            opacity="0.2"
+            className="dot-pulse"
+          />
         </g>
         <g transform="translate(760, 85)">
           <circle cx="0" cy="0" r="2" fill="#00D2FF" opacity="0.8" />
-          <circle cx="0" cy="0" r="5" fill="#00D2FF" opacity="0.2" className="dot-pulse" />
+          <circle
+            cx="0"
+            cy="0"
+            r="5"
+            fill="#00D2FF"
+            opacity="0.2"
+            className="dot-pulse"
+          />
         </g>
         <g transform="translate(1100, 160)">
           <circle cx="0" cy="0" r="2" fill="#38BDF8" opacity="0.7" />
-          <circle cx="0" cy="0" r="5" fill="#38BDF8" opacity="0.2" className="dot-pulse" />
+          <circle
+            cx="0"
+            cy="0"
+            r="5"
+            fill="#38BDF8"
+            opacity="0.2"
+            className="dot-pulse"
+          />
         </g>
         <g transform="translate(480, 425)">
           <circle cx="0" cy="0" r="1.8" fill="#00D2FF" opacity="0.7" />
-          <circle cx="0" cy="0" r="4.5" fill="#00D2FF" opacity="0.2" className="dot-pulse" />
+          <circle
+            cx="0"
+            cy="0"
+            r="4.5"
+            fill="#00D2FF"
+            opacity="0.2"
+            className="dot-pulse"
+          />
         </g>
 
         {/* ════════════════════════════════════════════════════════════════
@@ -161,158 +219,182 @@ export default function HeroDataFlowBackground() {
            ════════════════════════════════════════════════════════════════ */}
 
         {/* ── Node 1: Top Left (Upper Arc near badge) ── */}
-        <g transform="translate(180, 195)">
+        <g transform="translate(15, 285) rotate(-20)" opacity="0.6">
           <g className="node-f1">
-          <rect
-            x="0"
-            y="0"
-            width="46"
-            height="28"
-            rx="6"
-            fill="white"
-            fillOpacity="0.92"
-            stroke="#00D2FF"
-            strokeWidth="1"
-            strokeOpacity="0.5"
-            filter="url(#badge-shadow)"
-          />
-          <g stroke="#00D2FF" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none">
-            <path d="M 3 7 V 3 H 7" />
-            <path d="M 39 3 H 43 V 7" />
-            <path d="M 3 21 V 25 H 7" />
-            <path d="M 39 25 H 43 V 21" />
-          </g>
-          <g fill="#13355A" transform="translate(7, 7)">
-            <rect x="0" y="0" width="1.6" height="14" />
-            <rect x="2.8" y="0" width="0.8" height="14" />
-            <rect x="4.8" y="0" width="2" height="14" />
-            <rect x="8" y="0" width="0.8" height="14" />
-            <rect x="10" y="0" width="1.2" height="14" />
-            <rect x="12.5" y="0" width="2.2" height="14" />
-            <rect x="16" y="0" width="0.8" height="14" />
-            <rect x="18.5" y="0" width="1.8" height="14" />
-            <rect x="21.5" y="0" width="0.8" height="14" />
-            <rect x="23.5" y="0" width="2.2" height="14" />
-            <rect x="27" y="0" width="1" height="14" />
-            <rect x="29.5" y="0" width="2" height="14" />
-          </g>
+            <rect
+              x="0"
+              y="0"
+              width="46"
+              height="28"
+              rx="6"
+              fill="white"
+              fillOpacity="0.92"
+              stroke="#00D2FF"
+              strokeWidth="1"
+              strokeOpacity="0.5"
+              filter="url(#badge-shadow)"
+            />
+            <g
+              stroke="#00D2FF"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            >
+              <path d="M 3 7 V 3 H 7" />
+              <path d="M 39 3 H 43 V 7" />
+              <path d="M 3 21 V 25 H 7" />
+              <path d="M 39 25 H 43 V 21" />
+            </g>
+            <g fill="#13355A" transform="translate(7, 7)">
+              <rect x="0" y="0" width="1.6" height="14" />
+              <rect x="2.8" y="0" width="0.8" height="14" />
+              <rect x="4.8" y="0" width="2" height="14" />
+              <rect x="8" y="0" width="0.8" height="14" />
+              <rect x="10" y="0" width="1.2" height="14" />
+              <rect x="12.5" y="0" width="2.2" height="14" />
+              <rect x="16" y="0" width="0.8" height="14" />
+              <rect x="18.5" y="0" width="1.8" height="14" />
+              <rect x="21.5" y="0" width="0.8" height="14" />
+              <rect x="23.5" y="0" width="2.2" height="14" />
+              <rect x="27" y="0" width="1" height="14" />
+              <rect x="29.5" y="0" width="2" height="14" />
+            </g>
           </g>
         </g>
 
         {/* ── Node 2: Center-Top (Above Worker & Shelves) ── */}
-        <g transform="translate(680, 80)">
+        <g transform="translate(680, 85)" opacity="0.6">
           <g className="node-f2">
-          <rect
-            x="0"
-            y="0"
-            width="46"
-            height="28"
-            rx="6"
-            fill="white"
-            fillOpacity="0.92"
-            stroke="#00D2FF"
-            strokeWidth="1"
-            strokeOpacity="0.5"
-            filter="url(#badge-shadow)"
-          />
-          <g stroke="#00D2FF" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none">
-            <path d="M 3 7 V 3 H 7" />
-            <path d="M 39 3 H 43 V 7" />
-            <path d="M 3 21 V 25 H 7" />
-            <path d="M 39 25 H 43 V 21" />
-          </g>
-          <g fill="#13355A" transform="translate(7, 7)">
-            <rect x="0" y="0" width="1.6" height="14" />
-            <rect x="3" y="0" width="0.8" height="14" />
-            <rect x="5.2" y="0" width="2.2" height="14" />
-            <rect x="8.5" y="0" width="0.9" height="14" />
-            <rect x="11" y="0" width="1.6" height="14" />
-            <rect x="14" y="0" width="0.8" height="14" />
-            <rect x="16.5" y="0" width="2.2" height="14" />
-            <rect x="20" y="0" width="0.8" height="14" />
-            <rect x="22.5" y="0" width="1.8" height="14" />
-            <rect x="25.5" y="0" width="1" height="14" />
-            <rect x="28" y="0" width="2" height="14" />
-            <rect x="31" y="0" width="1.4" height="14" />
-          </g>
+            <rect
+              x="0"
+              y="0"
+              width="46"
+              height="28"
+              rx="6"
+              fill="white"
+              fillOpacity="0.92"
+              stroke="#00D2FF"
+              strokeWidth="1"
+              strokeOpacity="0.5"
+              filter="url(#badge-shadow)"
+            />
+            <g
+              stroke="#00D2FF"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            >
+              <path d="M 3 7 V 3 H 7" />
+              <path d="M 39 3 H 43 V 7" />
+              <path d="M 3 21 V 25 H 7" />
+              <path d="M 39 25 H 43 V 21" />
+            </g>
+            <g fill="#13355A" transform="translate(7, 7)">
+              <rect x="0" y="0" width="1.6" height="14" />
+              <rect x="3" y="0" width="0.8" height="14" />
+              <rect x="5.2" y="0" width="2.2" height="14" />
+              <rect x="8.5" y="0" width="0.9" height="14" />
+              <rect x="11" y="0" width="1.6" height="14" />
+              <rect x="14" y="0" width="0.8" height="14" />
+              <rect x="16.5" y="0" width="2.2" height="14" />
+              <rect x="20" y="0" width="0.8" height="14" />
+              <rect x="22.5" y="0" width="1.8" height="14" />
+              <rect x="25.5" y="0" width="1" height="14" />
+              <rect x="28" y="0" width="2" height="14" />
+              <rect x="31" y="0" width="1.4" height="14" />
+            </g>
           </g>
         </g>
 
         {/* ── Node 3: Center-Left (Near Description Text, on Mid Spline) ── */}
-        <g transform="translate(420, 395)">
+        <g transform="translate(550, 400) rotate(-8)" opacity="0.6">
           <g className="node-f3">
-          <rect
-            x="0"
-            y="0"
-            width="46"
-            height="28"
-            rx="6"
-            fill="white"
-            fillOpacity="0.92"
-            stroke="#00D2FF"
-            strokeWidth="1"
-            strokeOpacity="0.5"
-            filter="url(#badge-shadow)"
-          />
-          <g stroke="#00D2FF" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none">
-            <path d="M 3 7 V 3 H 7" />
-            <path d="M 39 3 H 43 V 7" />
-            <path d="M 3 21 V 25 H 7" />
-            <path d="M 39 25 H 43 V 21" />
-          </g>
-          <g fill="#13355A" transform="translate(7, 7)">
-            <rect x="0" y="0" width="1.6" height="14" />
-            <rect x="2.8" y="0" width="0.8" height="14" />
-            <rect x="4.8" y="0" width="2" height="14" />
-            <rect x="8" y="0" width="0.8" height="14" />
-            <rect x="10.5" y="0" width="1.4" height="14" />
-            <rect x="13" y="0" width="2" height="14" />
-            <rect x="16.5" y="0" width="0.8" height="14" />
-            <rect x="19" y="0" width="1.8" height="14" />
-            <rect x="22" y="0" width="0.8" height="14" />
-            <rect x="24.5" y="0" width="2.2" height="14" />
-            <rect x="28" y="0" width="1.2" height="14" />
-            <rect x="30.5" y="0" width="1.8" height="14" />
-          </g>
+            <rect
+              x="0"
+              y="0"
+              width="46"
+              height="28"
+              rx="6"
+              fill="white"
+              fillOpacity="0.92"
+              stroke="#00D2FF"
+              strokeWidth="1"
+              strokeOpacity="0.5"
+              filter="url(#badge-shadow)"
+            />
+            <g
+              stroke="#00D2FF"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            >
+              <path d="M 3 7 V 3 H 7" />
+              <path d="M 39 3 H 43 V 7" />
+              <path d="M 3 21 V 25 H 7" />
+              <path d="M 39 25 H 43 V 21" />
+            </g>
+            <g fill="#13355A" transform="translate(7, 7)">
+              <rect x="0" y="0" width="1.6" height="14" />
+              <rect x="2.8" y="0" width="0.8" height="14" />
+              <rect x="4.8" y="0" width="2" height="14" />
+              <rect x="8" y="0" width="0.8" height="14" />
+              <rect x="10.5" y="0" width="1.4" height="14" />
+              <rect x="13" y="0" width="2" height="14" />
+              <rect x="16.5" y="0" width="0.8" height="14" />
+              <rect x="19" y="0" width="1.8" height="14" />
+              <rect x="22" y="0" width="0.8" height="14" />
+              <rect x="24.5" y="0" width="2.2" height="14" />
+              <rect x="28" y="0" width="1.2" height="14" />
+              <rect x="30.5" y="0" width="1.8" height="14" />
+            </g>
           </g>
         </g>
 
         {/* ── Node 4: Upper Right (Beyond Worker / Above Phone) ── */}
-        <g transform="translate(1180, 185)">
+        <g transform="translate(1180, 185)" opacity="0.6">
           <g className="node-f4">
-          <rect
-            x="0"
-            y="0"
-            width="48"
-            height="30"
-            rx="6"
-            fill="white"
-            fillOpacity="0.92"
-            stroke="#00D2FF"
-            strokeWidth="1.1"
-            strokeOpacity="0.5"
-            filter="url(#badge-shadow)"
-          />
-          <g stroke="#00D2FF" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none">
-            <path d="M 3 8 V 3 H 8" />
-            <path d="M 40 3 H 45 V 8" />
-            <path d="M 3 22 V 27 H 8" />
-            <path d="M 40 27 H 45 V 22" />
-          </g>
-          <g fill="#13355A" transform="translate(8, 8)">
-            <rect x="0" y="0" width="1.8" height="14" />
-            <rect x="3" y="0" width="0.9" height="14" />
-            <rect x="5.5" y="0" width="2.2" height="14" />
-            <rect x="9" y="0" width="0.9" height="14" />
-            <rect x="11.5" y="0" width="1.4" height="14" />
-            <rect x="14.5" y="0" width="2.4" height="14" />
-            <rect x="18" y="0" width="0.9" height="14" />
-            <rect x="20.5" y="0" width="1.8" height="14" />
-            <rect x="23.5" y="0" width="0.9" height="14" />
-            <rect x="25.5" y="0" width="2.2" height="14" />
-            <rect x="29" y="0" width="1.2" height="14" />
-            <rect x="31.5" y="0" width="1.8" height="14" />
-          </g>
+            <rect
+              x="0"
+              y="0"
+              width="48"
+              height="30"
+              rx="6"
+              fill="white"
+              fillOpacity="0.92"
+              stroke="#00D2FF"
+              strokeWidth="1.1"
+              strokeOpacity="0.5"
+              filter="url(#badge-shadow)"
+            />
+            <g
+              stroke="#00D2FF"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            >
+              <path d="M 3 8 V 3 H 8" />
+              <path d="M 40 3 H 45 V 8" />
+              <path d="M 3 22 V 27 H 8" />
+              <path d="M 40 27 H 45 V 22" />
+            </g>
+            <g fill="#13355A" transform="translate(8, 8)">
+              <rect x="0" y="0" width="1.8" height="14" />
+              <rect x="3" y="0" width="0.9" height="14" />
+              <rect x="5.5" y="0" width="2.2" height="14" />
+              <rect x="9" y="0" width="0.9" height="14" />
+              <rect x="11.5" y="0" width="1.4" height="14" />
+              <rect x="14.5" y="0" width="2.4" height="14" />
+              <rect x="18" y="0" width="0.9" height="14" />
+              <rect x="20.5" y="0" width="1.8" height="14" />
+              <rect x="23.5" y="0" width="0.9" height="14" />
+              <rect x="25.5" y="0" width="2.2" height="14" />
+              <rect x="29" y="0" width="1.2" height="14" />
+              <rect x="31.5" y="0" width="1.8" height="14" />
+            </g>
           </g>
         </g>
       </svg>

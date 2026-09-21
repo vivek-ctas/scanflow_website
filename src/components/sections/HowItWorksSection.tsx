@@ -1,6 +1,16 @@
 "use client";
 
-import { Zap, Smartphone, ShieldCheck, Cloud, Camera, ScanLine, CheckCircle2, FileText, ArrowRight } from "lucide-react";
+import {
+  Zap,
+  Smartphone,
+  ShieldCheck,
+  Cloud,
+  Camera,
+  ScanLine,
+  CheckCircle2,
+  FileText,
+  ArrowRight,
+} from "lucide-react";
 
 const STEPS = [
   {
@@ -81,7 +91,6 @@ export default function HowItWorksSection() {
 
       <div className="px-5 sm:px-8 lg:px-[70px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-
           {/* ── LEFT COLUMN: Header Text & Bottom Pillar Cards ── */}
           <div className="lg:col-span-4 flex flex-col justify-between space-y-10">
             <div>
@@ -100,7 +109,8 @@ export default function HowItWorksSection() {
 
               {/* Subtitle */}
               <p className="mt-5 text-slate-600 text-base sm:text-lg leading-relaxed">
-                Connect ScanFlow to your business workflow and give your team a simple way to scan wherever work happens.
+                Connect ScanFlow to your business workflow and give your team a
+                simple way to scan wherever work happens.
               </p>
             </div>
 
@@ -110,13 +120,20 @@ export default function HowItWorksSection() {
                 {PILLARS.map((p, idx) => {
                   const IconComp = p.icon;
                   return (
-                    <div key={idx} className="flex flex-col items-start text-left space-y-2">
+                    <div
+                      key={idx}
+                      className="flex flex-col items-start text-left space-y-2"
+                    >
                       <div className={`p-2.5 rounded-xl ${p.iconBg} shadow-xs`}>
                         <IconComp className="w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-xs sm:text-sm text-[#13355A]">{p.title}</h4>
-                        <p className="text-[11px] text-slate-500 leading-snug mt-0.5">{p.desc}</p>
+                        <h4 className="font-bold text-xs sm:text-sm text-[#13355A]">
+                          {p.title}
+                        </h4>
+                        <p className="text-[11px] text-slate-500 leading-snug mt-0.5">
+                          {p.desc}
+                        </p>
                       </div>
                     </div>
                   );
@@ -127,7 +144,6 @@ export default function HowItWorksSection() {
 
           {/* ── CENTER COLUMN: Animated Smartphone Viewfinder & Floating Orbits ── */}
           <div className="lg:col-span-4 flex justify-center items-center relative py-6">
-
             {/* Circular Orbit Dashed Lines */}
             <div className="absolute w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] rounded-full border-2 border-dashed border-[#3C9AC4]/25 pointer-events-none animate-spin-slow" />
 
@@ -150,10 +166,16 @@ export default function HowItWorksSection() {
             <div className="absolute top-1/2 -left-6 sm:-left-10 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-xl shadow-2xl border border-slate-200/80 animate-float [animation-delay:2s] flex items-center gap-2">
               <div className="flex items-end gap-[1.5px]">
                 {[3, 1, 4, 1, 2, 5, 1, 3, 2, 4].map((w, i) => (
-                  <div key={i} className="bg-[#13355A] rounded-xs h-6" style={{ width: `${w * 1.5}px` }} />
+                  <div
+                    key={i}
+                    className="bg-[#13355A] rounded-xs h-6"
+                    style={{ width: `${w * 1.5}px` }}
+                  />
                 ))}
               </div>
-              <span className="font-mono text-[10px] font-bold text-[#13355A]">890123456789</span>
+              <span className="font-mono text-[10px] font-bold text-[#13355A]">
+                890123456789
+              </span>
             </div>
 
             {/* Bottom Left: QR Code Badge */}
@@ -165,7 +187,6 @@ export default function HowItWorksSection() {
 
             {/* Smartphone Phone Frame */}
             <div className="relative z-10 w-[240px] sm:w-[270px] h-[480px] sm:h-[510px] bg-slate-950 rounded-[44px] border-[8px] border-slate-900 shadow-[0_25px_70px_rgba(19,53,90,0.22)] overflow-hidden flex flex-col justify-between">
-              
               {/* Phone Speaker Notch */}
               <div className="w-24 h-4 bg-slate-900 rounded-b-xl mx-auto flex items-center justify-center z-30">
                 <div className="w-8 h-1 bg-slate-700 rounded-full" />
@@ -173,7 +194,6 @@ export default function HowItWorksSection() {
 
               {/* Viewfinder Screen */}
               <div className="relative flex-1 bg-gradient-to-b from-slate-900 via-[#13355A]/90 to-slate-950 p-4 flex flex-col items-center justify-center overflow-hidden">
-                
                 {/* Viewfinder Scanning Box */}
                 <div className="relative w-44 h-40 rounded-2xl border border-cyan-500/30 bg-slate-900/60 backdrop-blur-xs p-3 flex flex-col items-center justify-center shadow-inner">
                   {/* Glowing Corner Brackets */}
@@ -184,9 +204,15 @@ export default function HowItWorksSection() {
 
                   {/* Barcode Graphic */}
                   <div className="flex items-end gap-[2px] opacity-90 my-auto">
-                    {[3, 1, 4, 1, 2, 5, 2, 1, 4, 1, 3, 2, 5, 1, 3, 2].map((w, i) => (
-                      <div key={i} className="bg-white rounded-xs h-14" style={{ width: `${w * 1.8}px` }} />
-                    ))}
+                    {[3, 1, 4, 1, 2, 5, 2, 1, 4, 1, 3, 2, 5, 1, 3, 2].map(
+                      (w, i) => (
+                        <div
+                          key={i}
+                          className="bg-white rounded-xs h-14"
+                          style={{ width: `${w * 1.8}px` }}
+                        />
+                      ),
+                    )}
                   </div>
 
                   {/* Laser Beam Scanner */}
@@ -196,20 +222,20 @@ export default function HowItWorksSection() {
                 {/* Status Pill */}
                 <div className="mt-8 flex items-center gap-2 bg-[#3C9AC4]/20 border border-[#3C9AC4]/40 px-4 py-1.5 rounded-full backdrop-blur-md">
                   <div className="w-2 h-2 rounded-full bg-[#6BC1E0] animate-ping" />
-                  <span className="text-xs font-semibold text-white tracking-wide">Scanning...</span>
+                  <span className="text-xs font-semibold text-white tracking-wide">
+                    Scanning...
+                  </span>
                 </div>
               </div>
 
               {/* Bottom Home Indicator Line */}
               <div className="w-28 h-1 bg-slate-700 rounded-full mx-auto my-2" />
             </div>
-
           </div>
 
           {/* ── RIGHT COLUMN: Vertical Step Timeline (01 to 05) ── */}
           <div className="lg:col-span-4 pl-0 lg:pl-4">
             <div className="relative space-y-4">
-              
               {/* Vertical Dashed Connecting Line */}
               <div className="absolute top-6 bottom-6 left-6 w-0.5 border-l-2 border-dashed border-[#3C9AC4]/30 pointer-events-none" />
 
@@ -226,7 +252,9 @@ export default function HowItWorksSection() {
                     </div>
 
                     {/* Icon */}
-                    <div className={`flex-shrink-0 p-2.5 rounded-xl ${step.iconBg}`}>
+                    <div
+                      className={`flex-shrink-0 p-2.5 rounded-xl ${step.iconBg}`}
+                    >
                       <IconComponent className="w-5 h-5" />
                     </div>
 
@@ -242,10 +270,8 @@ export default function HowItWorksSection() {
                   </div>
                 );
               })}
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

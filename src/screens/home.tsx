@@ -12,10 +12,13 @@ import WaveDivider from "@/components/sections/WaveDivider";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import WhyUseScanflowSection from "@/components/sections/WhyUseScanflowSection";
 import { BarcodeReliabilityMockup } from "@/components/ui/illustration";
-import dynamic from 'next/dynamic';
-import ScanFlowDemoScene from '@/components/ui/Scanillusration/Scanflowdemoscene';
-import HeroDataFlowBackground from '@/components/ui/HeroDataFlowBackground';
-const ScanFlowHero = dynamic(() => import('@/components/ui/Mobileillustration/Scanflowhero'), { ssr: false });
+import dynamic from "next/dynamic";
+import ScanFlowDemoScene from "@/components/ui/Scanillusration/Scanflowdemoscene";
+import HeroDataFlowBackground from "@/components/ui/HeroDataFlowBackground";
+const ScanFlowHero = dynamic(
+  () => import("@/components/ui/Mobileillustration/Scanflowhero"),
+  { ssr: false },
+);
 
 const faqs = [
   {
@@ -51,8 +54,8 @@ export default function Home() {
     { value: 99.02, suffix: "%", label: "Scan reliability", decimals: 2 },
     { value: 2, suffix: "+", label: "Barcode types", decimals: 0 },
     { value: 10000, suffix: "+", label: "Scans tested" },
-    { value: 24, suffix: "/7", label: "Scanner availability", decimals: 0, },
-    { value: 500, suffix: "+", label: "Images processed", decimals: 0, },
+    { value: 24, suffix: "/7", label: "Scanner availability", decimals: 0 },
+    { value: 500, suffix: "+", label: "Images processed", decimals: 0 },
   ];
   return (
     <Layout>
@@ -64,7 +67,8 @@ export default function Home() {
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6">
                 <p className="inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-sm mb-6">
-                  <Zap className="w-3.5 h-3.5" /> Enterprise Barcode Intelligence
+                  <Zap className="w-3.5 h-3.5" /> Enterprise Barcode
+                  Intelligence
                 </p>
                 <h1 className="text-4xl sm:text-5xl lg:text-[4.25rem] font-bold text-primary mb-6 leading-[1.05] tracking-tight max-w-3xl">
                   Scan any barcode in{" "}
@@ -74,7 +78,9 @@ export default function Home() {
                   with CTAS ScanFlow.
                 </h1>
                 <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-                  ScanFlow helps businesses scan barcodes quickly using a mobile phone camera - even when labels are blurry, damaged, tilted, or difficult to read.
+                  ScanFlow helps businesses scan barcodes quickly using a mobile
+                  phone camera - even when labels are blurry, damaged, tilted,
+                  or difficult to read.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
                   <a
@@ -89,27 +95,31 @@ export default function Home() {
                   >
                     Quick start <ArrowRight className="w-4 h-4" />
                   </a>
-
                 </div>
                 <div className="mt-10 grid grid-cols-3 gap-3">
                   <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                    <p className="text-2xl font-bold text-primary tracking-tight"><AnimatedCounter target={99.02} suffix="%" decimals={2} /></p>
+                    <p className="text-2xl font-bold text-primary tracking-tight">
+                      <AnimatedCounter target={99.02} suffix="%" decimals={2} />
+                    </p>
                     <p className="text-sm text-slate-600">Scan reliability</p>
                   </div>
                   <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                    <p className="text-2xl font-bold text-primary tracking-tight"><AnimatedCounter target={18} suffix="ms" decimals={1} /></p>
+                    <p className="text-2xl font-bold text-primary tracking-tight">
+                      <AnimatedCounter target={18} suffix="ms" decimals={1} />
+                    </p>
                     <p className="text-sm text-slate-600">Average scan time</p>
                   </div>
                   <div className="rounded-xl border border-primary/10 bg-white/90 p-3 text-sm">
-                    <p className="text-2xl font-bold text-primary tracking-tight"><AnimatedCounter target={10000} suffix="+" /></p>
+                    <p className="text-2xl font-bold text-primary tracking-tight">
+                      <AnimatedCounter target={10000} suffix="+" />
+                    </p>
                     <p className="text-sm text-slate-600">Scans tested</p>
                   </div>
                 </div>
               </div>
 
               <div className="lg:col-span-6">
-                <ScanFlowDemoScene
-                />
+                <ScanFlowDemoScene />
               </div>
             </div>
           </div>
@@ -117,8 +127,10 @@ export default function Home() {
         </section>
 
         {/* Problem / Value Section */}
-        <section id="problem-value" className="relative bg-white border-t border-[#EAECF3] py-16 lg:py-24 overflow-hidden">
-
+        <section
+          id="problem-value"
+          className="relative bg-white border-t border-[#EAECF3] py-16 lg:py-24 overflow-hidden"
+        >
           <div className="px-5 sm:px-8 lg:px-[70px]">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
               {/* Left Column: Heading & Description */}
@@ -127,10 +139,15 @@ export default function Home() {
                   PROBLEM &amp; VALUE
                 </span>
                 <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
-                  Barcode scanning shouldn&apos;t <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">slow your team down.</span>
+                  Barcode scanning shouldn&apos;t{" "}
+                  <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    slow your team down.
+                  </span>
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  Real-world barcodes aren&apos;t always perfect. Labels get damaged, printed poorly, become blurry, or appear at difficult angles.
+                  Real-world barcodes aren&apos;t always perfect. Labels get
+                  damaged, printed poorly, become blurry, or appear at difficult
+                  angles.
                 </p>
               </div>
 
@@ -149,7 +166,6 @@ export default function Home() {
           <HowItWorksSection />
         </div>
 
-
         {/* 4. Real-World Scanning Section */}
         <section
           id="reliability"
@@ -166,10 +182,15 @@ export default function Home() {
               <Zap className="w-3.5 h-3.5" /> REAL-WORLD SCANNING
             </span>
             <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
-              Built for <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">real-world barcodes.</span>
+              Built for{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                real-world barcodes.
+              </span>
             </h2>
             <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-              Your team doesn&apos;t always get a perfect barcode. ScanFlow is designed for everyday scanning situations where labels may be difficult to read.
+              Your team doesn&apos;t always get a perfect barcode. ScanFlow is
+              designed for everyday scanning situations where labels may be
+              difficult to read.
             </p>
           </div>
 
@@ -187,7 +208,9 @@ export default function Home() {
                         <div className="h-10 w-10 rounded-xl bg-[#EBF4FA] text-[#3C9AC4] flex items-center justify-center transition-colors group-hover:bg-[#13355A] group-hover:text-white shadow-xs">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">{c.title}</h3>
+                        <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">
+                          {c.title}
+                        </h3>
                       </div>
                       <span className="text-[10px] font-bold text-primary bg-[#EBF4FA] border border-primary/15 rounded-full px-2.5 py-0.5 shadow-xs">
                         READY
@@ -200,14 +223,20 @@ export default function Home() {
                   </div>
 
                   <div>
-                    <p className="text-sm text-slate-600 leading-relaxed">{c.desc}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {c.desc}
+                    </p>
 
                     <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
                       <div className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                        <span className="text-primary font-semibold">99.02% accuracy</span>
+                        <span className="text-primary font-semibold">
+                          99.02% accuracy
+                        </span>
                       </div>
-                      <span className="text-[10px] font-semibold text-primary tracking-wide">LIVE DEMO</span>
+                      <span className="text-[10px] font-semibold text-primary tracking-wide">
+                        LIVE DEMO
+                      </span>
                     </div>
                   </div>
                 </article>
@@ -218,13 +247,17 @@ export default function Home() {
           {/* Small Line Banner */}
           <div className="mt-14 text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#3C9AC4]/30 bg-[#EBF4FA] px-7 py-3 text-sm sm:text-base font-semibold text-primary shadow-xs hover:border-[#3C9AC4]/50 transition-colors">
-              <Zap className="w-4 h-4 text-[#3C9AC4]" /> Just point. Scan. Continue.
+              <Zap className="w-4 h-4 text-[#3C9AC4]" /> Just point. Scan.
+              Continue.
             </span>
           </div>
         </section>
 
         {/*6. WHERE IT FITS*/}
-        <section id="use-cases" className="py-32 relative isolate bg-[#F7F9FC] border-t border-[#EAECF3] overflow-hidden">
+        <section
+          id="use-cases"
+          className="py-32 relative isolate bg-[#F7F9FC] border-t border-[#EAECF3] overflow-hidden"
+        >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-3xl animate-drift" />
             <div className="absolute bottom-0 right-0 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl animate-drift [animation-delay:2s]" />
@@ -237,10 +270,14 @@ export default function Home() {
                 Real-world applications
               </span>
               <h2 className="text-4xl sm:text-5xl font-bold text-primary mb-6 leading-[1.1] tracking-tight">
-                Works wherever <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">your team scans.</span>
+                Works wherever{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  your team scans.
+                </span>
               </h2>
               <p className="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed">
-                From warehouse operations to retail workflows, ScanFlow fits into everyday barcode-based work.
+                From warehouse operations to retail workflows, ScanFlow fits
+                into everyday barcode-based work.
               </p>
             </div>
 
@@ -261,7 +298,7 @@ export default function Home() {
                           <Icon className="w-7 h-7" />
                         </div>
                         <div className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary/80">
-                          {String(i + 1).padStart(2, '0')}
+                          {String(i + 1).padStart(2, "0")}
                         </div>
                       </div>
 
@@ -287,13 +324,14 @@ export default function Home() {
           </div>
         </section>
 
-
         {/* 7. Why Businesses Use ScanFlow Section */}
         <WhyUseScanflowSection />
 
-
         {/* 8. PERFORMANCE */}
-        <section id="performance" className="py-20 lg:py-28 relative bg-gradient-to-b from-[#F7FAFC] via-white to-[#F4F8FC] border-t border-[#EAECF3] overflow-hidden">
+        <section
+          id="performance"
+          className="py-20 lg:py-28 relative bg-gradient-to-b from-[#F7FAFC] via-white to-[#F4F8FC] border-t border-[#EAECF3] overflow-hidden"
+        >
           {/* Background ambient lighting */}
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-[#3C9AC4]/8 blur-3xl animate-drift" />
@@ -313,14 +351,14 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto">
-                High-speed decoding designed for enterprise reliability and efficiency.
+                High-speed decoding designed for enterprise reliability and
+                efficiency.
               </p>
             </div>
 
             {/* Main Featured Performance Card */}
             <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200/80 bg-white/95 backdrop-blur-md p-6 sm:p-8 lg:p-10 shadow-[0_16px_48px_rgba(19,53,90,0.06)] mb-16">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-
                 {/* 1. Viewfinder Graphic */}
                 <div className="md:col-span-3 flex justify-center pb-4 md:pb-0">
                   <div className="relative w-40 h-24 rounded-2xl border border-slate-700/60 bg-slate-950 p-2.5 flex items-center justify-center shadow-inner overflow-hidden">
@@ -333,7 +371,11 @@ export default function Home() {
                     {/* Barcode bars */}
                     <div className="flex items-end gap-[1.5px] opacity-90 my-auto">
                       {[3, 1, 4, 1, 2, 5, 2, 1, 4, 1, 3, 2, 4].map((w, i) => (
-                        <div key={i} className="bg-white rounded-xs h-10" style={{ width: `${w * 1.5}px` }} />
+                        <div
+                          key={i}
+                          className="bg-white rounded-xs h-10"
+                          style={{ width: `${w * 1.5}px` }}
+                        />
                       ))}
                     </div>
 
@@ -371,7 +413,6 @@ export default function Home() {
                     <span>Real-world scan ready</span>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -385,22 +426,29 @@ export default function Home() {
                   <p className="text-sm text-slate-600 mt-1">Scans tested</p>
                 </div>
                 <div className="px-2">
-                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">24/7</p>
-                  <p className="text-sm text-slate-600 mt-1">Scanner availability</p>
+                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">
+                    24/7
+                  </p>
+                  <p className="text-sm text-slate-600 mt-1">
+                    Scanner availability
+                  </p>
                 </div>
                 <div className="px-2">
-                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">2+</p>
+                  <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">
+                    2+
+                  </p>
                   <p className="text-sm text-slate-600 mt-1">Barcode types</p>
                 </div>
                 <div className="px-2">
                   <p className="font-bold text-2xl sm:text-3xl text-primary tracking-tight">
                     <AnimatedCounter target={500} suffix="+" />
                   </p>
-                  <p className="text-sm text-slate-600 mt-1">Images processed</p>
+                  <p className="text-sm text-slate-600 mt-1">
+                    Images processed
+                  </p>
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
@@ -419,17 +467,19 @@ export default function Home() {
                 <button
                   onClick={() => setOpen((prev) => !prev)}
                   aria-expanded={open}
-                  className={`w-full flex items-center justify-between gap-4 rounded-[1.5rem] border px-7 py-6 text-left transition-all duration-300 shadow-[0_8px_30px_rgba(19,53,90,0.07)] hover:shadow-[0_16px_44px_rgba(19,53,90,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/50 ${open
-                    ? "bg-gradient-to-br from-white via-muted to-white/90 border-secondary/25"
-                    : "bg-white/95 border-primary/10 hover:border-secondary/20"
-                    }`}
+                  className={`w-full flex items-center justify-between gap-4 rounded-[1.5rem] border px-7 py-6 text-left transition-all duration-300 shadow-[0_8px_30px_rgba(19,53,90,0.07)] hover:shadow-[0_16px_44px_rgba(19,53,90,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/50 ${
+                    open
+                      ? "bg-gradient-to-br from-white via-muted to-white/90 border-secondary/25"
+                      : "bg-white/95 border-primary/10 hover:border-secondary/20"
+                  }`}
                 >
                   <div className="flex items-center gap-5 min-w-0">
                     <span
-                      className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold transition-colors duration-300 ${open
-                        ? "bg-secondary text-white"
-                        : "bg-secondary/10 text-secondary border border-secondary/15"
-                        }`}
+                      className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold transition-colors duration-300 ${
+                        open
+                          ? "bg-secondary text-white"
+                          : "bg-secondary/10 text-secondary border border-secondary/15"
+                      }`}
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -438,10 +488,11 @@ export default function Home() {
                     </span>
                   </div>
                   <span
-                    className={`shrink-0 flex items-center justify-center h-8 w-8 rounded-full border transition-all duration-300 ${open
-                      ? "bg-secondary border-secondary text-white rotate-180"
-                      : "bg-primary/5 border-primary/10 text-primary/60 group-hover:border-secondary/30 group-hover:text-secondary"
-                      }`}
+                    className={`shrink-0 flex items-center justify-center h-8 w-8 rounded-full border transition-all duration-300 ${
+                      open
+                        ? "bg-secondary border-secondary text-white rotate-180"
+                        : "bg-primary/5 border-primary/10 text-primary/60 group-hover:border-secondary/30 group-hover:text-secondary"
+                    }`}
                   >
                     <ChevronDown className="w-4 h-4" />
                   </span>
@@ -475,7 +526,6 @@ export default function Home() {
               <div className="relative px-5 sm:px-8 lg:px-[70px]">
                 {/* Two-column grid */}
                 <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 xl:gap-20 items-start">
-
                   {/* ── Left: sticky title panel ── */}
                   <div className="lg:sticky lg:top-28 h-fit">
                     {/* Pill badge */}
@@ -485,10 +535,11 @@ export default function Home() {
 
                     {/* Heading */}
                     <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-primary mb-5">
-                      Frequently{" "}
-                      <br className="hidden sm:block" />
+                      Frequently <br className="hidden sm:block" />
                       asked{" "}
-                      <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">questions</span>
+                      <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        questions
+                      </span>
                     </h2>
 
                     {/* Sub-copy */}
@@ -512,7 +563,6 @@ export default function Home() {
                       <FaqItem key={faq.question} faq={faq} index={i} />
                     ))}
                   </div>
-
                 </div>
               </div>
             </section>
@@ -520,7 +570,10 @@ export default function Home() {
         })()}
 
         {/* cta section */}
-        <section id="cta" className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]">
+        <section
+          id="cta"
+          className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]"
+        >
           {/* Big glow */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-[700px] h-[400px] bg-accent-2/20 blur-[120px] rounded-full" />
@@ -530,7 +583,9 @@ export default function Home() {
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
             <div className="flex items-end gap-[4px] h-full w-full">
               {Array.from({ length: 60 }).map((_, i) => {
-                const heights = [60, 30, 80, 50, 90, 40, 70, 20, 85, 55, 75, 35];
+                const heights = [
+                  60, 30, 80, 50, 90, 40, 70, 20, 85, 55, 75, 35,
+                ];
                 return (
                   <div
                     key={i}
@@ -546,17 +601,19 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
               <Zap className="w-3.5 h-3.5 text-accent-2" />
-              <span className="text-xs font-semibold text-accent-2">Ready in 10 minutes</span>
+              <span className="text-xs font-semibold text-accent-2">
+                Ready in 10 minutes
+              </span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
-              Built for modern{" "}
-              <span className="text-accent-2">barcode</span>{" "}
+              Built for modern <span className="text-accent-2">barcode</span>{" "}
               workflows.
             </h2>
 
             <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
-              Built for fast and reliable barcode scanning across web and mobile workflows. Start testing ScanFlow in minutes with a free trial.
+              Built for fast and reliable barcode scanning across web and mobile
+              workflows. Start testing ScanFlow in minutes with a free trial.
             </p>
 
             {/* CTAs */}
@@ -590,7 +647,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
       </div>
     </Layout>
   );

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 
-
 export function HeroScanVisual() {
   return (
     <div className="relative h-[460px] md:h-[520px] w-full flex items-center justify-center">
@@ -10,17 +9,38 @@ export function HeroScanVisual() {
       <div className="absolute inset-0 opacity-50 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" aria-hidden>
           {[
-            [10, 5], [30, 15], [50, 10], [70, 12], [95, 8],
-            [5, 95], [50, 100], [80, 85], [90, 90], [20, 60],
+            [10, 5],
+            [30, 15],
+            [50, 10],
+            [70, 12],
+            [95, 8],
+            [5, 95],
+            [50, 100],
+            [80, 85],
+            [90, 90],
+            [20, 60],
           ].map(([x, y], i) => (
             <circle key={i} cx={x} cy={y} r="0.6" fill="#3C9AC4" />
           ))}
           {[
-            [10, 5, 30, 15], [10, 5, 50, 10], [30, 15, 70, 12],
-            [50, 10, 95, 8], [80, 85, 90, 90], [50, 100, 80, 85],
-            [20, 60, 80, 85], [20, 60, 30, 15],
+            [10, 5, 30, 15],
+            [10, 5, 50, 10],
+            [30, 15, 70, 12],
+            [50, 10, 95, 8],
+            [80, 85, 90, 90],
+            [50, 100, 80, 85],
+            [20, 60, 80, 85],
+            [20, 60, 30, 15],
           ].map(([x1, y1, x2, y2], i) => (
-            <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#3C9AC4" strokeWidth="0.1" />
+            <line
+              key={i}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              stroke="#3C9AC4"
+              strokeWidth="0.1"
+            />
           ))}
         </svg>
       </div>
@@ -38,7 +58,9 @@ export function HeroScanVisual() {
           </div>
           <div className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-accent-2 animate-pulse" />
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">LIVE</span>
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+              LIVE
+            </span>
           </div>
         </div>
 
@@ -47,8 +69,15 @@ export function HeroScanVisual() {
 
           <div className="relative z-10 h-full flex flex-col items-center justify-center">
             <div className="flex items-end gap-[3px] opacity-90 mb-4">
-              {[6, 3, 10, 2, 7, 3, 5, 2, 12, 3, 8, 4, 10, 7, 9, 1, 5, 7, 3, 7, 6, 3, 2, 5, 5, 6, 7, 2, 9, 1].map((w, i) => (
-                <div key={i} className="bg-primary rounded-sm" style={{ width: `${w}px`, height: 90 }} />
+              {[
+                6, 3, 10, 2, 7, 3, 5, 2, 12, 3, 8, 4, 10, 7, 9, 1, 5, 7, 3, 7,
+                6, 3, 2, 5, 5, 6, 7, 2, 9, 1,
+              ].map((w, i) => (
+                <div
+                  key={i}
+                  className="bg-primary rounded-sm"
+                  style={{ width: `${w}px`, height: 90 }}
+                />
               ))}
             </div>
 
@@ -74,9 +103,13 @@ export function HeroScanVisual() {
         transition={{ delay: 0.6 }}
         className="hidden sm:block absolute left-[2%] top-[18%] z-30 bg-white/95 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(19,53,90,0.12)] w-48 -rotate-2 animate-float-gentle"
       >
-        <div className="text-[9px] text-primary/50 font-bold mb-1 uppercase tracking-widest">Detected</div>
+        <div className="text-[9px] text-primary/50 font-bold mb-1 uppercase tracking-widest">
+          Detected
+        </div>
         <div className="text-primary font-semibold text-sm">Code 128</div>
-        <div className="text-emerald-600 text-[10px] font-mono mt-1">99.02% confidence</div>
+        <div className="text-emerald-600 text-[10px] font-mono mt-1">
+          99.02% confidence
+        </div>
       </motion.div>
 
       <motion.div
@@ -85,9 +118,12 @@ export function HeroScanVisual() {
         transition={{ delay: 0.8 }}
         className="hidden sm:block absolute right-[2%] top-[24%] z-30 bg-white/95 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(19,53,90,0.12)] w-44 rotate-2 animate-float-down"
       >
-        <div className="text-[9px] text-primary/50 font-bold mb-1 uppercase tracking-widest">Decode time</div>
+        <div className="text-[9px] text-primary/50 font-bold mb-1 uppercase tracking-widest">
+          Decode time
+        </div>
         <div className="text-primary text-2xl font-light">
-          18.0<span className="text-primary/60 text-xs ml-1 font-normal">ms</span>
+          18.0
+          <span className="text-primary/60 text-xs ml-1 font-normal">ms</span>
         </div>
       </motion.div>
 
@@ -97,11 +133,13 @@ export function HeroScanVisual() {
         transition={{ delay: 1 }}
         className="hidden md:block absolute left-[6%] bottom-[6%] z-30 bg-white/95 backdrop-blur-xl border border-white p-4 rounded-2xl shadow-[0_20px_50px_rgba(19,53,90,0.12)] w-56 -rotate-1 animate-float-up"
       >
-        <div className="text-[10px] text-primary/60 font-bold mb-1 uppercase tracking-widest">Blur Recovery</div>
-        <div className="text-primary font-semibold text-sm leading-snug">AI-enhanced detection engine</div>
+        <div className="text-[10px] text-primary/60 font-bold mb-1 uppercase tracking-widest">
+          Blur Recovery
+        </div>
+        <div className="text-primary font-semibold text-sm leading-snug">
+          AI-enhanced detection engine
+        </div>
       </motion.div>
     </div>
   );
-
-
 }

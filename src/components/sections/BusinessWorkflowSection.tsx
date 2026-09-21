@@ -1,6 +1,13 @@
 "use client";
 
-import { Building2, Smartphone, Camera, CheckCircle2, ArrowRightCircle, ArrowDown } from "lucide-react";
+import {
+  Building2,
+  Smartphone,
+  Camera,
+  CheckCircle2,
+  ArrowRightCircle,
+  ArrowDown,
+} from "lucide-react";
 
 const workflowSteps = [
   {
@@ -59,10 +66,12 @@ export default function BusinessWorkflowSection() {
             04. Business Workflow
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
-            Turn every employee phone into a <span className="text-gradient">scanning tool.</span>
+            Turn every employee phone into a{" "}
+            <span className="text-gradient">scanning tool.</span>
           </h2>
           <p className="mt-6 text-slate-700 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Connect ScanFlow to your business workflow and give your team a simple way to scan wherever work happens.
+            Connect ScanFlow to your business workflow and give your team a
+            simple way to scan wherever work happens.
           </p>
         </div>
 
@@ -122,10 +131,13 @@ export default function BusinessWorkflowSection() {
           </div>
           <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-secondary mb-2">
-              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" /> Key Business Differentiator
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />{" "}
+              Key Business Differentiator
             </div>
             <p className="text-slate-800 text-base md:text-lg font-medium leading-relaxed">
-              No need to provide every employee with a separate barcode scanner. ScanFlow lets your existing phones become part of the scanning workflow.
+              No need to provide every employee with a separate barcode scanner.
+              ScanFlow lets your existing phones become part of the scanning
+              workflow.
             </p>
           </div>
         </div>
@@ -133,4 +145,3 @@ export default function BusinessWorkflowSection() {
     </section>
   );
 }
-

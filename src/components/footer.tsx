@@ -19,7 +19,7 @@ const footerLinks = {
   Company: [
     { label: "About", href: "https://www.ctasis.com/about-us" },
     { label: "Blog", href: "https://www.ctasis.com/blog" },
-    { label: "Contact", href: "/contact" }
+    { label: "Contact", href: "/contact" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -34,7 +34,6 @@ export default function Footer() {
       <div className="px-5 sm:px-8 lg:px-[70px]">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           <div className="col-span-2 md:col-span-1">
-
             <Link href="/" className="flex items-center gap-2.5 w-fit">
               <Image
                 src="/ctasis-logo_white.svg"
@@ -48,9 +47,9 @@ export default function Footer() {
               </span>
             </Link>
 
-
             <p className="text-sm text-slate-400 leading-relaxed max-w-[220px]">
-              The world&apos;s fastest and most accurate barcode scanning engine.
+              The world&apos;s fastest and most accurate barcode scanning
+              engine.
             </p>
             <div className="mt-5 flex items-center gap-1">
               <div className="w-2 h-2 rounded-full bg-[#3C9AC4] animate-pulse" />
@@ -79,7 +78,9 @@ export default function Footer() {
                           rel="noopener noreferrer"
                           className="group flex items-center text-slate-400 hover:text-[#3C9AC4] transition-colors text-sm"
                         >
-                          <span className="text-[#3C9AC4] mr-1.5 transition-transform group-hover:translate-x-0.5">›</span>
+                          <span className="text-[#3C9AC4] mr-1.5 transition-transform group-hover:translate-x-0.5">
+                            ›
+                          </span>
                           {link.label}
                         </a>
                       ) : (
@@ -87,7 +88,9 @@ export default function Footer() {
                           href={link.href}
                           className="group flex items-center text-slate-400 hover:text-[#3C9AC4] transition-colors text-sm"
                         >
-                          <span className="text-[#3C9AC4] mr-1.5 transition-transform group-hover:translate-x-0.5">›</span>
+                          <span className="text-[#3C9AC4] mr-1.5 transition-transform group-hover:translate-x-0.5">
+                            ›
+                          </span>
                           {link.label}
                         </Link>
                       )}
@@ -104,7 +107,9 @@ export default function Footer() {
             © 2026 ScanFlow Technologies, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-xs text-slate-400">Made for warehouse-scale reliability</span>
+            <span className="text-xs text-slate-400">
+              Made for warehouse-scale reliability
+            </span>
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3C9AC4]" />
               <span className="text-xs text-slate-400">SOC 2 Certified</span>
@@ -112,6 +117,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 }

@@ -35,7 +35,11 @@ export default function AccuracyDonut({
   }, [inView, value]);
 
   return (
-    <div ref={ref} className="relative flex items-center justify-center" style={{ width: size, height: size }}>
+    <div
+      ref={ref}
+      className="relative flex items-center justify-center"
+      style={{ width: size, height: size }}
+    >
       <svg width={size} height={size} className="-rotate-90">
         <defs>
           <linearGradient id="donutGrad" x1="0" y1="0" x2="1" y2="1">
@@ -44,7 +48,14 @@ export default function AccuracyDonut({
             <stop offset="100%" stopColor="#6BC1E0" />
           </linearGradient>
         </defs>
-        <circle cx={size / 2} cy={size / 2} r={r} stroke="#EDF2F7" strokeWidth={stroke} fill="none" />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          stroke="#EDF2F7"
+          strokeWidth={stroke}
+          fill="none"
+        />
         <motion.circle
           cx={size / 2}
           cy={size / 2}
@@ -59,8 +70,12 @@ export default function AccuracyDonut({
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="font-display text-4xl text-gradient font-bold">{count.toFixed(2)}%</span>
-        <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest mt-1">Read accuracy</span>
+        <span className="font-display text-4xl text-gradient font-bold">
+          {count.toFixed(2)}%
+        </span>
+        <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest mt-1">
+          Read accuracy
+        </span>
       </div>
     </div>
   );
