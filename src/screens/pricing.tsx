@@ -55,17 +55,19 @@ function FaqItem({
       <button
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
-        className={`w-full flex items-center justify-between gap-4 rounded-[1.5rem] border px-7 py-6 text-left transition-all duration-300 shadow-[0_8px_30px_rgba(19,53,90,0.07)] hover:shadow-[0_16px_44px_rgba(19,53,90,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/50 ${open
-          ? "bg-gradient-to-br from-white via-muted to-white/90 border-secondary/25"
-          : "bg-white/95 border-primary/10 hover:border-secondary/20"
-          }`}
+        className={`w-full flex items-center justify-between gap-4 rounded-[1.5rem] border px-7 py-6 text-left transition-all duration-300 shadow-[0_8px_30px_rgba(19,53,90,0.07)] hover:shadow-[0_16px_44px_rgba(19,53,90,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary/50 ${
+          open
+            ? "bg-gradient-to-br from-white via-muted to-white/90 border-secondary/25"
+            : "bg-white/95 border-primary/10 hover:border-secondary/20"
+        }`}
       >
         <div className="flex items-center gap-5 min-w-0">
           <span
-            className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold transition-colors duration-300 ${open
-              ? "bg-secondary text-white"
-              : "bg-secondary/10 text-secondary border border-secondary/15"
-              }`}
+            className={`shrink-0 flex items-center justify-center h-9 w-9 rounded-xl text-xs font-semibold transition-colors duration-300 ${
+              open
+                ? "bg-secondary text-white"
+                : "bg-secondary/10 text-secondary border border-secondary/15"
+            }`}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
@@ -74,10 +76,11 @@ function FaqItem({
           </span>
         </div>
         <span
-          className={`shrink-0 flex items-center justify-center h-8 w-8 rounded-full border transition-all duration-300 ${open
-            ? "bg-secondary border-secondary text-white rotate-180"
-            : "bg-primary/5 border-primary/10 text-primary/60 group-hover:border-secondary/30 group-hover:text-secondary"
-            }`}
+          className={`shrink-0 flex items-center justify-center h-8 w-8 rounded-full border transition-all duration-300 ${
+            open
+              ? "bg-secondary border-secondary text-white rotate-180"
+              : "bg-primary/5 border-primary/10 text-primary/60 group-hover:border-secondary/30 group-hover:text-secondary"
+          }`}
         >
           <ChevronDown className="w-4 h-4" />
         </span>
@@ -110,7 +113,7 @@ function FaqItem({
 export default function Pricing() {
   return (
     <Layout>
-      <div className="pt-26">
+      <div className="pt-16">
         <PageHero
           badgeIcon={Zap}
           badgeText="Simple, Transparent Pricing"
@@ -133,7 +136,10 @@ export default function Pricing() {
             </div>
           }
         />
-        <section id="pricing" className="py-20 relative overflow-hidden bg-white border-t border-[#EAECF3]">
+        <section
+          id="pricing"
+          className="py-20 relative overflow-hidden bg-white border-t border-[#EAECF3]"
+        >
           <div className="absolute inset-0">
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-secondary/4 blur-[150px] rounded-full" />
           </div>
@@ -147,10 +153,11 @@ export default function Pricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className={`relative rounded-2xl p-7 flex flex-col ${plan.highlight
-                    ? "bg-secondary/5 border-2 border-secondary/40 glow-accent"
-                    : "glass"
-                    }`}
+                  className={`relative rounded-2xl p-7 flex flex-col ${
+                    plan.highlight
+                      ? "bg-secondary/5 border-2 border-secondary/40 glow-accent"
+                      : "glass"
+                  }`}
                 >
                   {plan.badge && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-secondary text-primary text-xs font-semibold px-4 py-1.5 rounded-full">
@@ -163,7 +170,9 @@ export default function Pricing() {
                     <h3 className="text-xl font-bold text-primary mb-1">
                       {plan.name}
                     </h3>
-                    <p className="text-sm text-primary mb-5">{plan.description}</p>
+                    <p className="text-sm text-primary mb-5">
+                      {plan.description}
+                    </p>
                     <div className="flex items-end gap-1">
                       {plan.price === "Custom" ? (
                         <span className="font-bold text-4xl text-primary tracking-tight">
@@ -174,7 +183,9 @@ export default function Pricing() {
                           <span className="font-bold text-4xl text-primary tracking-tight">
                             ${plan.price}
                           </span>
-                          <span className="text-slate-600 mb-1.5">{plan.period}</span>
+                          <span className="text-slate-600 mb-1.5">
+                            {plan.period}
+                          </span>
                         </>
                       )}
                     </div>
@@ -187,7 +198,10 @@ export default function Pricing() {
 
                   <ul className="space-y-3 mb-8 flex-1">
                     {plan.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-2.5 text-sm">
+                      <li
+                        key={feat}
+                        className="flex items-start gap-2.5 text-sm"
+                      >
                         <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
                         <span className="text-primary">{feat}</span>
                       </li>
@@ -196,10 +210,11 @@ export default function Pricing() {
 
                   <a
                     href="#cta"
-                    className={`text-center font-semibold text-sm py-3 rounded-full transition-all duration-200 ${plan.highlight
-                      ? "bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] text-white glow-sm"
-                      : "bg-primary text-white hover:bg-primary/90"
-                      }`}
+                    className={`text-center font-semibold text-sm py-3 rounded-full transition-all duration-200 ${
+                      plan.highlight
+                        ? "bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] text-white glow-sm"
+                        : "bg-primary text-white hover:bg-primary/90"
+                    }`}
                   >
                     {plan.cta}
                   </a>
@@ -233,7 +248,6 @@ export default function Pricing() {
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
             {/* Two-column grid */}
             <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 xl:gap-20 items-start">
-
               {/* ── Left: sticky title panel ── */}
               <motion.div
                 initial={{ opacity: 0, x: -24 }}
@@ -249,15 +263,17 @@ export default function Pricing() {
 
                 {/* Heading */}
                 <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.1] text-primary mb-5">
-                  Frequently{" "}
-                  <br className="hidden sm:block" />
+                  Frequently <br className="hidden sm:block" />
                   asked{" "}
-                  <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">questions</span>
+                  <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    questions
+                  </span>
                 </h2>
 
                 {/* Sub-copy */}
                 <p className="text-slate-600 text-lg leading-relaxed mb-8 max-w-sm">
-                  Everything you need to know about ScanFlow pricing before you get started.
+                  Everything you need to know about ScanFlow pricing before you
+                  get started.
                 </p>
 
                 {/* CTA */}
@@ -283,12 +299,14 @@ export default function Pricing() {
                   <FaqItem key={faq.question} faq={faq} index={i} />
                 ))}
               </motion.div>
-
             </div>
           </div>
         </section>
         {/* cta section */}
-        <section id="cta" className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]">
+        <section
+          id="cta"
+          className="py-28 relative overflow-hidden bg-gradient-to-br from-primary to-[#1a4a7a]"
+        >
           {/* Big glow */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-[700px] h-[400px] bg-accent-2/20 blur-[120px] rounded-full" />
@@ -298,7 +316,9 @@ export default function Pricing() {
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
             <div className="flex items-end gap-[4px] h-full w-full">
               {Array.from({ length: 60 }).map((_, i) => {
-                const heights = [60, 30, 80, 50, 90, 40, 70, 20, 85, 55, 75, 35];
+                const heights = [
+                  60, 30, 80, 50, 90, 40, 70, 20, 85, 55, 75, 35,
+                ];
                 return (
                   <div
                     key={i}
@@ -314,16 +334,18 @@ export default function Pricing() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
               <Zap className="w-3.5 h-3.5 text-accent-2" />
-              <span className="text-xs font-semibold text-accent-2">14-day free trial</span>
+              <span className="text-xs font-semibold text-accent-2">
+                14-day free trial
+              </span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
-              Ready to choose{" "}
-              <span className="text-accent-2">your plan</span>?
+              Ready to choose <span className="text-accent-2">your plan</span>?
             </h2>
 
             <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
-              Start with a free 14-day trial on any plan — no credit card required. Upgrade, downgrade, or cancel anytime.
+              Start with a free 14-day trial on any plan — no credit card
+              required. Upgrade, downgrade, or cancel anytime.
             </p>
 
             {/* CTAs */}

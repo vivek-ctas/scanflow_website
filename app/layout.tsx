@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { Inter, Montserrat, JetBrains_Mono, Outfit } from "next/font/google";
 import Providers from "./providers";
 import "./globals.css";
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import {
+  SITE_NAME,
+  SITE_URL,
+  SITE_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+} from "@/lib/seo";
 
 // Fonts loaded via next/font to self-host, preload, and eliminate the
 // render-blocking Google Fonts request.
@@ -60,7 +65,11 @@ export const metadata: Metadata = {
     images: [DEFAULT_OG_IMAGE],
   },
 };
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"

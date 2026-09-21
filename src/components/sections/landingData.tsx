@@ -1,4 +1,24 @@
-import { BadgeCheck, Boxes, Camera, CheckCircle, EyeOff, FileText, FileWarning, ImageUp, Layers, RotateCcw, Scan, ScanLine, ScanSearch, ShieldCheck, ShoppingBag, Sun, Truck, Warehouse, Zap } from "lucide-react";
+import {
+  BadgeCheck,
+  Boxes,
+  Camera,
+  CheckCircle,
+  EyeOff,
+  FileText,
+  FileWarning,
+  ImageUp,
+  Layers,
+  RotateCcw,
+  Scan,
+  ScanLine,
+  ScanSearch,
+  ShieldCheck,
+  ShoppingBag,
+  Sun,
+  Truck,
+  Warehouse,
+  Zap,
+} from "lucide-react";
 
 // for ProblemValueSection
 export const problemCards = [
@@ -14,7 +34,8 @@ export const problemCards = [
   {
     icon: FileText,
     title: "Damaged Labels",
-    description: "Keep scanning even when part of a barcode is difficult to read.",
+    description:
+      "Keep scanning even when part of a barcode is difficult to read.",
     borderAccent: "border-l-[#10B981]",
     bgAccent: "bg-[#10B981]/10",
     textAccent: "text-[#10B981]",
@@ -85,8 +106,7 @@ export const steps = [
   {
     step: "01",
     title: "Upload or Capture",
-    description:
-      "Use your camera or upload an image containing a barcode.",
+    description: "Use your camera or upload an image containing a barcode.",
     icon: Camera,
   },
   {
@@ -106,8 +126,7 @@ export const steps = [
   {
     step: "04",
     title: "Use the Result",
-    description:
-      "Copy, verify, or integrate decoded data into your workflow.",
+    description: "Copy, verify, or integrate decoded data into your workflow.",
     icon: CheckCircle,
   },
 ];
@@ -115,23 +134,26 @@ export const steps = [
 //for UseCasesSection.tsx
 export const useCases = [
   {
-    title: 'Warehouses',
-    description: 'Scan products, packages, shelves, and inventory while moving through daily operations.',
+    title: "Warehouses",
+    description:
+      "Scan products, packages, shelves, and inventory while moving through daily operations.",
     icon: Warehouse,
   },
   {
-    title: 'Retail',
-    description: 'Quickly scan products and labels without depending on dedicated scanning devices.',
+    title: "Retail",
+    description:
+      "Quickly scan products and labels without depending on dedicated scanning devices.",
     icon: ShoppingBag,
   },
   {
-    title: 'Logistics',
-    description: 'Scan packages and shipments throughout receiving, sorting, and dispatch workflows.',
+    title: "Logistics",
+    description:
+      "Scan packages and shipments throughout receiving, sorting, and dispatch workflows.",
     icon: Truck,
   },
   {
-    title: 'Inventory',
-    description: 'Make inventory-related scanning simpler for your team.',
+    title: "Inventory",
+    description: "Make inventory-related scanning simpler for your team.",
     icon: Boxes,
   },
 ];

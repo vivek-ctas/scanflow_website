@@ -5,29 +5,39 @@ import { Droplet, Scissors, RotateCcw, Camera } from "lucide-react";
 function CleanBars({
   opacity = 1,
   blur = 0,
-  mask = false,
 }: {
   opacity?: number;
   blur?: number;
-  mask?: boolean;
 }) {
   const widths = [3, 1, 4, 2, 1, 3, 5, 1, 2, 4, 1, 3, 2, 5, 1, 2, 4, 1, 3, 2];
   return (
-    <svg viewBox="0 0 120 50" className="w-full h-20" style={{ filter: blur ? `blur(${blur}px)` : undefined, opacity }}>
-      <defs>
-        <mask id="missingMask">
-          <rect width="120" height="50" fill="white" />
-          <rect x="35" y="0" width="25" height="50" fill="black" />
-          <rect x="75" y="0" width="12" height="50" fill="black" />
-        </mask>
-      </defs>
-      <g mask={mask ? "url(#missingMask)" : undefined}>
-        {widths.reduce<{ x: number; els: React.ReactNode[] }>((acc, w, i) => {
-          const gap = 1.2;
-          acc.els.push(<rect key={i} x={acc.x} y="4" width={w} height="42" fill="#13355A" rx="0.5" />);
-          acc.x += w + gap;
-          return acc;
-        }, { x: 4, els: [] }).els}
+    <svg
+      viewBox="0 0 100 50"
+      className="w-full h-20"
+      style={{ filter: blur ? `blur(${blur}px)` : undefined, opacity }}
+    >
+      <g>
+        {
+          widths.reduce<{ x: number; els: React.ReactNode[] }>(
+            (acc, w, i) => {
+              const gap = 1.2;
+              acc.els.push(
+                <rect
+                  key={i}
+                  x={acc.x}
+                  y="4"
+                  width={w}
+                  height="42"
+                  fill="#13355A"
+                  rx="0.5"
+                />,
+              );
+              acc.x += w + gap;
+              return acc;
+            },
+            { x: 4, els: [] },
+          ).els
+        }
       </g>
     </svg>
   );
@@ -43,7 +53,7 @@ export const conditions = [
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(60,154,196,0.12),transparent_70%)]" />
         <div className="relative w-full h-full rounded-xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] p-3 flex items-center justify-center overflow-hidden">
           <div className="transform scale-125">
-            <CleanBars blur={2.2} opacity={0.8} />
+            <CleanBars blur={0.9} opacity={0.8} />
           </div>
         </div>
         {/* animated scanner laser */}
@@ -72,7 +82,7 @@ export const conditions = [
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(60,154,196,0.12),transparent_70%)]" />
         <div className="relative w-full h-full rounded-xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)] p-3 flex items-center justify-center overflow-hidden">
           <div className="relative w-full transform scale-125">
-            <CleanBars mask={true} />
+            <CleanBars />
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-3 left-[28%] w-14 h-4 bg-white rotate-[-12deg] rounded-sm shadow-sm" />
               <div className="absolute bottom-3 right-[32%] w-10 h-5 bg-white rotate-[15deg] rounded-sm shadow-sm" />
@@ -140,26 +150,31 @@ export const conditions = [
           <div className="flex justify-between items-start relative z-10">
             {/* barcode & details */}
             <div className="max-w-[75%] overflow-hidden">
-              <div className="flex gap-[2px] h-8 overflow-hidden">
+              <div className="flex gap-[2px] h-10 overflow-hidden mt-2">
                 {[...Array(36)].map((_, i) => (
                   <div
                     key={i}
-                    className={`bg-black rounded-sm shrink-0 ${i % 4 === 0 ? "w-[3px]" : i % 2 === 0 ? "w-[2px]" : "w-[1.5px]"
-                      }`}
+                    className={`bg-black rounded-sm shrink-0 ${
+                      i % 4 === 0
+                        ? "w-[3px]"
+                        : i % 2 === 0
+                          ? "w-[2px]"
+                          : "w-[1.5px]"
+                    }`}
                   />
                 ))}
               </div>
 
               {/* barcode number */}
-              <div className="mt-1 text-[7px] tracking-[1.5px] text-slate-600 font-bold truncate">
+              <div className="mt-2 text-[10px] tracking-[1.5px] text-slate-600 font-bold truncate">
                 1289 4472 9921 5548
               </div>
 
               {/* details */}
-              <div className="mt-[1px] text-[6px] text-slate-400 tracking-wide truncate">
+              <div className="mt-[1px] text-[8px] text-slate-800 tracking-wide truncate">
                 AMAZON HUB - DELHI NCR EXPRESS DELIVERY
               </div>
-              <div className="mt-[1px] text-[6px] text-slate-400 tracking-wide truncate">
+              <div className="mt-[1px] text-[8px] text-slate-800 tracking-wide truncate">
                 WEIGHT: 0.98 KG • SIZE: 12x10x5 CM
               </div>
             </div>
@@ -177,8 +192,11 @@ export const conditions = [
               {[...Array(32)].map((_, i) => (
                 <div
                   key={i}
-                  className={`w-[3px] h-[3px] rounded-[0.5px] ${i % 3 === 0 || i % 5 === 0 ? "bg-black" : "bg-white border border-slate-300"
-                    }`}
+                  className={`w-[3px] h-[3px] rounded-[0.5px] ${
+                    i % 3 === 0 || i % 5 === 0
+                      ? "bg-black"
+                      : "bg-white border border-slate-300"
+                  }`}
                 />
               ))}
             </div>
@@ -187,9 +205,13 @@ export const conditions = [
             <div className="flex flex-col items-end gap-0.5 min-w-0">
               <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[8px] font-bold tracking-wide text-emerald-700">DETECTED</span>
+                <span className="text-[8px] font-bold tracking-wide text-emerald-700">
+                  DETECTED
+                </span>
               </div>
-              <div className="text-[7px] text-slate-500 truncate">99.02% confidence</div>
+              <div className="text-[10px] text-slate-900 truncate">
+                99.02% confidence
+              </div>
             </div>
           </div>
         </div>

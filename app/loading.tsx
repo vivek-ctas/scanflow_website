@@ -1,39 +1,38 @@
 function WaveLoaderInner() {
-    return (
-        <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-white/70 backdrop-blur-sm">
-            <div className="flex flex-col items-center gap-6">
+  return (
+    <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-white/70 backdrop-blur-sm">
+      <div className="flex flex-col items-center gap-6">
+        {/* Wave bars */}
+        <div className="flex items-end gap-[5px]" style={{ height: 52 }}>
+          {[
+            { color: "#13355A", delay: "0s" },
+            { color: "#1B4A75", delay: "0.1s" },
+            { color: "#2C6A94", delay: "0.2s" },
+            { color: "#3C9AC4", delay: "0.3s" },
+            { color: "#6BC1E0", delay: "0.4s" },
+            { color: "#3C9AC4", delay: "0.5s" },
+            { color: "#2C6A94", delay: "0.6s" },
+            { color: "#1B4A75", delay: "0.7s" },
+            { color: "#13355A", delay: "0.8s" },
+          ].map((bar, i) => (
+            <div
+              key={i}
+              className="wave-bar"
+              style={{
+                background: bar.color,
+                animationDelay: bar.delay,
+              }}
+            />
+          ))}
+        </div>
 
-                {/* Wave bars */}
-                <div className="flex items-end gap-[5px]" style={{ height: 52 }}>
-                    {[
-                        { color: "#13355A", delay: "0s" },
-                        { color: "#1B4A75", delay: "0.1s" },
-                        { color: "#2C6A94", delay: "0.2s" },
-                        { color: "#3C9AC4", delay: "0.3s" },
-                        { color: "#6BC1E0", delay: "0.4s" },
-                        { color: "#3C9AC4", delay: "0.5s" },
-                        { color: "#2C6A94", delay: "0.6s" },
-                        { color: "#1B4A75", delay: "0.7s" },
-                        { color: "#13355A", delay: "0.8s" },
-                    ].map((bar, i) => (
-                        <div
-                            key={i}
-                            className="wave-bar"
-                            style={{
-                                background: bar.color,
-                                animationDelay: bar.delay,
-                            }}
-                        />
-                    ))}
-                </div>
+        {/* Shimmer label */}
+        <span className="shimmer-text text-xs font-medium uppercase tracking-widest">
+          Scanning
+        </span>
+      </div>
 
-                {/* Shimmer label */}
-                <span className="shimmer-text text-xs font-medium uppercase tracking-widest">
-                    Scanning
-                </span>
-            </div>
-
-            <style>{`
+      <style>{`
         .wave-bar {
           width: 7px;
           height: 44px;
@@ -67,12 +66,10 @@ function WaveLoaderInner() {
           100% { background-position: 200% center; }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }
 
 export default function WaveLoader() {
-    return (
-        <WaveLoaderInner />
-    );
+  return <WaveLoaderInner />;
 }

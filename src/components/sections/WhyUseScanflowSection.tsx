@@ -7,7 +7,8 @@ const benefits = [
   {
     number: "01",
     title: "Use Existing Phones",
-    description: "Let employees scan using phones they already know how to use.",
+    description:
+      "Let employees scan using phones they already know how to use.",
     icon: Smartphone,
     highlight: "BYOD READY",
     theme: {
@@ -58,7 +59,8 @@ const benefits = [
   {
     number: "04",
     title: "Built for Real Conditions",
-    description: "Designed around the imperfect barcodes teams encounter every day.",
+    description:
+      "Designed around the imperfect barcodes teams encounter every day.",
     icon: ShieldCheck,
     highlight: "RESILIENT SCAN",
     theme: {
@@ -82,7 +84,6 @@ export default function WhyUseScanflowSection() {
     >
       <div className="px-5 sm:px-8 lg:px-[70px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-
           {/* ── LEFT COLUMN: ScanFlow Orbit Mockup SVG Illustration ── */}
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative animate-float-slow">
@@ -107,7 +108,8 @@ export default function WhyUseScanflowSection() {
 
             {/* Subtitle */}
             <p className="mt-5 text-slate-600 text-base sm:text-lg leading-relaxed max-w-3xl">
-              Instead of exposing complicated tech, ScanFlow focuses on practical benefits that streamline daily scanning operations.
+              Instead of exposing complicated tech, ScanFlow focuses on
+              practical benefits that streamline daily scanning operations.
             </p>
 
             {/* 4 Cards Horizontal Grid */}
@@ -123,10 +125,14 @@ export default function WhyUseScanflowSection() {
                     <div>
                       {/* Top Row: Icon + Number Badge */}
                       <div className="flex items-center justify-between mb-4">
-                        <div className={`h-11 w-11 rounded-xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center shadow-xs`}>
+                        <div
+                          className={`h-11 w-11 rounded-xl ${theme.iconBg} ${theme.iconColor} flex items-center justify-center shadow-xs`}
+                        >
                           <Icon className="h-5.5 w-5.5" />
                         </div>
-                        <span className={`text-xs font-mono font-bold ${theme.numBg} ${theme.numColor} px-2.5 py-0.5 rounded-full border border-current/15`}>
+                        <span
+                          className={`text-xs font-mono font-bold ${theme.numBg} ${theme.numColor} px-2.5 py-0.5 rounded-full border border-current/15`}
+                        >
                           {item.number}
                         </span>
                       </div>
@@ -143,14 +149,15 @@ export default function WhyUseScanflowSection() {
                     {/* Bottom Tag & Pulsing Dot */}
                     <div className="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold tracking-wider">
                       <span className={theme.tagColor}>{item.highlight}</span>
-                      <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor} animate-pulse`} />
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${theme.dotColor} animate-pulse`}
+                      />
                     </div>
                   </article>
                 );
               })}
             </div>
           </div>
-
         </div>
       </div>
     </section>

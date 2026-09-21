@@ -23,7 +23,7 @@ export default function SpeedChart() {
 
   const path = points.reduce(
     (acc, p, i) => acc + (i === 0 ? `M${p.x},${p.y}` : ` L${p.x},${p.y}`),
-    ""
+    "",
   );
   const area = path + ` L320,90 L0,90 Z`;
   const last = points[points.length - 1];
@@ -39,7 +39,16 @@ export default function SpeedChart() {
         </defs>
         {/* gridlines */}
         {[20, 40, 60, 80].map((y) => (
-          <line key={y} x1="0" x2="320" y1={y} y2={y} stroke="#13355A" strokeOpacity="0.06" strokeDasharray="2 4" />
+          <line
+            key={y}
+            x1="0"
+            x2="320"
+            y1={y}
+            y2={y}
+            stroke="#13355A"
+            strokeOpacity="0.06"
+            strokeDasharray="2 4"
+          />
         ))}
         <motion.path
           d={area}
@@ -72,8 +81,18 @@ export default function SpeedChart() {
           transition={{ delay: 1.4, type: "spring" }}
         />
         <circle cx={last.x} cy={last.y} r="10" fill="#3C9AC4" opacity="0.25">
-          <animate attributeName="r" values="6;14;6" dur="1.8s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.4;0;0.4" dur="1.8s" repeatCount="indefinite" />
+          <animate
+            attributeName="r"
+            values="6;14;6"
+            dur="1.8s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="opacity"
+            values="0.4;0;0.4"
+            dur="1.8s"
+            repeatCount="indefinite"
+          />
         </circle>
       </svg>
       <div className="flex items-center justify-between mt-3 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">

@@ -42,7 +42,9 @@ export default function AnimatedCounter({
 
   return (
     <span ref={ref}>
-      {prefix}{count.toFixed(decimals)}{suffix}
+      {prefix}
+      {count.toFixed(decimals)}
+      {suffix}
     </span>
   );
 }

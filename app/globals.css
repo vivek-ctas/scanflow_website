@@ -37,17 +37,44 @@
     --accent-2: 196 65% 65%;
 
     /* CTAS-inspired gradients (Navy + Accent Blue palette) */
-    --gradient-primary: linear-gradient(135deg, hsl(211 65% 21%) 0%, hsl(211 65% 30%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(211 65% 12%) 0%, hsl(211 65% 25%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(199 54% 50%) 0%, hsl(211 65% 21%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(199 40% 97%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(211 20% 97%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(211 65% 21%) 0%,
+      hsl(211 65% 30%) 100%
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(211 65% 12%) 0%,
+      hsl(211 65% 25%) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(199 54% 50%) 0%,
+      hsl(211 65% 21%) 100%
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(0 0% 100%) 0%,
+      hsl(199 40% 97%) 100%
+    );
+    --gradient-section: linear-gradient(
+      180deg,
+      hsl(211 20% 97%) 0%,
+      hsl(0 0% 100%) 100%
+    );
 
     /* Brand-tinted shadows */
-    --shadow-sm: 0 1px 3px 0 hsl(232 60% 18% / 0.1), 0 1px 2px -1px hsl(232 60% 18% / 0.1);
-    --shadow-md: 0 4px 6px -1px hsl(232 60% 18% / 0.1), 0 2px 4px -2px hsl(232 60% 18% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(232 60% 18% / 0.12), 0 4px 6px -4px hsl(232 60% 18% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(232 60% 18% / 0.15), 0 8px 10px -6px hsl(232 60% 18% / 0.1);
+    --shadow-sm:
+      0 1px 3px 0 hsl(232 60% 18% / 0.1), 0 1px 2px -1px hsl(232 60% 18% / 0.1);
+    --shadow-md:
+      0 4px 6px -1px hsl(232 60% 18% / 0.1),
+      0 2px 4px -2px hsl(232 60% 18% / 0.1);
+    --shadow-lg:
+      0 10px 15px -3px hsl(232 60% 18% / 0.12),
+      0 4px 6px -4px hsl(232 60% 18% / 0.1);
+    --shadow-xl:
+      0 20px 25px -5px hsl(232 60% 18% / 0.15),
+      0 8px 10px -6px hsl(232 60% 18% / 0.1);
     --shadow-2xl: 0 25px 50px -12px hsl(232 60% 18% / 0.3);
   }
 
@@ -62,23 +89,23 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #F1F5F9;
+    background: #f1f5f9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3C9AC4 0%, #13355A 100%);
+    background: linear-gradient(180deg, #3c9ac4 0%, #13355a 100%);
     border-radius: 9999px;
-    border: 2px solid #F1F5F9;
+    border: 2px solid #f1f5f9;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #6BC1E0 0%, #3C9AC4 100%);
+    background: linear-gradient(180deg, #6bc1e0 0%, #3c9ac4 100%);
   }
 
   * {
     @apply border-border;
     scrollbar-width: thin;
-    scrollbar-color: #3C9AC4 #F1F5F9;
+    scrollbar-color: #3c9ac4 #f1f5f9;
   }
 
   body {
@@ -86,8 +113,14 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-montserrat), var(--font-inter), system-ui, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      var(--font-montserrat), var(--font-inter), system-ui, sans-serif;
     line-height: 1.2;
   }
 
@@ -95,8 +128,17 @@
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(circle at 20% 10%, hsl(var(--secondary) / 0.08), transparent 34%),
-      radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.08), transparent 36%);
+    background-image:
+      radial-gradient(
+        circle at 20% 10%,
+        hsl(var(--secondary) / 0.08),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        hsl(var(--primary) / 0.08),
+        transparent 36%
+      );
     pointer-events: none;
     z-index: -1;
   }
@@ -117,7 +159,11 @@
 
 @layer components {
   .text-gradient {
-    background: linear-gradient(90deg, hsl(var(--secondary)) 0%, hsl(var(--primary)) 100%);
+    background: linear-gradient(
+      90deg,
+      hsl(var(--secondary)) 0%,
+      hsl(var(--primary)) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -191,7 +237,10 @@
     background-image:
       linear-gradient(hsl(var(--primary) / 0.06) 2px, transparent 2px),
       linear-gradient(90deg, hsl(var(--primary) / 0.06) 2px, transparent 2px);
-    background-size: 34px 34px, 34px 34px, 180px 180px;
+    background-size:
+      34px 34px,
+      34px 34px,
+      180px 180px;
   }
 
   /* Wide full-width content container (mirrors the reference site's gutters) */
