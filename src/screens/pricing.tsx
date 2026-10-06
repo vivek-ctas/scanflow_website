@@ -4,37 +4,58 @@ import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import { WarehouseIllustration } from "@/components/ui/illustration";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Zap, ChevronDown, ArrowRight } from "lucide-react";
-import { plans } from "@/components/sections/landingData";
-import { useState } from "react";
+import { ArrowRight, Check, ChevronDown, Loader2, Zap } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
+import CheckoutModal from "@/components/checkoutModal";
+import {
+  formatPlanPrice,
+  planAllowanceLabel,
+  planPriceForCycle,
+  shortPeriodLabel,
+} from "@/lib/plans";
+import { usePlans } from "@/hooks/use-plans";
+import { useCheckout } from "@/hooks/use-checkout";
+import { MaintenanceState } from "@/components/ui/maintenanceState";
+import type { BillingCycle, Plan } from "@/types";
 
-const pricingFaqs = [
-  {
-    question: "Can I try ScanFlow before purchasing?",
-    answer:
-      "Yes. You can start with a free trial to evaluate ScanFlow's speed, accuracy, and real-world performance before choosing a subscription.",
-  },
-  {
-    question: "Can I upgrade my plan later?",
-    answer:
-      "Absolutely. You can upgrade or change your subscription whenever your business needs grow.",
-  },
-  {
-    question: "What's included with every plan?",
-    answer:
-      "Every plan provides access to the complete ScanFlow barcode scanning engine, regular improvements, documentation, and customer support. Higher-tier plans include increased usage limits and additional business features.",
-  },
-  {
-    question: "Do you provide technical support?",
-    answer:
-      "Yes. All paid plans include technical support. Enterprise customers receive priority assistance and dedicated onboarding to ensure a smooth deployment.",
-  },
-  {
-    question: "Do you offer custom plans for businesses?",
-    answer:
-      "Yes. If your organization requires custom licensing, higher usage limits, or enterprise-level support, our team can create a plan tailored to your requirements.",
-  },
-];
+const pricingFaqs = (trialDays: number) => {
+  const trialCopy =
+    trialDays > 0
+      ? `Yes. You can start with a ${trialDays}-day free trial to evaluate ScanFlow's speed, accuracy, and real-world performance before choosing a subscription.`
+      : "Yes. You can evaluate ScanFlow's speed, accuracy, and real-world performance before choosing a subscription.";
+
+  const upgradeCopy =
+    trialDays > 0
+      ? `Absolutely. You can upgrade or change your subscription whenever your business needs grow${trialDays > 0 ? ", with or without a trial" : ""}.`
+      : "Absolutely. You can upgrade or change your subscription whenever your business needs grow.";
+
+  return [
+    {
+      question: "Can I try ScanFlow before purchasing?",
+      answer: trialCopy,
+    },
+    {
+      question: "Can I upgrade my plan later?",
+      answer: upgradeCopy,
+    },
+    {
+      question: "What's included with every plan?",
+      answer:
+        "Every plan provides access to the complete ScanFlow barcode scanning engine, regular improvements, documentation, and customer support. Higher-tier plans include increased usage limits and additional business features.",
+    },
+    {
+      question: "Do you provide technical support?",
+      answer:
+        "Yes. All paid plans include technical support. Enterprise customers receive priority assistance and dedicated onboarding to ensure a smooth deployment.",
+    },
+    {
+      question: "Do you offer custom plans for businesses?",
+      answer:
+        "Yes. If your organization requires custom licensing, higher usage limits, or enterprise-level support, our team can create a plan tailored to your requirements.",
+    },
+  ];
+};
 
 function FaqItem({
   faq,
@@ -111,6 +132,66 @@ function FaqItem({
 }
 
 export default function Pricing() {
+  const router = useRouter();
+  const {
+    plans,
+    loading: plansLoading,
+    error: plansError,
+    refetch: refetchPlans,
+  } = usePlans();
+  const checkout = useCheckout();
+  const [activePlan, setActivePlan] = useState<Plan | null>(null);
+  // Defaults to Monthly, like the reference site's billing toggle.
+  const [selectedCycle, setSelectedCycle] = useState<BillingCycle>("month");
+
+  // Marketing copy is derived from backend data: the longest trial offered
+  // across the live plans. 0 means no plan advertises a trial, so all
+  // "free trial" language is dropped.
+  const trialDays = useMemo(
+    () => plans.reduce((max, p) => Math.max(max, p.trial_days || 0), 0),
+    [plans],
+  );
+
+  // Each plan is sold on exactly one billing cycle, so the Monthly/Quarterly
+  // tab narrows the cards to the plans sold on that cycle.
+  const filteredPlans = useMemo(
+    () => plans.filter((p) => p.billing_cycle === selectedCycle),
+    [plans, selectedCycle],
+  );
+
+  // Mirror the reference site: fewer cards gets a narrower, centered grid so a
+  // single plan in a tab doesn't stretch across the full width.
+  const colClass =
+    filteredPlans.length === 1
+      ? "grid-cols-1 max-w-sm mx-auto"
+      : filteredPlans.length === 2
+        ? "grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto"
+        : "grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto";
+
+  const faqs = useMemo(() => pricingFaqs(trialDays), [trialDays]);
+
+  function handlePlanClick(plan: Plan) {
+    // The plan dictates its own billing cycle; the backend rejects a mismatch.
+    checkout.setBillingCycle(plan.billing_cycle);
+    checkout.clearError();
+    setActivePlan(plan);
+  }
+
+  function handleCloseModal() {
+    setActivePlan(null);
+    checkout.reset();
+  }
+
+  function handleGoHome() {
+    handleCloseModal();
+    router.push("/");
+  }
+
+  const heroSubtitle =
+    trialDays > 0
+      ? `Start free with a ${trialDays}-day trial - no credit card required. Every plan includes the full ScanFlow engine for fast, accurate scanning that grows with your team's volume.`
+      : "Every plan includes the full ScanFlow engine for fast, accurate scanning that grows with your team's volume. Upgrade, downgrade, or cancel anytime.";
+
   return (
     <Layout>
       <div className="pt-16">
@@ -126,7 +207,7 @@ export default function Pricing() {
               - no hidden fees.
             </>
           }
-          subtitle="Start free with a 14-day trial - no credit card required. Every plan includes the full ScanFlow engine for fast, accurate scanning that grows with your team's volume."
+          subtitle={heroSubtitle}
           badgeClassName="mb-6 inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-xs font-semibold text-primary border border-primary/15 shadow-sm"
           titleClassName="text-5xl sm:text-6xl lg:text-[4.25rem] font-bold text-primary mb-6 leading-[1.05] tracking-tight"
           subtitleClassName="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl"
@@ -136,6 +217,7 @@ export default function Pricing() {
             </div>
           }
         />
+
         <section
           id="pricing"
           className="py-20 relative overflow-hidden bg-white border-t border-[#EAECF3]"
@@ -145,91 +227,170 @@ export default function Pricing() {
           </div>
 
           <div className="relative px-5 sm:px-8 lg:px-[70px]">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {plans.map((plan, i) => (
-                <motion.div
-                  key={plan.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className={`relative rounded-2xl p-7 flex flex-col ${
-                    plan.highlight
-                      ? "bg-secondary/5 border-2 border-secondary/40 glow-accent"
-                      : "glass"
-                  }`}
-                >
-                  {plan.badge && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-secondary text-primary text-xs font-semibold px-4 py-1.5 rounded-full">
-                      <Zap className="w-3 h-3" />
-                      {plan.badge}
-                    </div>
-                  )}
+            {/* Loading */}
+            {plansLoading && (
+              <div className="flex flex-col items-center justify-center gap-4">
+                <Loader2 className="w-10 h-10 animate-spin text-secondary" />
+                <p className="text-sm text-slate-500">Loading plans…</p>
+              </div>
+            )}
 
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-primary mb-1">
-                      {plan.name}
-                    </h3>
-                    <p className="text-sm text-primary mb-5">
-                      {plan.description}
-                    </p>
-                    <div className="flex items-end gap-1">
-                      {plan.price === "Custom" ? (
-                        <span className="font-bold text-4xl text-primary tracking-tight">
-                          Custom
-                        </span>
-                      ) : (
-                        <>
-                          <span className="font-bold text-4xl text-primary tracking-tight">
-                            ${plan.price}
-                          </span>
-                          <span className="text-slate-600 mb-1.5">
-                            {plan.period}
-                          </span>
-                        </>
-                      )}
-                    </div>
-                    <div className="mt-1">
-                      <span className="text-xs font-semibold text-secondary border border-secondary/20 rounded-full px-2.5 py-1">
-                        {plan.scans}
-                      </span>
-                    </div>
+            {/* Error — server down / plans API unreachable */}
+            {!plansLoading && plansError && (
+              <MaintenanceState onRetry={refetchPlans} detail={plansError} />
+            )}
+
+            {/* Empty */}
+            {!plansLoading && !plansError && plans.length === 0 && (
+              <div className="flex flex-col items-center justify-center gap-3 text-center">
+                <Zap className="w-10 h-10 text-secondary/50" />
+                <p className="text-primary font-medium">
+                  No plans are available right now.
+                </p>
+                <p className="text-sm text-slate-400">
+                  Please check back soon or get in touch with our sales team.
+                </p>
+              </div>
+            )}
+
+            {/* Plans */}
+            {!plansLoading && !plansError && plans.length > 0 && (
+              <div>
+                {/* Billing toggle — copied from the reference site */}
+                <div className="mb-10 flex items-center justify-center">
+                  <div className="inline-flex items-center gap-1 bg-white/80 backdrop-blur-sm rounded-full p-1 border border-slate-200 shadow-md">
+                    <button
+                      onClick={() => setSelectedCycle("month")}
+                      className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                        selectedCycle === "month"
+                          ? "bg-primary text-white shadow-sm"
+                          : "text-slate-600 hover:text-secondary"
+                      }`}
+                    >
+                      Monthly
+                    </button>
+                    <button
+                      onClick={() => setSelectedCycle("quarterly")}
+                      className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                        selectedCycle === "quarterly"
+                          ? "bg-primary text-white shadow-sm"
+                          : "text-slate-600 hover:text-secondary"
+                      }`}
+                    >
+                      Quarterly
+                    </button>
                   </div>
+                </div>
 
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {plan.features.map((feat) => (
-                      <li
-                        key={feat}
-                        className="flex items-start gap-2.5 text-sm"
-                      >
-                        <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-primary">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {filteredPlans.length > 0 ? (
+                  <div className={`grid gap-5 items-stretch ${colClass}`}>
+                    {filteredPlans.map((plan, i) => {
+                      const allowance = planAllowanceLabel(plan);
+                      const popular = plan.is_popular;
+                      return (
+                        <motion.div
+                          key={plan.id}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1, duration: 0.5 }}
+                          className={`relative rounded-2xl p-7 flex flex-col ${
+                            popular
+                              ? "bg-secondary/5 border-2 border-secondary/40 glow-accent"
+                              : "glass"
+                          }`}
+                        >
+                          {popular && (
+                            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-secondary text-primary text-xs font-semibold px-4 py-1.5 rounded-full">
+                              <Zap className="w-3 h-3" />
+                              Most Popular
+                            </div>
+                          )}
 
-                  <a
-                    href="#cta"
-                    className={`text-center font-semibold text-sm py-3 rounded-full transition-all duration-200 ${
-                      plan.highlight
-                        ? "bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] text-white glow-sm"
-                        : "bg-primary text-white hover:bg-primary/90"
-                    }`}
-                  >
-                    {plan.cta}
-                  </a>
-                </motion.div>
-              ))}
-            </div>
+                          <div className="mb-6">
+                            <h3 className="text-xl font-bold text-primary mb-1">
+                              {plan.name}
+                            </h3>
+                            <p className="text-sm text-primary/70 mb-5">
+                              {plan.desc}
+                            </p>
+                            <div className="flex items-end gap-1">
+                              <span className="font-bold text-4xl text-primary tracking-tight">
+                                {formatPlanPrice(
+                                  planPriceForCycle(plan),
+                                  plan.currency,
+                                )}
+                              </span>
+                              <span className="text-slate-600 mb-1.5">
+                                {shortPeriodLabel(plan.billing_cycle)}
+                              </span>
+                            </div>
+                            {allowance && (
+                              <div className="mt-1">
+                                <span className="text-xs font-semibold text-secondary border border-secondary/20 rounded-full px-2.5 py-1">
+                                  {allowance}
+                                </span>
+                              </div>
+                            )}
+                          </div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center text-sm text-slate-600 mt-8"
-            >
-              All plans include a 14-day free trial. No credit card required.
-            </motion.p>
+                          <ul className="space-y-3 mb-8 flex-1">
+                            {plan.marketing_features?.map((feat) => (
+                              <li
+                                key={feat}
+                                className="flex items-start gap-2.5 text-sm"
+                              >
+                                <Check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                                <span className="text-primary">{feat}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <button
+                            onClick={() => handlePlanClick(plan)}
+                            className={`text-center font-semibold text-sm py-3 rounded-full transition-all duration-200 ${
+                              popular
+                                ? "bg-gradient-to-r from-[#13355A] via-[#1B4A75] to-[#3C9AC4] text-white glow-sm hover:opacity-95"
+                                : "bg-primary text-white hover:bg-primary/90"
+                            }`}
+                          >
+                            {plan.trial_days > 0
+                              ? "Start Free Trial"
+                              : "Get Started"}
+                          </button>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center gap-2 text-center py-10">
+                    <p className="text-primary font-medium">
+                      {selectedCycle === "month"
+                        ? "No monthly plans available yet."
+                        : "No quarterly plans available yet - check back soon."}
+                    </p>
+                    <p className="text-sm text-slate-400">
+                      Get in touch with our sales team to be notified.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Trial note — only when a live plan advertises a trial. */}
+            {!plansLoading && !plansError && trialDays > 0 && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-center text-sm text-slate-600 mt-8"
+              >
+                {trialDays === 1
+                  ? "Eligible plans include a 1-day free trial."
+                  : `Eligible plans include a ${trialDays}-day free trial.`}{" "}
+                No credit card required.
+              </motion.p>
+            )}
           </div>
         </section>
 
@@ -295,13 +456,14 @@ export default function Pricing() {
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
                 className="flex flex-col gap-4"
               >
-                {pricingFaqs.map((faq, i) => (
+                {faqs.map((faq, i) => (
                   <FaqItem key={faq.question} faq={faq} index={i} />
                 ))}
               </motion.div>
             </div>
           </div>
         </section>
+
         {/* cta section */}
         <section
           id="cta"
@@ -332,20 +494,23 @@ export default function Pricing() {
 
           <div className="relative max-w-4xl mx-auto px-6 text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
-              <Zap className="w-3.5 h-3.5 text-accent-2" />
-              <span className="text-xs font-semibold text-accent-2">
-                14-day free trial
-              </span>
-            </div>
+            {trialDays > 0 && (
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2 mb-8">
+                <Zap className="w-3.5 h-3.5 text-accent-2" />
+                <span className="text-xs font-semibold text-accent-2">
+                  {trialDays}-day free trial
+                </span>
+              </div>
+            )}
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1] text-white">
               Ready to choose <span className="text-accent-2">your plan</span>?
             </h2>
 
             <p className="text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-12">
-              Start with a free 14-day trial on any plan — no credit card
-              required. Upgrade, downgrade, or cancel anytime.
+              {trialDays > 0
+                ? `Start with a free ${trialDays}-day trial on any eligible plan — no credit card required. Upgrade, downgrade, or cancel anytime.`
+                : "Upgrade, downgrade, or cancel anytime — pick the plan that matches how your team scans."}
             </p>
 
             {/* CTAs */}
@@ -354,12 +519,12 @@ export default function Pricing() {
                 href="#pricing"
                 className="group flex items-center gap-2 bg-white text-primary font-semibold px-9 py-4 rounded-full hover:bg-secondary transition-all duration-200 shadow-lg text-base"
               >
-                Start Free Trial
+                {trialDays > 0 ? "Start Free Trial" : "See Plans"}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#contact"
-                className="flex items-center gap-2 bg-white/10 border border-white/25 text-white font-medium px-9 py-4 rounded-full hover:bg-white/20 transition-all duration-200 text-base"
+                className="flex items-center gap-2 bg-white/10 border border-white/25 text-white font-medium px-9 py-4 rounded-full hover:bg-white/20 hover:border-white/30 transition-all duration-200 text-base"
               >
                 Contact Sales
               </a>
@@ -371,7 +536,7 @@ export default function Pricing() {
                 "✓ No credit card required",
                 "✓ Cancel anytime",
                 "✓ All features included",
-                "✓ Free 14-day trial",
+                ...(trialDays > 0 ? [`✓ Free ${trialDays}-day trial`] : []),
                 "✓ Instant setup",
               ].map((item) => (
                 <span key={item}>{item}</span>
@@ -380,6 +545,22 @@ export default function Pricing() {
           </div>
         </section>
       </div>
+
+      {activePlan && (
+        <CheckoutModal
+          plan={activePlan}
+          step={checkout.step}
+          form={checkout.form}
+          quote={checkout.leadData?.plan ?? null}
+          loading={checkout.loading}
+          error={checkout.error}
+          onClose={handleCloseModal}
+          onFormChange={checkout.setForm}
+          onSubmitForm={() => checkout.submitForm(activePlan)}
+          onGoHome={handleGoHome}
+          onClearError={checkout.clearError}
+        />
+      )}
     </Layout>
   );
 }

@@ -20,51 +20,85 @@ import {
   ShieldCheck,
   ExternalLink,
   Zap,
+  AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { submitContactForm } from "@/services/contact.service";
+import type { ContactFormStatus, WebSettings } from "@/types";
+import { useWebSettings } from "@/components/web-settings/WebSettingsProvider";
+import { FALLBACK_SETTINGS } from "@/services/web-settings.service";
 
-const contactCards = [
-  {
-    id: "email",
-    icon: Mail,
-    tag: "Email us directly",
-    heading: "info@ctasis.com",
-    sub: "For general inquiries, quotes & technical support.",
-    href: "mailto:info@ctasis.com",
-    accent: "#3C9AC4",
-    bgAccent: "bg-[#3C9AC4]/10 text-[#3C9AC4]",
-  },
-  {
-    id: "phone",
-    icon: Phone,
-    tag: "Call our team",
-    heading: "+91 7948993409",
-    sub: "Mon – Fri, 10 AM – 8 PM IST. Real humans, real answers.",
-    href: "tel:+917948993409",
-    accent: "#10B981",
-    bgAccent: "bg-emerald-500/10 text-emerald-600",
-  },
-  {
-    id: "visit",
-    icon: MapPin,
-    tag: "Visit our HQ",
-    heading: "Gota, Ahmedabad",
-    sub: "A-865/866, Money Plant High Street, Jagatpur Rd, near BSNL Office, Gujarat 382470",
-    href: "https://maps.google.com/?q=Money+Plant+High+Street+Gota+Ahmedabad",
-    accent: "#13355A",
-    bgAccent: "bg-primary/10 text-primary",
-  },
-  {
-    id: "hours",
-    icon: Clock,
-    tag: "Business Hours",
-    heading: "10:00 AM – 8:00 PM IST",
-    sub: "Monday through Friday. Guaranteed response within 24 hours.",
-    href: null,
-    accent: "#D97706",
-    bgAccent: "bg-amber-500/10 text-amber-600",
-  },
-];
+interface ContactCard {
+  id: string;
+  icon: typeof Mail;
+  tag: string;
+  heading: string;
+  sub: string;
+  href: string | null;
+  accent: string;
+  bgAccent: string;
+}
+
+const buildContactCards = (s: WebSettings): ContactCard[] => {
+  const cards: ContactCard[] = [];
+
+  if (s.contact.email) {
+    cards.push({
+      id: "email",
+      icon: Mail,
+      tag: "Email us directly",
+      heading: s.contact.email,
+      sub: "For general inquiries, quotes & technical support.",
+      href: `mailto:${s.contact.email}`,
+      accent: "#3C9AC4",
+      bgAccent: "bg-[#3C9AC4]/10 text-[#3C9AC4]",
+    });
+  }
+
+  if (s.contact.phone) {
+    cards.push({
+      id: "phone",
+      icon: Phone,
+      tag: "Call our team",
+      heading: s.contact.phone,
+      sub: "Mon – Fri, 10 AM – 8 PM IST. Real humans, real answers.",
+      href: `tel:${s.contact.phone.replace(/\s+/g, "")}`,
+      accent: "#10B981",
+      bgAccent: "bg-emerald-500/10 text-emerald-600",
+    });
+  }
+
+  if (s.contact.address) {
+    const cityState = [s.contact.city, s.contact.state]
+      .filter(Boolean)
+      .join(", ");
+    cards.push({
+      id: "visit",
+      icon: MapPin,
+      tag: "Visit our HQ",
+      heading: cityState || s.contact.address.split(",")[0].trim(),
+      sub: s.contact.address,
+      href: `https://maps.google.com/?q=${encodeURIComponent(s.contact.address)}`,
+      accent: "#13355A",
+      bgAccent: "bg-primary/10 text-primary",
+    });
+  }
+
+  if (s.contact.working_hours) {
+    cards.push({
+      id: "hours",
+      icon: Clock,
+      tag: "Business Hours",
+      heading: s.contact.working_hours,
+      sub: "Monday through Friday. Guaranteed response within 24 hours.",
+      href: null,
+      accent: "#D97706",
+      bgAccent: "bg-amber-500/10 text-amber-600",
+    });
+  }
+
+  return cards;
+};
 
 const INQUIRY_TYPES = [
   "Sales & Pricing",
@@ -76,6 +110,21 @@ const INQUIRY_TYPES = [
 ];
 
 export default function Contact() {
+  const { settings } = useWebSettings();
+  const s = settings ?? FALLBACK_SETTINGS;
+  const contactCards = buildContactCards(s);
+
+  const mapAddress = s.contact.address || FALLBACK_SETTINGS.contact.address;
+  const mapHref = `https://maps.google.com/?q=${encodeURIComponent(mapAddress)}`;
+  const mapPinTitle = (
+    mapAddress.split(",")[0] ||
+    s.company.name ||
+    "ScanFlow"
+  ).trim();
+  const mapPinSub = [s.contact.city, s.contact.state, s.contact.country]
+    .filter(Boolean)
+    .join(", ");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -85,16 +134,27 @@ export default function Contact() {
     message: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">(
-    "idle",
-  );
+  const [status, setStatus] = useState<ContactFormStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (formData.message.trim().length < 10) {
+      setStatus("error");
+      setErrorMsg(
+        "Please share a few more details (at least 10 characters) so our team can understand your requirements.",
+      );
+      return;
+    }
     setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-    }, 900);
+    setErrorMsg(null);
+    const { error } = await submitContactForm(formData);
+    if (error) {
+      setStatus("error");
+      setErrorMsg(error);
+      return;
+    }
+    setStatus("success");
   };
 
   return (
@@ -192,6 +252,7 @@ export default function Contact() {
                       type="button"
                       onClick={() => {
                         setStatus("idle");
+                        setErrorMsg(null);
                         setFormData({
                           name: "",
                           email: "",
@@ -349,6 +410,17 @@ export default function Contact() {
                       />
                     </div>
 
+                    {/* Error Banner */}
+                    {status === "error" && errorMsg && (
+                      <div
+                        role="alert"
+                        className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+                      >
+                        <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                        <p className="leading-relaxed">{errorMsg}</p>
+                      </div>
+                    )}
+
                     {/* Submit Button */}
                     <div>
                       <button
@@ -441,7 +513,7 @@ export default function Contact() {
                     </span>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=Money+Plant+High+Street+Gota+Ahmedabad"
+                    href={mapHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs font-bold text-secondary hover:text-primary transition-colors"
@@ -467,11 +539,9 @@ export default function Contact() {
                   <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-md rounded-xl px-3.5 py-2 border border-slate-200/80 shadow-lg pointer-events-none flex items-center gap-2 text-xs">
                     <MapPin className="w-4 h-4 text-secondary flex-shrink-0" />
                     <div>
-                      <p className="font-bold text-primary">
-                        Money Plant High Street
-                      </p>
+                      <p className="font-bold text-primary">{mapPinTitle}</p>
                       <p className="text-[11px] text-slate-500">
-                        Gota, Ahmedabad, Gujarat
+                        {mapPinSub || s.contact.city}
                       </p>
                     </div>
                   </div>

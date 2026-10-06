@@ -5,6 +5,8 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useWebSettings } from "./web-settings/WebSettingsProvider";
+import { FALLBACK_SETTINGS } from "@/services/web-settings.service";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -17,6 +19,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { settings } = useWebSettings();
+  const companyName = settings?.company.name || FALLBACK_SETTINGS.company.name;
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -42,14 +46,14 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-1 group shrink-0">
           <Image
             src="/ctasis-logo_blue.svg"
-            alt="scanflow"
+            alt={companyName}
             width={120}
             height={40}
             className="h-10 w-auto object-contain"
           />
 
-          <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent">
-            scanflow
+          <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent break-words">
+            {companyName}
           </span>
         </Link>
 
