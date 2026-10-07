@@ -1,0 +1,259 @@
+/* ScanFlow-branded barcode-scanner loader.
+   Ported from scanflow_panel/src/@fuse/core/FuseLoading/FuseLoading.scss
+   (plain CSS here — the marketing site has no sass dependency).
+   Rendered by app/loading.tsx during route navigation/streaming. */
+
+.fuse-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(60, 154, 196, 0.14),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(19, 53, 90, 0.12),
+      transparent 34rem
+    ),
+    linear-gradient(180deg, #f5f8fc 0%, #ebf2fa 100%);
+  overflow: hidden;
+}
+
+.fuse-loading-splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.fuse-loading-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  animation: splash-logo-entrance 600ms ease-out;
+}
+
+.fuse-loading-brand img {
+  height: 2.4rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.fuse-loading-brand-name {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  font-family: "Inter", "Outfit", Roboto, sans-serif;
+  background: linear-gradient(135deg, #3c9ac4 0%, #13355a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+/* Barcode scanner illustration */
+.scan-stage {
+  position: relative;
+  width: 15.5rem;
+  height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: splash-logo-entrance 700ms ease-out 80ms both;
+}
+
+.scan-frame {
+  position: absolute;
+  inset: 0;
+}
+
+.scan-corner {
+  position: absolute;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 2.5px solid #3c9ac4;
+  opacity: 0.85;
+}
+
+.scan-corner.tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 6px 0 0 0;
+}
+
+.scan-corner.tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0 6px 0 0;
+}
+
+.scan-corner.bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 0 0 6px;
+}
+
+.scan-corner.br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 6px 0;
+}
+
+.barcode-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 3.6rem;
+  z-index: 1;
+}
+
+.barcode-bars span {
+  display: block;
+  width: var(--bar-w);
+  height: 100%;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #13355a 0%, #3c9ac4 100%);
+  transform-origin: center;
+  animation: splash-bar-rise 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation-delay: var(--bar-d);
+}
+
+.scan-line {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  border-radius: 2px;
+  background: #0ea5e9;
+  box-shadow:
+    0 0 8px 1.5px rgba(14, 165, 233, 0.85),
+    0 0 18px 4px rgba(14, 165, 233, 0.45);
+  animation: splash-scan-sweep 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.fuse-loading-label {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(19, 53, 90, 0.6);
+}
+
+.fuse-loading-label::after {
+  content: "";
+  display: inline-block;
+  width: 1.4em;
+  text-align: left;
+  animation: splash-dots 1.4s steps(4, end) infinite;
+}
+
+@keyframes splash-logo-entrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-scan-sweep {
+  0% {
+    top: 8%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    top: 88%;
+    opacity: 1;
+  }
+  58% {
+    opacity: 0;
+  }
+  58.01% {
+    top: 8%;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    top: 8%;
+    opacity: 1;
+  }
+}
+
+@keyframes splash-bar-rise {
+  0%,
+  100% {
+    transform: scaleY(0.55);
+    background: linear-gradient(180deg, #13355a 0%, #3c9ac4 100%);
+  }
+  45% {
+    transform: scaleY(0.55);
+  }
+  52% {
+    transform: scaleY(1);
+    background: linear-gradient(180deg, #0ea5e9 0%, #7dd3fc 100%);
+  }
+  60% {
+    transform: scaleY(0.55);
+    background: linear-gradient(180deg, #13355a 0%, #3c9ac4 100%);
+  }
+}
+
+@keyframes splash-dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fuse-loading .scan-line,
+  .fuse-loading .barcode-bars span,
+  .fuse-loading .fuse-loading-label::after {
+    animation: none;
+  }
+  .fuse-loading .scan-line {
+    top: 50%;
+    opacity: 0.6;
+  }
+}

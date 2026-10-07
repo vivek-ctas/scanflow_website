@@ -4,7 +4,7 @@ import { buildMetadata, SITE_URL } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Pricing - ScanFlow Plans for Every Workflow",
   description:
-    "Explore ScanFlow pricing plans for businesses of every size. Compare Starter, Pro, and Enterprise plans for barcode scanning.",
+    "Explore ScanFlow pricing plans for businesses of every size. Compare plans for barcode scanning and pick the tier that fits your scan volume.",
   path: "/pricing",
 });
 
@@ -14,18 +14,10 @@ const pricingJsonLd = {
   name: "ScanFlow",
   url: `${SITE_URL}/pricing`,
   description:
-    "Barcode scanning plans for businesses of every size. Starter, Pro, and Enterprise options.",
+    "Barcode scanning plans for businesses of every size, billed monthly or quarterly.",
   brand: {
     "@type": "Organization",
     name: "CTAS",
-  },
-  offers: {
-    "@type": "AggregateOffer",
-    priceCurrency: "USD",
-    lowPrice: "0",
-    highPrice: "499",
-    offerCount: "3",
-    availability: "https://schema.org/InStock",
   },
 };
 
