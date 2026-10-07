@@ -64,6 +64,10 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [DEFAULT_OG_IMAGE],
   },
+  icons: {
+    icon: [{ url: "/ctasis-logo_blue.svg", type: "image/svg+xml" }],
+    shortcut: "/ctasis-logo_blue.svg",
+  },
 };
 export default function RootLayout({
   children,
