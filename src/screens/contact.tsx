@@ -4,7 +4,7 @@ import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import { BoxWithPhoneIllustration } from "@/components/ui/illustration";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, useEffect } from "react";
 import {
   Mail,
   Phone,
@@ -125,17 +125,53 @@ export default function Contact() {
     .filter(Boolean)
     .join(", ");
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    phone: "",
-    inquiryType: "Sales & Pricing",
-    message: "",
+  const [formData, setFormData] = useState(() => {
+    const readSavedDraft = () => {
+      if (typeof window === "undefined") return null;
+      try {
+        const savedDraft = localStorage.getItem("contact_form_draft");
+        if (!savedDraft) return null;
+        const parsed = JSON.parse(savedDraft);
+        if (!parsed || typeof parsed !== "object") return null;
+        return {
+          name: typeof parsed.name === "string" ? parsed.name : "",
+          email: typeof parsed.email === "string" ? parsed.email : "",
+          company: typeof parsed.company === "string" ? parsed.company : "",
+          phone: typeof parsed.phone === "string" ? parsed.phone : "",
+          inquiryType:
+            typeof parsed.inquiryType === "string"
+              ? parsed.inquiryType
+              : "Sales & Pricing",
+          message: typeof parsed.message === "string" ? parsed.message : "",
+        };
+      } catch (error) {
+        console.error("Failed to parse contact draft", error);
+        return null;
+      }
+    };
+
+    return (
+      readSavedDraft() ?? {
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        inquiryType: "Sales & Pricing",
+        message: "",
+      }
+    );
   });
 
   const [status, setStatus] = useState<ContactFormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      localStorage.removeItem("contact_form_draft");
+    } catch {
+      /* ignore storage errors */
+    }
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -151,7 +187,16 @@ export default function Contact() {
     const { error } = await submitContactForm(formData);
     if (error) {
       setStatus("error");
-      setErrorMsg(error);
+      localStorage.setItem("contact_form_draft", JSON.stringify(formData));
+      const isNetworkError =
+        error.toLowerCase().includes("fetch") ||
+        error.toLowerCase().includes("network") ||
+        error === "Failed to fetch";
+      setErrorMsg(
+        isNetworkError
+          ? `We're having trouble connecting to our server. This could be temporary. Please try again in a moment, or reach out directly at ${s.contact.email || "our support team"} / ${s.contact.phone || ""}`
+          : error,
+      );
       return;
     }
     setStatus("success");
@@ -284,7 +329,7 @@ export default function Contact() {
                           <input
                             type="text"
                             required
-                            placeholder="Alex Morgan"
+                            placeholder="Enter your name"
                             value={formData.name}
                             onChange={(e) =>
                               setFormData({ ...formData, name: e.target.value })
@@ -304,7 +349,7 @@ export default function Contact() {
                           <input
                             type="email"
                             required
-                            placeholder="alex@company.com"
+                            placeholder="Enter your email"
                             value={formData.email}
                             onChange={(e) =>
                               setFormData({
@@ -328,7 +373,7 @@ export default function Contact() {
                           <Building className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                           <input
                             type="text"
-                            placeholder="Acme Logistics Inc."
+                            placeholder="Enter your company name"
                             value={formData.company}
                             onChange={(e) =>
                               setFormData({
@@ -350,7 +395,7 @@ export default function Contact() {
                           <Phone className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                           <input
                             type="tel"
-                            placeholder="+1 (555) 000-0000"
+                            placeholder="Enter your phone number"
                             value={formData.phone}
                             onChange={(e) =>
                               setFormData({
@@ -414,10 +459,23 @@ export default function Contact() {
                     {status === "error" && errorMsg && (
                       <div
                         role="alert"
-                        className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+                        className="flex flex-col sm:flex-row sm:items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
                       >
                         <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                        <p className="leading-relaxed">{errorMsg}</p>
+                        <div className="flex-1">
+                          <p className="leading-relaxed mb-3">{errorMsg}</p>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setStatus("idle");
+                              setErrorMsg(null);
+                            }}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 text-xs font-semibold transition-colors"
+                          >
+                            <ArrowRight className="w-3.5 h-3.5" />
+                            Try Again
+                          </button>
+                        </div>
                       </div>
                     )}
 
