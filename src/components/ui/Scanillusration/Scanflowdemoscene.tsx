@@ -6,7 +6,7 @@ import ProductBox from "./Productbox";
 import WorkerIllustration from "./Workerillustration";
 import ScanFlowDemoPhone from "./Scanflowdemophone";
 import styles from "./Scanflowdemoscene.module.css";
-
+import WarehouseBackground from "./Warehousebackground";
 type PhoneState = "idle" | "scanning" | "result";
 
 // Drag bounds for cardboard box
@@ -139,27 +139,9 @@ export default function ScanFlowDemoScene() {
 
   return (
     <div ref={sceneRef} className={styles.sceneContainer}>
-      {/* ── Background Warehouse Shelf & Boxes ── */}
+      {/* ── Background Warehouse ── */}
       <div className={styles.warehouseBackground}>
-        <div className={styles.shelfFrame}>
-          <div className={styles.shelfPillarLeft} />
-          <div className={styles.shelfPillarRight} />
-          <div className={styles.shelfLevel1} />
-          <div className={styles.shelfLevel2} />
-
-          {/* Top shelf boxes */}
-          <div className={styles.shelfBoxesRowTop}>
-            <div className={styles.bgBox1} />
-            <div className={styles.bgBox2} />
-            <div className={styles.bgBox3} />
-          </div>
-
-          {/* Bottom shelf boxes */}
-          <div className={styles.shelfBoxesRowBottom}>
-            <div className={styles.bgBox4} />
-            <div className={styles.bgBox5} />
-          </div>
-        </div>
+        <WarehouseBackground />
       </div>
 
       {/* ── Foreground Desk Surface ── */}

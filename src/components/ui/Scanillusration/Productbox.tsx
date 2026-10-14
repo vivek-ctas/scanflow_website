@@ -68,7 +68,7 @@ export default function ProductBox() {
       />
 
       {/* Barcode Label on front face */}
-      <g transform="translate(40, 100) rotate(2)">
+      <g transform="translate(40, 105)  skewY(14) scale(0.9, 1)">
         {/* White background card */}
         <rect
           x="0"
