@@ -15,10 +15,10 @@
 
 .warehouseBackground {
   position: absolute;
-  left: 20%;
-  top: 6%;
-  width: 360px;
-  height: 270px;
+  left: 10%;
+  top: 1%;
+  width: 490px;
+  height: 320px;
   pointer-events: none;
   z-index: 1;
   opacity: 0.9;
@@ -212,7 +212,7 @@
 .boxContainer {
   position: absolute;
   left: 31%;
-  bottom: 9%;
+  bottom: 5%;
   width: 240px;
   height: 220px;
   touch-action: none;
@@ -230,7 +230,7 @@
 
 .phoneContainer {
   position: absolute;
-  right: 2%;
+  right: 0%;
   top: 2%;
   width: 325px;
   height: 565px;
