@@ -242,7 +242,16 @@ export default function Footer() {
           {/* COL 1 — Brand + Contact (4 cols) */}
           <div className="md:col-span-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 w-fit mb-3">
+            <Link href="/" className="flex items-center w-fit mb-4">
+              <Image
+                src="/logo-white.png"
+                alt={companyName}
+                width={160}
+                height={50}
+                className="h-11 w-auto object-contain"
+              />
+            </Link>
+            {/* <Link href="/" className="flex items-center gap-2.5 w-fit mb-3">
               <Image
                 src="/ctasis-logo_white.svg"
                 alt={companyName}
@@ -253,8 +262,7 @@ export default function Footer() {
               <span className="text-4xl font-bold font-outfit bg-gradient-to-r from-white via-[#8FE7FF] to-[#3C9AC4] bg-clip-text text-transparent">
                 {companyName}
               </span>
-            </Link>
-
+            </Link> */}
             {tagline && (
               <p className="text-sm text-slate-300 leading-relaxed mb-1">
                 {tagline}

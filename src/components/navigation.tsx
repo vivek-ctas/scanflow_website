@@ -43,7 +43,17 @@ export default function Navbar() {
     >
       <div className="px-[50px] lg:px-[70px] flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-1 group shrink-0">
+        <Link href="/" className="flex items-center shrink-0">
+          <Image
+            src="/logo-blue.png"
+            alt={companyName}
+            width={160}
+            height={50}
+            className="h-11 w-auto object-contain"
+            priority
+          />
+        </Link>
+        {/* <Link href="/" className="flex items-center gap-1 group shrink-0">
           <Image
             src="/ctasis-logo_blue.svg"
             alt={companyName}
@@ -55,7 +65,7 @@ export default function Navbar() {
           <span className="text-[1.8rem] font-bold tracking-tight font-outfit bg-gradient-to-r from-[#3C9AC4] to-[#13355A] bg-clip-text text-transparent break-words">
             {companyName}
           </span>
-        </Link>
+        </Link> */}
 
         {/* Right group: nav links + CTA */}
         <div className="hidden md:flex items-center gap-10">
