@@ -148,12 +148,10 @@ export function getBrowserCountry(): CountryCode {
   return "IN";
 }
 
-/**
- * Map country name or ISO to CountryCode if possible.
- */
 export interface CountryLike {
   country_code: string;
   country_name: string;
+  iso_2?: string;
   aliases?: string[];
 }
 
@@ -166,7 +164,7 @@ export function countryNameToCountryCode(
   const trimmed = countryNameOrCode.trim();
   if (!trimmed) return undefined;
 
-  // If already a 2-letter ISO country code (e.g. "IN", "US", "GB")
+  // If already a valid 2-letter ISO country code (e.g. "IN", "US", "GB")
   if (trimmed.length === 2 && /^[A-Za-z]{2}$/.test(trimmed)) {
     return trimmed.toUpperCase() as CountryCode;
   }
@@ -178,10 +176,16 @@ export function countryNameToCountryCode(
       (c) =>
         c.country_name?.trim().toLowerCase() === normalized ||
         c.country_code?.trim().toLowerCase() === normalized ||
+        c.iso_2?.trim().toLowerCase() === normalized ||
         (c.aliases &&
           c.aliases.some((a) => a?.trim().toLowerCase() === normalized)),
     );
-    if (match?.country_code) {
+
+    if (match?.iso_2 && match.iso_2.trim().length === 2) {
+      return match.iso_2.trim().toUpperCase() as CountryCode;
+    }
+
+    if (match?.country_code && match.country_code.trim().length === 2) {
       return match.country_code.trim().toUpperCase() as CountryCode;
     }
   }

@@ -261,8 +261,8 @@ export default function CheckoutModal({
   );
 
   const phoneCountryCode = useMemo<Country | undefined>(() => {
-    if (selectedCountry?.country_code) {
-      return selectedCountry.country_code.toUpperCase() as Country;
+    if (selectedCountry?.iso_2) {
+      return selectedCountry.iso_2.toUpperCase() as Country;
     }
     return countryNameToCountryCode(form?.country_name, countries);
   }, [selectedCountry, form.country_name, countries]);
@@ -483,8 +483,11 @@ export default function CheckoutModal({
                         ) {
                           const matched = countries.find(
                             (c) =>
+                              (c.iso_2 &&
+                                c.iso_2.toUpperCase() ===
+                                  newCountry.toUpperCase()) ||
                               c.country_code.toUpperCase() ===
-                              newCountry.toUpperCase(),
+                                newCountry.toUpperCase(),
                           );
                           if (matched) {
                             handleChange("country_name", matched.country_name);

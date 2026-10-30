@@ -67,8 +67,23 @@ export default function PhoneField({
   // Check if incoming value is legacy unparsable
   const isLegacyUnparsable = Boolean(value && !value.startsWith("+"));
   const effectiveValue = isLegacyUnparsable ? undefined : value;
-  const fallbackCountry = defaultCountry || getBrowserCountry();
-  const currentCountry = (country || fallbackCountry) as CountryCode;
+  const safeCountry = (c?: string): Country | undefined => {
+    if (
+      c &&
+      typeof c === "string" &&
+      c.trim().length === 2 &&
+      /^[A-Za-z]{2}$/.test(c.trim())
+    ) {
+      return c.trim().toUpperCase() as Country;
+    }
+    return undefined;
+  };
+
+  const sanitizedDefaultCountry =
+    safeCountry(defaultCountry) || getBrowserCountry();
+  const sanitizedCountry = safeCountry(country);
+  const currentCountry = (sanitizedCountry ||
+    sanitizedDefaultCountry) as CountryCode;
 
   // Live real-time format validation
   const liveResult = useMemo(() => {
@@ -154,8 +169,8 @@ export default function PhoneField({
           flags={flags}
           international
           countryCallingCodeEditable={false}
-          defaultCountry={fallbackCountry}
-          country={country}
+          defaultCountry={sanitizedDefaultCountry}
+          country={sanitizedCountry}
           onCountryChange={onCountryChange}
           value={effectiveValue}
           onChange={onChange}
