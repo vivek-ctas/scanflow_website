@@ -47,7 +47,9 @@ export interface CountryOption {
   id: string;
   country_code: string;
   country_name: string;
+  iso_2?: string;
   currency_code: string;
+  aliases?: string[];
 }
 
 export interface CountriesApiResponse {

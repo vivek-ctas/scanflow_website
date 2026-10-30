@@ -1,12 +1,13 @@
 "use client";
 
+import { notify } from "@/components/ui/notify";
 import Layout from "@/components/layout";
 import PageHero from "@/components/pageHero";
 import { WarehouseIllustration } from "@/components/ui/illustration";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, ChevronDown, Loader2, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CheckoutModal from "@/components/checkoutModal";
 import {
   formatPlanPrice,
@@ -139,6 +140,12 @@ export default function Pricing() {
     error: plansError,
     refetch: refetchPlans,
   } = usePlans();
+
+  useEffect(() => {
+    if (plansError) {
+      notify.error(plansError);
+    }
+  }, [plansError]);
   const checkout = useCheckout();
   const [activePlan, setActivePlan] = useState<Plan | null>(null);
   // Defaults to Monthly, like the reference site's billing toggle.
