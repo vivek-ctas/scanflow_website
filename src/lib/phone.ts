@@ -151,43 +151,40 @@ export function getBrowserCountry(): CountryCode {
 /**
  * Map country name or ISO to CountryCode if possible.
  */
+export interface CountryLike {
+  country_code: string;
+  country_name: string;
+  aliases?: string[];
+}
+
 export function countryNameToCountryCode(
-  countryName?: string | null,
+  countryNameOrCode?: string | null,
+  countries?: CountryLike[],
 ): CountryCode | undefined {
-  if (!countryName) return undefined;
-  const normalized = countryName.trim().toLowerCase();
-  if (normalized === "india" || normalized === "in") return "IN";
-  if (
-    normalized === "united states" ||
-    normalized === "usa" ||
-    normalized === "us"
-  )
-    return "US";
-  if (
-    normalized === "united kingdom" ||
-    normalized === "uk" ||
-    normalized === "gb"
-  )
-    return "GB";
-  if (normalized === "canada" || normalized === "ca") return "CA";
-  if (normalized === "australia" || normalized === "au") return "AU";
-  if (
-    normalized === "united arab emirates" ||
-    normalized === "uae" ||
-    normalized === "ae"
-  )
-    return "AE";
-  if (normalized === "singapore" || normalized === "sg") return "SG";
-  if (normalized === "germany" || normalized === "de") return "DE";
-  if (normalized === "france" || normalized === "fr") return "FR";
-  if (normalized === "japan" || normalized === "jp") return "JP";
-  if (normalized === "brazil" || normalized === "br") return "BR";
-  if (normalized === "netherlands" || normalized === "nl") return "NL";
-  if (normalized === "italy" || normalized === "it") return "IT";
-  if (normalized === "spain" || normalized === "es") return "ES";
-  if (normalized === "china" || normalized === "cn") return "CN";
-  if (normalized === "russia" || normalized === "ru") return "RU";
-  if (normalized === "south africa" || normalized === "za") return "ZA";
-  if (normalized.length === 2) return normalized.toUpperCase() as CountryCode;
+  if (!countryNameOrCode || typeof countryNameOrCode !== "string")
+    return undefined;
+  const trimmed = countryNameOrCode.trim();
+  if (!trimmed) return undefined;
+
+  // If already a 2-letter ISO country code (e.g. "IN", "US", "GB")
+  if (trimmed.length === 2 && /^[A-Za-z]{2}$/.test(trimmed)) {
+    return trimmed.toUpperCase() as CountryCode;
+  }
+
+  // Dynamic match against backend-provided countries list
+  if (countries && countries.length > 0) {
+    const normalized = trimmed.toLowerCase();
+    const match = countries.find(
+      (c) =>
+        c.country_name?.trim().toLowerCase() === normalized ||
+        c.country_code?.trim().toLowerCase() === normalized ||
+        (c.aliases &&
+          c.aliases.some((a) => a?.trim().toLowerCase() === normalized)),
+    );
+    if (match?.country_code) {
+      return match.country_code.trim().toUpperCase() as CountryCode;
+    }
+  }
+
   return undefined;
 }

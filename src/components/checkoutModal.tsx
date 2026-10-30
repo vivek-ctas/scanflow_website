@@ -264,8 +264,8 @@ export default function CheckoutModal({
     if (selectedCountry?.country_code) {
       return selectedCountry.country_code.toUpperCase() as Country;
     }
-    return countryNameToCountryCode(form.country_name);
-  }, [selectedCountry, form.country_name]);
+    return countryNameToCountryCode(form?.country_name, countries);
+  }, [selectedCountry, form.country_name, countries]);
 
   // Summary numbers come from the backend's quote once the lead exists, so the
   // buyer is never shown a client-computed amount.
