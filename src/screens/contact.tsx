@@ -20,13 +20,15 @@ import {
   ShieldCheck,
   ExternalLink,
   Zap,
-  AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { submitContactForm } from "@/services/contact.service";
 import type { ContactFormStatus, WebSettings } from "@/types";
 import { useWebSettings } from "@/components/web-settings/WebSettingsProvider";
 import { FALLBACK_SETTINGS } from "@/services/web-settings.service";
+import PhoneField from "@/components/ui/PhoneField";
+import { isValidE164, formatPhone, phoneHref } from "@/lib/phone";
+import { notify } from "@/components/ui/notify";
 
 interface ContactCard {
   id: string;
@@ -60,9 +62,9 @@ const buildContactCards = (s: WebSettings): ContactCard[] => {
       id: "phone",
       icon: Phone,
       tag: "Call our team",
-      heading: s.contact.phone,
+      heading: formatPhone(s.contact.phone),
       sub: "Mon – Fri, 10 AM – 8 PM IST. Real humans, real answers.",
-      href: `tel:${s.contact.phone.replace(/\s+/g, "")}`,
+      href: phoneHref(s.contact.phone),
       accent: "#10B981",
       bgAccent: "bg-emerald-500/10 text-emerald-600",
     });
@@ -163,7 +165,6 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState<ContactFormStatus>("idle");
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -175,31 +176,38 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (formData.phone && !isValidE164(formData.phone)) {
+      notify.error(
+        "Please enter a valid international phone number with country code (e.g. +1 555 123 4567).",
+      );
+      setStatus("idle");
+      return;
+    }
     if (formData.message.trim().length < 10) {
-      setStatus("error");
-      setErrorMsg(
+      notify.error(
         "Please share a few more details (at least 10 characters) so our team can understand your requirements.",
       );
+      setStatus("idle");
       return;
     }
     setStatus("submitting");
-    setErrorMsg(null);
     const { error } = await submitContactForm(formData);
     if (error) {
-      setStatus("error");
+      setStatus("idle");
       localStorage.setItem("contact_form_draft", JSON.stringify(formData));
       const isNetworkError =
         error.toLowerCase().includes("fetch") ||
         error.toLowerCase().includes("network") ||
         error === "Failed to fetch";
-      setErrorMsg(
+      notify.error(
         isNetworkError
-          ? `We're having trouble connecting to our server. This could be temporary. Please try again in a moment, or reach out directly at ${s.contact.email || "our support team"} / ${s.contact.phone || ""}`
+          ? "We are having trouble connecting to our server. Please try again in a moment."
           : error,
       );
       return;
     }
     setStatus("success");
+    notify.success("Thank you! Your message has been sent successfully.");
   };
 
   return (
@@ -297,7 +305,6 @@ export default function Contact() {
                       type="button"
                       onClick={() => {
                         setStatus("idle");
-                        setErrorMsg(null);
                         setFormData({
                           name: "",
                           email: "",
@@ -391,21 +398,17 @@ export default function Contact() {
                         <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                           Phone Number
                         </label>
-                        <div className="relative">
-                          <Phone className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-                          <input
-                            type="tel"
-                            placeholder="Enter your phone number"
-                            value={formData.phone}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                phone: e.target.value,
-                              })
-                            }
-                            className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary focus:bg-white transition-all"
-                          />
-                        </div>
+                        <PhoneField
+                          value={formData.phone}
+                          onChange={(val) =>
+                            setFormData({
+                              ...formData,
+                              phone: val || "",
+                            })
+                          }
+                          placeholder="Enter phone number"
+                          inputWrapperClassName="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-3.5 py-2.5 text-slate-800 text-sm focus-within:ring-2 focus-within:ring-secondary/40 focus-within:border-secondary focus-within:bg-white transition-all"
+                        />
                       </div>
                     </div>
 
@@ -454,30 +457,6 @@ export default function Contact() {
                         className="w-full p-4 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary focus:bg-white transition-all resize-none"
                       />
                     </div>
-
-                    {/* Error Banner */}
-                    {status === "error" && errorMsg && (
-                      <div
-                        role="alert"
-                        className="flex flex-col sm:flex-row sm:items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
-                      >
-                        <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                        <div className="flex-1">
-                          <p className="leading-relaxed mb-3">{errorMsg}</p>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setStatus("idle");
-                              setErrorMsg(null);
-                            }}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 text-xs font-semibold transition-colors"
-                          >
-                            <ArrowRight className="w-3.5 h-3.5" />
-                            Try Again
-                          </button>
-                        </div>
-                      </div>
-                    )}
 
                     {/* Submit Button */}
                     <div>
