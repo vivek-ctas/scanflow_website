@@ -1,5 +1,6 @@
 "use client";
 
+import { notify } from "@/components/ui/notify";
 import { useCallback, useState } from "react";
 import { createGuestLead } from "@/services/checkout.service";
 import type {
@@ -78,11 +79,14 @@ export function useCheckout(): UseCheckoutResult {
       setLoading(false);
 
       if (apiErr || !data) {
-        setError(apiErr ?? "Could not save your details. Please try again.");
+        const msg = apiErr ?? "Could not save your details. Please try again.";
+        setError(msg);
+        notify.error(msg);
         return;
       }
 
       setLeadData(data);
+      notify.success("Your details have been saved successfully!");
       setStep("summary");
     },
     [form, billingCycle],

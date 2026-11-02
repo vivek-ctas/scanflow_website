@@ -1,5 +1,6 @@
 "use client";
 
+import { notify } from "@/components/ui/notify";
 import { useEffect, useMemo, useState } from "react";
 import {
   AlertCircle,
@@ -22,6 +23,9 @@ import {
   planPriceForCycle,
 } from "@/lib/plans";
 import { fetchCountries } from "@/services/plan.service";
+import PhoneField from "@/components/ui/PhoneField";
+import { isValidE164, countryNameToCountryCode } from "@/lib/phone";
+import type { Country } from "react-phone-number-input";
 import type {
   CheckoutFormState,
   CheckoutStep,
@@ -54,10 +58,8 @@ function validateField(
       return trimmed ? null : "Company name is required.";
     case "contact_number": {
       if (!trimmed) return "Contact number is required.";
-      // 7–15 digits once separators and a leading + are stripped.
-      const digits = trimmed.replace(/[^\d]/g, "");
-      if (digits.length < 7 || digits.length > 15)
-        return "Enter a valid phone number.";
+      if (!isValidE164(trimmed))
+        return "Please enter a valid phone number with country code.";
       return null;
     }
     case "country_name":
@@ -258,6 +260,13 @@ export default function CheckoutModal({
     [countries, form.country_name],
   );
 
+  const phoneCountryCode = useMemo<Country | undefined>(() => {
+    if (selectedCountry?.iso_2) {
+      return selectedCountry.iso_2.toUpperCase() as Country;
+    }
+    return countryNameToCountryCode(form?.country_name, countries);
+  }, [selectedCountry, form.country_name, countries]);
+
   // Summary numbers come from the backend's quote once the lead exists, so the
   // buyer is never shown a client-computed amount.
   const quoteData = useMemo<LeadPlanQuote>(
@@ -286,7 +295,8 @@ export default function CheckoutModal({
 
   function handleChange(field: keyof CheckoutFormState, value: string) {
     onFormChange(field, value);
-    if (touched[field]) {
+    // Live validation for contact_number and any previously touched fields
+    if (field === "contact_number" || touched[field]) {
       const err = validateField(field, value);
       setFieldErrors((prev) => ({ ...prev, [field]: err ?? undefined }));
     }
@@ -303,7 +313,10 @@ export default function CheckoutModal({
     setTouched(allTouched);
     setFieldErrors(errors);
     // Stop on client-side errors so the buyer fixes the form before we call the API.
-    if (Object.keys(errors).length > 0) return;
+    if (Object.keys(errors).length > 0) {
+      notify.error("Please fill in all required fields correctly.");
+      return;
+    }
     onSubmitForm();
   }
 
@@ -449,18 +462,52 @@ export default function CheckoutModal({
                     error={fieldErrors.company_name}
                   />
 
-                  <TextField
-                    id="contact_number"
-                    label="Contact Number"
-                    type="tel"
-                    required
-                    autoComplete="tel"
-                    placeholder="+1 555 123 4567"
-                    value={form.contact_number}
-                    onChange={(v) => handleChange("contact_number", v)}
-                    onBlur={() => handleBlur("contact_number")}
-                    error={fieldErrors.contact_number}
-                  />
+                  <div>
+                    <label
+                      htmlFor="contact_number"
+                      className="block text-sm font-medium text-primary mb-1.5"
+                    >
+                      Contact Number
+                      <span className="text-secondary"> *</span>
+                    </label>
+                    <PhoneField
+                      id="contact_number"
+                      name="contact_number"
+                      value={form.contact_number}
+                      country={phoneCountryCode}
+                      onCountryChange={(newCountry) => {
+                        if (
+                          newCountry &&
+                          !form.country_name &&
+                          countries.length > 0
+                        ) {
+                          const matched = countries.find(
+                            (c) =>
+                              (c.iso_2 &&
+                                c.iso_2.toUpperCase() ===
+                                  newCountry.toUpperCase()) ||
+                              c.country_code.toUpperCase() ===
+                                newCountry.toUpperCase(),
+                          );
+                          if (matched) {
+                            handleChange("country_name", matched.country_name);
+                          }
+                        }
+                      }}
+                      onChange={(v) => handleChange("contact_number", v || "")}
+                      onBlur={() => handleBlur("contact_number")}
+                      error={fieldErrors.contact_number}
+                      invalid={Boolean(fieldErrors.contact_number)}
+                      required
+                      placeholder="Enter contact number"
+                      inputWrapperClassName={cn(
+                        "w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm transition-colors duration-150",
+                        fieldErrors.contact_number
+                          ? "border-red-400 bg-red-50/40 focus-within:border-red-500 focus-within:ring-4 focus-within:ring-red-400/10"
+                          : "border-primary/15 focus-within:border-secondary focus-within:ring-4 focus-within:ring-secondary/10",
+                      )}
+                    />
+                  </div>
 
                   {/* Country dropdown */}
                   <div>
